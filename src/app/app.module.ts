@@ -6,12 +6,13 @@ import { AppComponent } from './app.component';
 import {MatCardModule} from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import{MatSliderModule} from '@angular/material/slider';
-import { WelcomepageComponent} from './welcome/welcomepage/welcomepage.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +20,7 @@ import { WelcomepageComponent} from './welcome/welcomepage/welcomepage.component
     MatCardModule,
     BrowserAnimationsModule,
     MatSliderModule, 
-    WelcomepageComponent,
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,15 @@
+
+.example-card {
+    align-items: center;
+    max-width: 400px;
+    
+    
+  }
+  
+  .example-header-image {
+    background-image: url('https://lh3.googleusercontent.com/proxy/bvxmyon5XTQWLMEfLPCeCRNRhp1QxYyNNX44DsFp-pJ5ehHQ7SZ1Tf4ubpFsLGQoI6LV6CR1jjQUoG-YZOtDSwF9pwSpFOt6W4r2g-93GE5vuCAUut4c');
+
+    background-size: cover;
+    
+   
+  }
