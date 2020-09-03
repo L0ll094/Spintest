@@ -7,6 +7,10 @@ import {MatCardModule} from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import{MatSliderModule} from '@angular/material/slider';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 
 @NgModule({
@@ -20,6 +24,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
     MatCardModule,
     BrowserAnimationsModule,
     MatSliderModule, 
+    MatToolbarModule,
+    MatButtonModule,
+    FlexLayoutModule,
    
   ],
   providers: [],
