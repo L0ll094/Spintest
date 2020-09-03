@@ -1,11 +1,12 @@
 import {Component} from '@angular/core';
 
-/**
- * @title Card with multiple sections
- */
+
 @Component({
   selector: 'app-root',
-  templateUrl: 'card-fancy-example.html',
-  styleUrls: ['card-fancy-example.css'],
+  templateUrl: 'app.component.html',
+  
+  styleUrls: ['app.component.css'],
 })
-export class AppComponent {}
+export class AppComponent {
+  pagetitle: string = "MyOwnTitle"
+}
