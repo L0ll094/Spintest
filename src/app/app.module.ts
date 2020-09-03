@@ -31,8 +31,8 @@ import { RouterModule,Routes } from '@angular/router';
     MatButtonModule,
     FlexLayoutModule,
     RouterModule.forRoot([
-      {path: 'input-form', component: InputFormComponent},
-      {path: 'welcom', component: WelcomeComponent}
+      
+
     ])
    
   ],
