@@ -10,13 +10,16 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { InputFormComponent } from './input-form/input-form.component';
+import { RouterModule,Routes } from '@angular/router';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    InputFormComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +30,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatToolbarModule,
     MatButtonModule,
     FlexLayoutModule,
+    RouterModule.forRoot([
+      {path: 'input-form', component: InputFormComponent},
+      {path: 'welcom', component: WelcomeComponent}
+    ])
    
   ],
   providers: [],

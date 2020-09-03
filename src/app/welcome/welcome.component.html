@@ -1,8 +1,12 @@
-<p>I work too!</p>
-<mat-toolbar color="primary">Card View Demo</mat-toolbar>
+
 <div class=content fxlayout="row wrap" fxLayoutGap="16px">
-    <div fxFlex="auto">
-        <mat-card class="example-card">
+    <td>
+        <a [routerLink]="['/welcome']">
+            Router link Name  
+        </a>
+    </td>
+    <div fxFlex="50%">
+        <mat-card class="example-card" style="text-align:center">
             <mat-card-header>
                 <div mat-card-avatar class="example-header-image"></div>
                 <mat-card-title>Explore Extended</mat-card-title>
