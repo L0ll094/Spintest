@@ -3,9 +3,9 @@
     
     <div fxFlex="50%">
         <mat-card class="example-card" style="text-align:center">
-            <mat-card-header>
+            <mat-card-header class="welcomeheader">
                 <div mat-card-avatar class="example-header-image"></div>
-                <mat-card-title>Explore Extended</mat-card-title>
+                <mat-card-title >Explore Extended</mat-card-title>
                 <mat-card-subtitle>Initiate Spintest Calculations</mat-card-subtitle>
             </mat-card-header>
 
@@ -18,15 +18,14 @@
             </mat-card-content>
 
             <mat-card-actions>
-                <button mat-button>
-                    
-                    <a routerLink="/welcome" routerLinkActive="active">Welcome</a>
-                    
-                </button>
-                <button mat-button>
-                    <a routerLink="/input-form" routerLinkActive="active">Input form</a>
+                <button mat-button routerLink="/welcome" routerLinkActive="active" >
+                    Welcome
                     
                 </button>
+                <button mat-button routerLink="/input-form" routerLinkActive="active"> 
+                    Input form
+                </button>
+        
             </mat-card-actions>
         </mat-card>
 </div>

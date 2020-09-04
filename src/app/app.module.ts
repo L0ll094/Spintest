@@ -30,11 +30,7 @@ import { RouterModule,Routes } from '@angular/router';
     MatToolbarModule,
     MatButtonModule,
     FlexLayoutModule,
-    RouterModule.forRoot([
-      
-
-    ])
-   
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
