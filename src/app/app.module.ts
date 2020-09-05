@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { InputFormComponent } from './input-form/input-form.component';
 import { RouterModule,Routes } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -22,6 +23,7 @@ import { RouterModule,Routes } from '@angular/router';
     InputFormComponent
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     MatCardModule,

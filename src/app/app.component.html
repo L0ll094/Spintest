@@ -1,11 +1,12 @@
-<div class="mainDiv" style="text-align:center">
-    <mat-toolbar style="text-align: center"> {{title}}
-        <ul><a class='nav-link' routerLinkActive='active' [routerLink]="['/welcome']">Welcome</a></ul>
-        <ul><a class='nav-link' routerLinkActive='active' [routerLink]="['/input-form']">Input Form</a></ul>
+<div>
+    <mat-toolbar class="mainToolbar"> {{title}}
+        <a class='nav-link' routerLinkActive='active' [routerLink]="['/welcome']">Home</a>
+
     </mat-toolbar>
 
     <div class='container'>
     <router-outlet></router-outlet>
+    <app-input-form></app-input-form>git
     </div>
 </div>
 
