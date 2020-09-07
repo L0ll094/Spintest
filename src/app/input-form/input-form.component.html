@@ -1,6 +1,38 @@
-<p>input-form works!</p>
+
+
 <label>
     Name:
     <input type="text" [formControl]="name">
 </label>
 
+<div class=content fxlayout="row wrap" fxLayoutGap="16px">
+    
+    <div fxFlex="50%">
+        <mat-card class="input-card" style="text-align:center">
+            <mat-card-header class="InputFormHeader">
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title >Explore Extended</mat-card-title>
+                <mat-card-subtitle>Initiate Spintest Calculations</mat-card-subtitle>
+            </mat-card-header>
+
+            <img mat-card-image src="assets/images/explore-image.png" alt="Photo of spintest">
+
+            <mat-card-content>
+                <p>
+                     Here you can make more advanced spintest calculations.
+                </p>
+            </mat-card-content>
+
+            <mat-card-actions>
+                <button mat-button routerLink="/welcome" routerLinkActive="active" >
+                    Home
+                    
+                </button>
+                <button mat-button routerLink="/input-form" routerLinkActive="active"> 
+                    Input form
+                </button>
+        
+            </mat-card-actions>
+        </mat-card>
+</div>
+</div>
