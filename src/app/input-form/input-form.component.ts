@@ -17,7 +17,7 @@ export class InputFormComponent implements OnInit {
 
   ngOnInit() {
       this.fluid_properties=this.formBuilder.group({
-      density: [null,[Validators.required, Validators.pattern(this.emailRegx)]],
+      email: [null,[Validators.required, Validators.pattern(this.emailRegx)]],
       viscosity: [null,Validators.required],
 
     });

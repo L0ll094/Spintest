@@ -8,13 +8,14 @@
         <mat-card class="input-card" style="text-align:center">
             <mat-card-header class="InputFormHeader">
                 <div mat-card-avatar class="Research-icon-image"></div>
-                <mat-card-title >Explore Extended</mat-card-title>
-                <mat-card-subtitle>Initiate Spintest Calculations</mat-card-subtitle>
+                <mat-card-title>Explore Extended</mat-card-title>
+                <mat-card-subtitle>Enter your fluid property data</mat-card-subtitle>
             </mat-card-header>
 
             
 
             <mat-card-content>
+            <!--
                 <p>
                      Here you can make more advanced spintest calculations.
                      
@@ -22,8 +23,30 @@
                         Name:
                         <input type="text" [formControl]="name">
                     </label>
-                    
                 </p>
+            -->
+                <div class="card-content">
+                <mat-form-field class="form-field" appearance="fill">
+                    <mat-label> Density </mat-label>
+                    <input matInput formControlName="Density" required>
+                    <!--
+                        <mat-error *ngIf="fluid_properties.controls.email.touched && fluid_properties.email.invalid">
+                        <span *ngIf="fluid_properties.controls.email.errors.required">This field is mandatory</span>
+                        <span *ngIf="fluid_properties.controls.email.errors.pattern">This field is invalid</span>
+                    
+                    </mat-error>
+                    -->
+                </mat-form-field>
+                
+                <mat-form-field class="form-field" appearance="fill">
+                    <mat-label> Kinematic Viscosity </mat-label>
+                    <input matInput formControlName="Kinematic_Viscosity" required>
+                </mat-form-field>
+
+                
+            </div>
+
+
             </mat-card-content>
 
             <mat-card-actions>
@@ -34,5 +57,6 @@
         
             </mat-card-actions>
         </mat-card>
-</div>
+    </div>
+
 </div>
