@@ -9,3 +9,14 @@
     flex-direction: column;
     justify-content: center
 }
+
+.form-container{
+    width: 400 px; 
+
+    margin-top: 200 px
+}
+
+.form-field{
+    display: flex;
+    flex-direction: column;
+}

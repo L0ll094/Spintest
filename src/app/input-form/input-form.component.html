@@ -5,31 +5,22 @@
 <div class="flex-container" >
     
     <div fxFlex="50%">
-        <mat-card class="input-card" style="text-align:center">
-            <mat-card-header class="InputFormHeader">
+        <mat-card class="input-card" >
+            <mat-card-header class="welcomeheader">
                 <div mat-card-avatar class="Research-icon-image"></div>
-                <mat-card-title>Explore Extended</mat-card-title>
-                <mat-card-subtitle>Enter your fluid property data</mat-card-subtitle>
+                <mat-card-title>Process Property Form</mat-card-title>
+                <mat-card-subtitle>Some data is needed to perform the calculation. Enter your fluid property data</mat-card-subtitle>
             </mat-card-header>
-
-            
-
-            <mat-card-content>
-            <!--
-                <p>
-                     Here you can make more advanced spintest calculations.
-                     
-                    <label>
-                        Name:
-                        <input type="text" [formControl]="name">
-                    </label>
-                </p>
-            -->
-                <div class="card-content">
+          
+           <mat-card-content>
+         
+    <div class="card-content">
+         <div class="form-content">
+            <form [formGroup]="fluid_properties" (submit)="submit()"> 
                 <mat-form-field class="form-field" appearance="fill">
                     <mat-label> Density </mat-label>
                     <input matInput formControlName="Density" required>
-                    <!--
+                    <!-- Shows error message when input is wrong
                         <mat-error *ngIf="fluid_properties.controls.email.touched && fluid_properties.email.invalid">
                         <span *ngIf="fluid_properties.controls.email.errors.required">This field is mandatory</span>
                         <span *ngIf="fluid_properties.controls.email.errors.pattern">This field is invalid</span>
@@ -43,19 +34,16 @@
                     <input matInput formControlName="Kinematic_Viscosity" required>
                 </mat-form-field>
 
-                
-            </div>
+                <button mat-raised-button color="primary" type="submit">
+                    Real Submit Button
+                </button>
 
+                </form>
+            </div>
+                                        
+        </div>
 
             </mat-card-content>
-
-            <mat-card-actions>
-
-                <button mat-button routerLink="/input-form" routerLinkActive="active"> 
-                    Submit
-                </button>
-        
-            </mat-card-actions>
         </mat-card>
     </div>
 
