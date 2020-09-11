@@ -3,9 +3,11 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-mat-card.input-class{
+mat-card.input-card{
   justify-content: center;
   flex-direction: row;
+  margin-bottom: 10%;
+  text-align:center;
 
 }
 mat-card-header.welcomeheader{

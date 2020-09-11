@@ -15,15 +15,22 @@ export class InputFormComponent implements OnInit {
 
   ngOnInit() {
       this.fluid_properties=this.formBuilder.group({
-      density: [null,[Validators.required,]],
-      Kinematic_Viscosity: [null,Validators.required],
-
+      densityParticle: [null,[Validators.required,]],
+      densityFeed:[null,[Validators.required,]],
+      kinviscosity: [null,Validators.required],
+      spintimes: [null,[Validators.required,]],
+      Nstart: [null,[Validators.required,]],
+      speeds: [null,[Validators.required,]],
+      residualSolids:[null,[Validators.required,]],
+      tempSpinTest:[null,[Validators.required,]],
+      neededQ: [null,[Validators.required,]],
+      
     });
   }
   submit(){
-    if(!this.fluid_properties.valid){
+   /* if(!this.fluid_properties.valid){
       return;
-    }
+    }*/
   console.log(this.fluid_properties.value);
   }
 

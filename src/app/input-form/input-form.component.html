@@ -3,46 +3,65 @@
 
 
 <div class="flex-container" >
-    
-    <div fxFlex="50%">
+    <div fxFlex="50%"><!--Controls card width-->
         <mat-card class="input-card" >
+
             <mat-card-header class="welcomeheader">
-                <div mat-card-avatar class="Research-icon-image"></div>
+                
                 <mat-card-title>Process Property Form</mat-card-title>
-                <mat-card-subtitle>Some data is needed to perform the calculation. Enter your fluid property data</mat-card-subtitle>
+                <mat-card-subtitle>Some data is needed to perform the calculation. Enter some physical properties of the phases, in SI units.</mat-card-subtitle>
             </mat-card-header>
           
-           <mat-card-content>
-         
-    <div class="card-content">
-         <div class="form-content">
-            <form [formGroup]="fluid_properties" (submit)="submit()"> 
-                <mat-form-field class="form-field" appearance="fill">
-                    <mat-label> Density </mat-label>
-                    <input matInput formControlName="Density" required>
-                    <!-- Shows error message when input is wrong
-                        <mat-error *ngIf="fluid_properties.controls.email.touched && fluid_properties.email.invalid">
-                        <span *ngIf="fluid_properties.controls.email.errors.required">This field is mandatory</span>
-                        <span *ngIf="fluid_properties.controls.email.errors.pattern">This field is invalid</span>
-                    
-                    </mat-error>
-                    -->
-                </mat-form-field>
-                
-                <mat-form-field class="form-field" appearance="fill">
-                    <mat-label> Kinematic Viscosity </mat-label>
-                    <input matInput formControlName="Kinematic_Viscosity" required>
-                </mat-form-field>
+            <mat-card-content>
+            <div class="card-content">
+                <div class="form-content">
+                    <form [formGroup]="fluid_properties" (submit)="submit()">
 
-                <button mat-raised-button color="primary" type="submit">
-                    Real Submit Button
-                </button>
+                        <img mat-card-image src="assets/images/fluid-image.jpg" alt="Photo of spintest">
 
-                </form>
-            </div>
-                                        
-        </div>
+                        <mat-form-field class="form-field" appearance="fill">
+                            <mat-label> Density of the heavy phase, often the solid </mat-label>
+                            <input type="number" matInput formControlName="densityParticle" required>
+                        </mat-form-field>
+                        
+                        <mat-form-field class="form-field" appearance="fill">
+                            <mat-label> Density of the light phase </mat-label>
+                            <input type="number" matInput formControlName="densityFeed" required>
+                        </mat-form-field>
 
+                        <mat-form-field class="form-field" appearance="fill">
+                            <mat-label> Kinematic viscosity of the lightest substance </mat-label>
+                            <input type="number" matInput formControlName="kinviscosity" required>
+                        </mat-form-field>
+
+                        <button mat-raised-button color="primary" type="submit">
+                         Submit
+                        </button>
+                    </form>
+                </div>
+             </div>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="input-card">
+            <mat-card-header class="welcomeheader">
+               
+                <mat-card-title>Spin Test Data</mat-card-title>
+                <mat-card-subtitle>Some data is needed to perform the calculation. Enter information about your spintest.</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="card-content">
+                    <div class="form-content">
+                        <form [formGroup]="fluid_properties" (submit)="submit()">
+    
+                            <img mat-card-image src="assets/images/3-test-tubes.jpg" alt="Photo of spintest">
+                        <mat-form-field class="form-field" appearance="fill">
+                            <mat-label> Nr of starts </mat-label>
+                                <input matInput formControlName="Kinematic_Viscosity" required>
+                        </mat-form-field>        
+                        </form>
+                    </div>
+                </div>
             </mat-card-content>
         </mat-card>
     </div>
