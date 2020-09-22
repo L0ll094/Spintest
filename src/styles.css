@@ -4,11 +4,13 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 mat-card.input-card{
+  display:flex;
   justify-content: center;
-  flex-direction: row;
+  flex-direction: column;
   margin-bottom: 10%;
   text-align:center;
-
+  width: fit-content;
+  
 }
 mat-card-header.welcomeheader{
     justify-content: center;
@@ -20,6 +22,14 @@ mat-toolbar.mainToolbar{
     color: black;
     font-family: "Lucida Console", Courier, monospace;
     text-decoration: none;
+}
+.flex-container{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: nowrap;
+  
+
 }
 a, a:link, a:visited, a:focus, a:active{
     color:black;

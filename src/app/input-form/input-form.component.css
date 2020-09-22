@@ -1,17 +1,13 @@
-.flex-container{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
 
-}
 .card-content{
     display:flex;
     flex-direction: column;
     justify-content: center
 }
 
+
 .form-container{
-    width: 400 px; 
+    width: 100 px; 
 
     margin-top: 200 px
 }
@@ -22,14 +18,18 @@
 }
 
 .input-table{
-    color:pink;
+ 
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 .input-table-column{
-    color:pink;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+mat-card img{
+    object-fit: cover; /*this makes the image in src fit to the size specified below*/
+    width: 50%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+    height: 80%;
+  }
