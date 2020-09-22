@@ -4,7 +4,7 @@
 
 <div class="flex-container" >
     <div fxFlex="50%"><!--Controls card width-->
-        <mat-card class="input-card" >
+        <mat-card class="input-card" ><!--Card with input field for fluid properties-->
 
             <mat-card-header class="welcomeheader">
                 
@@ -42,12 +42,14 @@
              </div>
             </mat-card-content>
         </mat-card>
-
-        <mat-card class="input-card">
+    
+    </div>
+    <div fxFlex="50%">
+        <mat-card class="input-card"><!--Card with input fields for spin test-->
             <mat-card-header class="welcomeheader">
                
                 <mat-card-title>Spin Test Data</mat-card-title>
-                <mat-card-subtitle>Some data is needed to perform the calculation. Enter information about your spintest.</mat-card-subtitle>
+                <mat-card-subtitle>Some data is needed to perform the calculation. Enter information about your spintest. </mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
                 <div class="card-content">
@@ -55,15 +57,109 @@
                         <form [formGroup]="fluid_properties" (submit)="submit()">
     
                             <img mat-card-image src="assets/images/3-test-tubes.jpg" alt="Photo of spintest">
-                        <mat-form-field class="form-field" appearance="fill">
-                            <mat-label> Nr of starts </mat-label>
-                                <input matInput formControlName="Kinematic_Viscosity" required>
-                        </mat-form-field>        
+    
+                        <div class="input-table">
+
+                            <div class="input-table-column">
+                                <mat-form-field class="form-field" appearance="fill">
+                                    <mat-label> Nr of starts 1</mat-label>
+                                        <input matInput formControlName="Kinematic_Viscosity" required>
+                                </mat-form-field>      
+                                
+                                <mat-form-field class="form-field" appearance="fill">
+                                    <mat-label> Nr of starts 2 </mat-label>
+                                        <input matInput formControlName="Kinematic_Viscosity" required>
+                                </mat-form-field> 
+
+                                <mat-form-field class="form-field" appearance="fill">
+                                    <mat-label> Nr of starts 3</mat-label>
+                                        <input matInput formControlName="Kinematic_Viscosity" required>
+                                </mat-form-field> 
+
+                                <mat-form-field class="form-field" appearance="fill">
+                                    <mat-label> Nr of starts 4</mat-label>
+                                        <input matInput formControlName="Kinematic_Viscosity" required>
+                                </mat-form-field>
+                            </div>
+
+
+                            <div class="input-table-column">
+                                <mat-form-field class="form-field" appearance="fill">
+                                    <mat-label> Run time 1 </mat-label>
+                                        <input matInput formControlName="Kinematic_Viscosity" required>
+                                </mat-form-field>     
+
+                                <mat-form-field class="form-field" appearance="fill">
+                                    <mat-label> Run time 2 </mat-label>
+                                        <input matInput formControlName="Kinematic_Viscosity" required>
+                                </mat-form-field>
+
+                                <mat-form-field class="form-field" appearance="fill">
+                                    <mat-label> Run time 3 </mat-label>
+                                        <input matInput formControlName="Kinematic_Viscosity" required>
+                                </mat-form-field>
+
+                                <mat-form-field class="form-field" appearance="fill">
+                                    <mat-label> Run time 4 </mat-label>
+                                        <input matInput formControlName="Kinematic_Viscosity" required>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="input-table-column">
+                                <mat-form-field class="form-field" appearance="fill">
+                                    <mat-label> Speed [rpm] 1 </mat-label>
+                                        <input matInput formControlName="Kinematic_Viscosity" required>
+                                </mat-form-field>
+
+                                <mat-form-field class="form-field" appearance="fill">
+                                    <mat-label> Speed [rpm] 2 </mat-label>
+                                        <input matInput formControlName="Kinematic_Viscosity" required>
+                                </mat-form-field>
+
+                                <mat-form-field class="form-field" appearance="fill">
+                                    <mat-label> Speed [rpm] 3 </mat-label>
+                                        <input matInput formControlName="Kinematic_Viscosity" required>
+                                </mat-form-field>
+
+                                <mat-form-field class="form-field" appearance="fill">
+                                    <mat-label> Speed [rpm] 4 </mat-label>
+                                        <input matInput formControlName="Kinematic_Viscosity" required>
+                                </mat-form-field>
+                            </div>
+
+                            
+                            <div class="input-table-column">
+                                <mat-form-field class="form-field" appearance="fill">
+                                    <mat-label> Residual solids [%] 1 </mat-label>
+                                        <input matInput formControlName="Kinematic_Viscosity" required>
+                                </mat-form-field>     
+
+                                <mat-form-field class="form-field" appearance="fill">
+                                    <mat-label> Residual solids [%] 2 </mat-label>
+                                        <input matInput formControlName="Kinematic_Viscosity" required>
+                                </mat-form-field> 
+
+                                <mat-form-field class="form-field" appearance="fill">
+                                    <mat-label> Residual solids [%] 3 </mat-label>
+                                        <input matInput formControlName="Kinematic_Viscosity" required>
+                                </mat-form-field>
+
+                                <mat-form-field class="form-field" appearance="fill">
+                                    <mat-label> Residual solids [%] 4 </mat-label>
+                                        <input matInput formControlName="Kinematic_Viscosity" required>
+                                </mat-form-field>
+                            </div>
+
+                        </div>   
                         </form>
+                        
                     </div>
                 </div>
             </mat-card-content>
         </mat-card>
+
+        
+
     </div>
 
 </div>
