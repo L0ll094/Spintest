@@ -1,17 +1,14 @@
 
-.card-content{
+.form-label{
+
     display:flex;
-    flex-direction: column;
-    justify-content: center
+    flex-direction:row;
+    text-align: center;
+   
+  
+
+    
 }
-
-
-.form-container{
-    width: 100 px; 
-
-    margin-top: 200 px
-}
-
 .form-field{
     display: flex;
     flex-direction: column;
@@ -29,7 +26,5 @@
     justify-content: center;
 }
 mat-card img{
-    object-fit: cover; /*this makes the image in src fit to the size specified below*/
-    width: 50%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
-    height: 80%;
+   
   }

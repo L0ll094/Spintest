@@ -2,24 +2,22 @@
 
 
 
-<div class="flex-container" fxlayout="row wrap" >
+<div class="flex-container" >
 
-        <mat-card class="input" ><!--Card with input field for fluid properties-->
+        <mat-card class="input-card" ><!--Card with input field for fluid properties-->
 
             <mat-card-header class="welcomeheader">
-                
                 <mat-card-title>Process Property Form</mat-card-title>
                 <mat-card-subtitle>Some data is needed to perform the calculation. Enter some physical properties of the phases, in SI units.</mat-card-subtitle>
             </mat-card-header>
-          
+
+            <img mat-card-image src="assets/images/fluid-image.jpg" alt="Photo of spintest">
+
             <mat-card-content>
-            <div class="card-content">
-                
+                          
                 <div class="form-content">
                     <form [formGroup]="fluid_properties" (submit)="submit()">  
                         
-                        <img mat-card-image src="assets/images/fluid-image.jpg" alt="Photo of spintest">
-
                         <mat-form-field class="form-field" appearance="fill">
                             <mat-label> Density of the heavy phase, often the solid </mat-label>
                             <input type="number" matInput formControlName="densityParticle" required>
@@ -35,12 +33,10 @@
                             <input type="number" matInput formControlName="kinviscosity" required>
                         </mat-form-field>
 
-                        <button mat-raised-button color="primary" type="submit">
-                         Submit
-                        </button>
+
                     </form>
                 </div>
-             </div>
+            
             </mat-card-content>
         </mat-card>
     
@@ -48,39 +44,71 @@
     
         <mat-card class="input-card"><!--Card with input fields for spin test-->
             <mat-card-header class="welcomeheader">
-               
                 <mat-card-title>Spin Test Data</mat-card-title>
                 <mat-card-subtitle>Some data is needed to perform the calculation. Enter information about your spintest. </mat-card-subtitle>
             </mat-card-header>
+
+            <img mat-card-image src="assets/images/3-test-tubes.jpg" alt="Photo of spintest">
+
             <mat-card-content>
-                <div class="card-content">
-                    <div class="form-content">
+                    
+                <div class="form-content">
+                        
                         <form [formGroup]="fluid_properties" (submit)="submit()">
-    
-                            <img mat-card-image src="assets/images/3-test-tubes.jpg" alt="Photo of spintest">
-    
+                                
                         <div class="input-table">
 
-                            <div class="input-table-column">
-                                <mat-form-field class="form-field" appearance="fill">
-                                    <mat-label> Nr of starts 1</mat-label>
-                                        <input type="number" matInput formControlName="Nstart1" required>
-                                </mat-form-field>      
+<!--                        <div class="input-table-column">
+
                                 
-                                <mat-form-field class="form-field" appearance="fill">
-                                    <mat-label> Nr of starts 2 </mat-label>
+                                    
+                                </label>    
+                                
+                                <label class="form-label">
+                                    <mat-label> Sample Tube 2</mat-label>
+                                </label>    
+
+                                <label class="form-label">
+                                    <mat-label> Sample Tube 3</mat-label>
+                                </label>    
+
+                                <label class="form-label">
+                                    <mat-label> Sample Tube 4</mat-label>
+                                </label>    
+
+                            </div> -->
+
+                            <div class="input-table-column">
+                                <div class="form-label">
+                                    <mat-label padding="10px"> Sample Tube 1</mat-label>
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Nr of starts 1</mat-label>
+                                        <input type="number" matInput formControlName="Nstart1" required>
+                                    </mat-form-field>   
+                                </div>   
+                                <div class="form-label">
+                                    <mat-label> Sample Tube 2</mat-label>
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Nr of starts 2 </mat-label>
                                         <input type="number" matInput formControlName="Nstart2" required>
-                                </mat-form-field> 
+                                    </mat-form-field> 
+                                </div>
 
-                                <mat-form-field class="form-field" appearance="fill">
-                                    <mat-label> Nr of starts 3</mat-label>
+                                <div class="form-label">
+                                    <mat-label> Sample Tube 3</mat-label>
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Nr of starts 3</mat-label>
                                         <input type="number" matInput formControlName="Nstart3" required>
-                                </mat-form-field> 
+                                    </mat-form-field>
+                                </div>
 
-                                <mat-form-field class="form-field" appearance="fill">
-                                    <mat-label> Nr of starts 4</mat-label>
+                                <div class="form-label">
+                                    <mat-label> Sample Tube 4</mat-label>
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Nr of starts 4</mat-label>
                                         <input type="number" matInput formControlName="Nstart4" required>
                                 </mat-form-field>
+                                </div>
                             </div>
 
 
@@ -149,13 +177,19 @@
                                     <mat-label> Residual solids [%] 4 </mat-label>
                                         <input type="number" matInput formControlName="residualSolids4" required>
                                 </mat-form-field>
-                            </div>
 
+                            </div>
+                            
                         </div>   
-                        </form>
+
+                        <button mat-raised-button color="primary" type="submit">
+                            Submit
+                        </button>
+                    
+                    </form>
                         
-                    </div>
                 </div>
+                
             </mat-card-content>
         </mat-card>
 
