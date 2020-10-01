@@ -4,20 +4,27 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 @Component({
   selector: 'app-input-form',
   templateUrl: './input-form.component.html',
-  styleUrls: ['./input-form.component.css']
+  styleUrls: ['./input-form.component.css'],
+  providers: [PassToPythonService],
 })
 export class InputFormComponent implements OnInit {
   fluid_properties: FormGroup;
+  spin_test_data: FormGroup;
+  private _PassToPythonServiceHolder;
   
   constructor(
-    private formBuilder: FormBuilder
-  ) {}
+    PassToPythonServiceHolder: PassToPythonService,
+    private formBuilder: FormBuilder) {this._PassToPythonServiceHolder= PassToPythonService;
+
+  }
 
   ngOnInit() {
       this.fluid_properties=this.formBuilder.group({
       densityParticle: [null,[Validators.required,]],
       densityFeed:[null,[Validators.required,]],
-      kinviscosity: [null,Validators.required],
+      kinviscosity: [null,Validators.required],})
+
+      this.spin_test_data=this.formBuilder.group({
       
       spintime1: [null,[Validators.required,]],
       spintime2: [null,[Validators.required,]],
@@ -49,6 +56,7 @@ export class InputFormComponent implements OnInit {
       return;
     }*/
   console.log(this.fluid_properties.value);
+  console.log(this.spin_test_data.value);
   }
 
 }
