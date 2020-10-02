@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { PassToPythonService } from '../pass-to-python.service';
 
 @Component({
   selector: 'app-input-form',
   templateUrl: './input-form.component.html',
   styleUrls: ['./input-form.component.css'],
-  providers: [PassToPythonService],
+  
 })
 export class InputFormComponent implements OnInit {
   fluid_properties: FormGroup;
