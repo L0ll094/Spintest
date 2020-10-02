@@ -33,6 +33,10 @@
                             <input type="number" matInput formControlName="kinviscosity" required>
                         </mat-form-field>
 
+                        <button mat-raised-button color="primary" type="submit">
+                            Submit fluid properties
+                        </button>
+
 
                     </form>
                 </div>
@@ -164,7 +168,7 @@
                         </div>   
 
                         <button mat-raised-button color="primary" type="submit">
-                            Submit
+                            Submit spintest data
                         </button>
                     
                     </form>
@@ -178,30 +182,47 @@
 
             <mat-card-header class="welcomeheader">
                 <mat-card-title>Centrifuge and test tube</mat-card-title>
-                <mat-card-subtitle>Enter the indicated measurements in the noted unit.</mat-card-subtitle>
+                <mat-card-subtitle>A swing out centrifuge is needed for this experiment, so that all test tubes will be horizontal during the spinning. 
+                    <br>Enter the indicated measurements in the desired unit [to be set].The centrifuge does not have to be identical to the image.</mat-card-subtitle>
             </mat-card-header>
 
-            <img mat-card-image src="assets/images/3-test-tubes.jpg" alt="Photo of spintest">
+            <img mat-card-image src="assets/images/centrifuge.JPG" alt="Photo of spintest">
 
             <mat-card-content>
                           
                 <div class="form-content">
-                    <form [formGroup]="fluid_properties" (submit)="submit()">  
+                    <form [formGroup]="equipment_properties" (submit)="submit()">  
                         
                         <mat-form-field class="form-field" appearance="fill">
-                            <mat-label> Density of the heavy phase, often the solid </mat-label>
-                            <input type="number" matInput formControlName="densityParticle" required>
+                            <mat-label> Radius from center of centrifuge to end of the test tube when it is horizontal. </mat-label>
+                            <input type="number" matInput formControlName="Rcentrifuge" required>
                         </mat-form-field>
                         
                         <mat-form-field class="form-field" appearance="fill">
-                            <mat-label> Density of the light phase </mat-label>
-                            <input type="number" matInput formControlName="densityFeed" required>
+                            <mat-label> Vol% at V1, recommended to be 100% </mat-label>
+                            <input type="number" matInput formControlName="V1" required>
                         </mat-form-field>
 
                         <mat-form-field class="form-field" appearance="fill">
-                            <mat-label> Kinematic viscosity of the lightest substance </mat-label>
-                            <input type="number" matInput formControlName="kinviscosity" required>
+                            <mat-label> Vol% at V2, choose whatever point is easy to measure. </mat-label>
+                            <input type="number" matInput formControlName="V2" required>
                         </mat-form-field>
+
+                        <mat-form-field class="form-field" appearance="fill">
+                            <mat-label> Length L1. </mat-label>
+                            <input type="number" matInput formControlName="L1" required>
+                        </mat-form-field>
+                        
+                        <mat-form-field class="form-field" appearance="fill">
+                            <mat-label> Length L2. </mat-label>
+                            <input type="number" matInput formControlName="L2" required>
+                        </mat-form-field>
+
+                        <button mat-raised-button color="primary" type="submit">
+                            Submit equipment properties
+                        </button>
+
+                  
 
 
                     </form>

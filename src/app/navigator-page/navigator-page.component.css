@@ -1,0 +1,26 @@
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding:0px;
+    align-items: center;
+}
+.Row-of-cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    
+}
+.testbox{
+    border-color: brown;
+    border-style:solid;
+
+}
+.entire-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding:0px;
+    align-items: center;
+}

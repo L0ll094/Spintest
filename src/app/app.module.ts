@@ -47,13 +47,15 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { PassToPythonService } from './pass-to-python.service';
+import { NavigatorPageComponent } from './navigator-page/navigator-page.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
-    InputFormComponent
+    InputFormComponent,
+    NavigatorPageComponent
   ],
   imports: [
     ReactiveFormsModule,
