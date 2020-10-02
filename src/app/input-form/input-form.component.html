@@ -58,25 +58,6 @@
                                 
                         <div class="input-table">
 
-<!--                        <div class="input-table-column">
-
-                                
-                                    
-                                </label>    
-                                
-                                <label class="form-label">
-                                    <mat-label> Sample Tube 2</mat-label>
-                                </label>    
-
-                                <label class="form-label">
-                                    <mat-label> Sample Tube 3</mat-label>
-                                </label>    
-
-                                <label class="form-label">
-                                    <mat-label> Sample Tube 4</mat-label>
-                                </label>    
-
-                            </div> -->
 
                             <div class="input-table-column">
                                 <div class="form-label">
@@ -193,7 +174,41 @@
             </mat-card-content>
         </mat-card>
 
-        
+        <mat-card class="input-card" ><!--Card with input field for equipment properties-->
+
+            <mat-card-header class="welcomeheader">
+                <mat-card-title>Centrifuge and test tube</mat-card-title>
+                <mat-card-subtitle>Enter the indicated measurements in the noted unit.</mat-card-subtitle>
+            </mat-card-header>
+
+            <img mat-card-image src="assets/images/3-test-tubes.jpg" alt="Photo of spintest">
+
+            <mat-card-content>
+                          
+                <div class="form-content">
+                    <form [formGroup]="fluid_properties" (submit)="submit()">  
+                        
+                        <mat-form-field class="form-field" appearance="fill">
+                            <mat-label> Density of the heavy phase, often the solid </mat-label>
+                            <input type="number" matInput formControlName="densityParticle" required>
+                        </mat-form-field>
+                        
+                        <mat-form-field class="form-field" appearance="fill">
+                            <mat-label> Density of the light phase </mat-label>
+                            <input type="number" matInput formControlName="densityFeed" required>
+                        </mat-form-field>
+
+                        <mat-form-field class="form-field" appearance="fill">
+                            <mat-label> Kinematic viscosity of the lightest substance </mat-label>
+                            <input type="number" matInput formControlName="kinviscosity" required>
+                        </mat-form-field>
+
+
+                    </form>
+                </div>
+            
+            </mat-card-content>
+        </mat-card>
 
     
 

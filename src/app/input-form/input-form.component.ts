@@ -10,7 +10,9 @@ import { PassToPythonService } from '../pass-to-python.service';
 })
 export class InputFormComponent implements OnInit {
   fluid_properties: FormGroup;
+  equipment_properties: FormGroup;
   spin_test_data: FormGroup;
+
   private _PassToPythonServiceHolder;
   
   constructor(
@@ -24,6 +26,13 @@ export class InputFormComponent implements OnInit {
       densityParticle: [null,[Validators.required,]],
       densityFeed:[null,[Validators.required,]],
       kinviscosity: [null,Validators.required],})
+
+      this.equipment_properties=this.formBuilder.group({
+      Rcentrifuge: [null,[Validators.required,]],
+      L1:[null,[Validators.required,]],
+      L2:[null,[Validators.required,]],
+      V1:[null,[Validators.required,]],
+      V2: [null,Validators.required],})
 
       this.spin_test_data=this.formBuilder.group({
       
