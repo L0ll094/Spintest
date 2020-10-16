@@ -16,7 +16,7 @@
             <mat-card-content>
                           
                 <div class="form-content">
-                    <form action="../[formGroup]="fluid_properties" (submit)="submit_Fluid_Properties()">  
+                    <form [formGroup]="fluid_properties" (submit)="submit_Fluid_Properties()">  
                         
                         <mat-form-field class="form-field" appearance="fill">
                             <mat-label> Density of the heavy phase, often the solid </mat-label>
