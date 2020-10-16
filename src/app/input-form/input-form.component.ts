@@ -20,8 +20,14 @@ export class InputFormComponent implements OnInit {
     private formBuilder: FormBuilder) {this._PassToPythonServiceHolder= PassToPythonService;
 
   }
+  addToContainer(data){
+    this._PassToPythonServiceHolder.addToContainer(data);
+    window.alert('The data has been added to the datacontainer');
+
+    }
 
   ngOnInit() {
+    
       this.fluid_properties=this.formBuilder.group({
       densityParticle: [null,[Validators.required,]],
       densityFeed:[null,[Validators.required,]],
@@ -65,6 +71,7 @@ export class InputFormComponent implements OnInit {
    /* if(!this.fluid_properties.valid){
       return;
     }*/
+
   console.log(this.fluid_properties.value);
   console.log(this.spin_test_data.value);
   }
