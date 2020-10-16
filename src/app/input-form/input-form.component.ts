@@ -12,21 +12,25 @@ export class InputFormComponent implements OnInit {
   fluid_properties: FormGroup;
   equipment_properties: FormGroup;
   spin_test_data: FormGroup;
+  data;//Attemt to save all my data in this, managed by the pass-to-python service
 
-  private _PassToPythonServiceHolder;
+ 
   
   constructor(
-    PassToPythonServiceHolder: PassToPythonService,
-    private formBuilder: FormBuilder) {this._PassToPythonServiceHolder= PassToPythonService;
+    private _PassToPythonServiceHolder: PassToPythonService,
+    private formBuilder: FormBuilder,
+    ) {  }
 
-  }
+
   addToContainer(data){
     this._PassToPythonServiceHolder.addToContainer(data);
-    window.alert('The data has been added to the datacontainer');
+
+    window.alert('The data '+data+' has been added to the datacontainer');
 
     }
 
   ngOnInit() {
+      this.data=this._PassToPythonServiceHolder.getData();
     
       this.fluid_properties=this.formBuilder.group({
       densityParticle: [null,[Validators.required,]],
@@ -67,13 +71,32 @@ export class InputFormComponent implements OnInit {
       
     });
   }
-  submit(){
-   /* if(!this.fluid_properties.valid){
-      return;
-    }*/
+  submit_Fluid_Properties(){
+   /*Saves the inputed fluid properties */
 
+  /*
+  this.addToContainer(this.fluid_properties.controls['densityParticle'].value)
+  this.addToContainer(this.fluid_properties.controls['densityFeed'].value)
+  
   console.log(this.fluid_properties.value);
   console.log(this.spin_test_data.value);
+  console.log(this._PassToPythonServiceHolder.getData())*/
+    window.alert('The submit function Fluid Properties have been activated');
+
   }
 
+  
+  submit_Equipment_Properties(){
+    /*Saves the inputed equipment properties */
+    window.alert('The submit function Equipment Properties have been activated');
+
+
+  }
+  
+  submit_Spin_Test_Data(){
+   /*Saves the inputed spin test data */
+   window.alert('The submit function Spin Test Data have been activated');
+
+
+  }
 }

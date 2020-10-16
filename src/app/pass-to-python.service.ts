@@ -12,7 +12,7 @@ export class PassToPythonService {
     this.dataContainer.push(data);
   }
 
-  showContents(){
+  getData(){
     return this.dataContainer;
   }
 

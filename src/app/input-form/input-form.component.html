@@ -16,7 +16,7 @@
             <mat-card-content>
                           
                 <div class="form-content">
-                    <form [formGroup]="fluid_properties" (submit)="submit()">  
+                    <form action="../[formGroup]="fluid_properties" (submit)="submit_Fluid_Properties()">  
                         
                         <mat-form-field class="form-field" appearance="fill">
                             <mat-label> Density of the heavy phase, often the solid </mat-label>
@@ -33,8 +33,8 @@
                             <input type="number" matInput formControlName="kinviscosity" required>
                         </mat-form-field>
 
-                        <button mat-raised-button color="primary" type="submit" (click)=addToContainer(5)>
-                            hi {{fluid_properties.controls['densityParticle'].value}}
+                        <button mat-raised-button color="primary" type="submit" >
+                           Submit button Fluid Properties
                         </button>
 
 
@@ -57,8 +57,7 @@
             <mat-card-content>
                     
                 <div class="form-content">
-                        
-                        <form [formGroup]="spin_test_data" (submit)="submit()">
+                        <form [formGroup]="spin_test_data" (submit)="submit_Spin_Test_Data()">
                                 
                         <div class="input-table">
 
@@ -191,7 +190,7 @@
             <mat-card-content>
                           
                 <div class="form-content">
-                    <form [formGroup]="equipment_properties" (submit)="submit()">  
+                    <form [formGroup]="equipment_properties" (submit)="submit_Equipment_Properties()">  
                         
                         <mat-form-field class="form-field" appearance="fill">
                             <mat-label> Radius from center of centrifuge to end of the test tube when it is horizontal. </mat-label>
