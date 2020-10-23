@@ -49,6 +49,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { PassToPythonService } from './pass-to-python.service';
 import { NavigatorPageComponent } from './navigator-page/navigator-page.component';
 
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -98,9 +100,10 @@ import { NavigatorPageComponent } from './navigator-page/navigator-page.componen
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
+    HttpClientModule,
+
   ],
-  providers: [PassToPythonService],
-  
+  providers: [PassToPythonService, HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
