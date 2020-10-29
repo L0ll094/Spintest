@@ -1,0 +1,47 @@
+<div class="flex-container" >
+
+    <mat-card class="input-card" ><!--Card with input field for fluid properties-->
+
+        <mat-card-header class="welcomeheader">
+            <mat-card-title> Find your capacity </mat-card-title>
+            <mat-card-subtitle>Some data is needed to perform the calculation. Knowing what Q will be run through the separator and what interval the
+                <br> effluent concentraiton should be in yield suggestions of required separator capacities.
+            </mat-card-subtitle>
+        </mat-card-header>
+
+        <img mat-card-image src="assets/images/fluid-image.jpg" alt="Photo of spintest">
+
+        <mat-card-content>
+ 
+            <div>
+                <form [formGroup]="Input" (submit)="create_graph()" class="form-content">  
+                    
+                    
+                    <mat-form-field class="form-field" appearance="fill">
+                        <mat-label> Volumetric flowrate Q [m3/h] </mat-label>
+                        <input type="number" matInput formControlName="inputQ" required>
+                    </mat-form-field>
+                    <!--
+                    <mat-form-field class="form-field" appearance="fill">
+                        <mat-label> Lower end of interval for effluenc concentration</mat-label>
+                        <input type="number" matInput formControlName="Effluent_conc_low" required>
+                    </mat-form-field>
+
+                    <mat-form-field class="form-field" appearance="fill">
+                        <mat-label> Higher end of interval for effluenc concentration </mat-label>
+                        <input type="number" matInput formControlName="Effluent_conc_high" required>
+                    </mat-form-field>-->
+
+                    <button mat-raised-button color="primary" type="submit" >
+                       Create Graph
+                    </button>
+
+
+                </form>
+            </div>
+        
+        </mat-card-content>
+    </mat-card>
+</div>
+
+

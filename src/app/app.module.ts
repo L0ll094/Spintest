@@ -50,6 +50,10 @@ import { PassToPythonService } from './pass-to-python.service';
 import { NavigatorPageComponent } from './navigator-page/navigator-page.component';
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { FindKQorAeComponent } from './find-kqor-ae/find-kqor-ae.component';
+import { MeetCriteriaComponent } from './meet-criteria/meet-criteria.component';
+import { FindSpintimesComponent } from './find-spintimes/find-spintimes.component';
+import { FindCapacityComponent } from './find-capacity/find-capacity.component';
 
 
 @NgModule({
@@ -57,7 +61,11 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     AppComponent,
     WelcomeComponent,
     InputFormComponent,
-    NavigatorPageComponent
+    NavigatorPageComponent,
+    FindKQorAeComponent,
+    MeetCriteriaComponent,
+    FindSpintimesComponent,
+    FindCapacityComponent
   ],
   imports: [
     ReactiveFormsModule,
