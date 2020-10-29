@@ -86,9 +86,15 @@ export class InputFormComponent implements OnInit {
   console.log(this.spin_test_data.value);
   console.log(this._PassToPythonServiceHolder.getData())*/
     console.log('The submit function Fluid Properties have been activated');
-    this._PassToPythonServiceHolder.sendToBackend().subscribe(
+   /* this._PassToPythonServiceHolder.sendToBackend().subscribe(
       res => console.log(res),
       err => console.error(err)
+
+    );*/
+    let data=JSON.stringify(this.fluid_properties.value)
+    this._PassToPythonServiceHolder.sendToBackend2(data).subscribe(
+      res => console.log(res),
+      err => console.log(err)
 
     );
   }

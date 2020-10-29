@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -31,6 +31,12 @@ export class PassToPythonService {
 
     //const headers = { 'Content-Type': 'application/json'};
     return this.http.get("http://127.0.0.1:5000/testpage",{observe: 'response'});
+    
+  }
+  sendToBackend2(data): Observable<any>{
+  
+    const headers = { 'content-type': 'application/json'};
+    return this.http.post("http://127.0.0.1:5000/testpagepost",data);
     
   }
   
