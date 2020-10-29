@@ -23,9 +23,10 @@ export class InputFormComponent implements OnInit {
 
 
   addToContainer(data){
-    this._PassToPythonServiceHolder.addToContainer(data);
+    //this._PassToPythonServiceHolder.addToContainer(data);
 
-    window.alert('The data '+data+' has been added to the datacontainer');
+    //window.alert('The data '+data+' has been added to the datacontainer');
+    console.log("WORKING");
 
     }
 
@@ -77,13 +78,19 @@ export class InputFormComponent implements OnInit {
   /*
   this.addToContainer(this.fluid_properties.controls['densityParticle'].value)
   this.addToContainer(this.fluid_properties.controls['densityFeed'].value)
+
+
+  set data = this.flueod_properties.value to save as data said zory
   
   console.log(this.fluid_properties.value);
   console.log(this.spin_test_data.value);
   console.log(this._PassToPythonServiceHolder.getData())*/
-    window.alert('The submit function Fluid Properties have been activated');
-    
+    console.log('The submit function Fluid Properties have been activated');
+    this._PassToPythonServiceHolder.sendToBackend().subscribe(
+      res => console.log(res),
+      err => console.error(err)
 
+    );
   }
 
   
