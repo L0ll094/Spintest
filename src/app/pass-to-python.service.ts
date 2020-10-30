@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PassToPythonService {
-  private myURL='http://127.0.0.1:5000/'
+  //private myURL='http://127.0.0.1:5000/'
 
 
   constructor(private http: HttpClient) { }
@@ -27,19 +27,30 @@ export class PassToPythonService {
   }
 
   
-  sendToBackend(): Observable<any>{
+  sendToBackendGet(): Observable<any>{
 
-    //const headers = { 'Content-Type': 'application/json'};
+   //Do not set headers, this fs up the CORS headers
     return this.http.get("http://127.0.0.1:5000/testpage",{observe: 'response'});
     
   }
-  sendToBackend2(data): Observable<any>{
+  sendFluidProperties(data): Observable<any>{
   
-    const headers = { 'content-type': 'application/json'};
-    return this.http.post("http://127.0.0.1:5000/testpagepost",data);
+    
+    return this.http.post("http://127.0.0.1:5000/send_fluid_properties",data);
     
   }
+  sendEquipmentProperties(data): Observable<any>{
   
+   
+    return this.http.post("http://127.0.0.1:5000/send_equipment_properties",data);
+    
+  }
+  sendSpintestData(data): Observable<any>{
+  
+   
+    return this.http.post("http://127.0.0.1:5000/send_spintest_data",data);
+    
+  }
 
 
 }

@@ -74,43 +74,39 @@ export class InputFormComponent implements OnInit {
   }
   submit_Fluid_Properties(){
    /*Saves the inputed fluid properties */
-
-  /*
-  this.addToContainer(this.fluid_properties.controls['densityParticle'].value)
-  this.addToContainer(this.fluid_properties.controls['densityFeed'].value)
-
-
-  set data = this.flueod_properties.value to save as data said zory
-  
-  console.log(this.fluid_properties.value);
-  console.log(this.spin_test_data.value);
-  console.log(this._PassToPythonServiceHolder.getData())*/
-    console.log('The submit function Fluid Properties have been activated');
-   /* this._PassToPythonServiceHolder.sendToBackend().subscribe(
-      res => console.log(res),
-      err => console.error(err)
-
-    );*/
     let data=JSON.stringify(this.fluid_properties.value)
-    this._PassToPythonServiceHolder.sendToBackend2(data).subscribe(
+    this._PassToPythonServiceHolder.sendFluidProperties(data).subscribe(
       res => console.log(res),
       err => console.log(err)
 
     );
   }
 
-  
+  submit_Spin_Test_Data(){
+    /*Saves the inputed spin test data */
+    let data=JSON.stringify(this.spin_test_data.value)
+     this._PassToPythonServiceHolder.sendSpintestData(data).subscribe(
+       res => console.log(res),
+       err => console.log(err)
+ 
+     );
+ 
+ 
+   }
+
+   
   submit_Equipment_Properties(){
     /*Saves the inputed equipment properties */
-    window.alert('The submit function Equipment Properties have been activated');
+
+    let data=JSON.stringify(this.equipment_properties.value)
+    this._PassToPythonServiceHolder.sendEquipmentProperties(data).subscribe(
+      res => console.log(res),
+      err => console.log(err)
+
+    );
 
 
   }
   
-  submit_Spin_Test_Data(){
-   /*Saves the inputed spin test data */
-   window.alert('The submit function Spin Test Data have been activated');
 
-
-  }
 }
