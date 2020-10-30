@@ -19,16 +19,10 @@ export class InputFormComponent implements OnInit {
   constructor(
     private _PassToPythonServiceHolder: PassToPythonService,
     private formBuilder: FormBuilder,
+
+
     ) {  }
 
-
-  addToContainer(data){
-    //this._PassToPythonServiceHolder.addToContainer(data);
-
-    //window.alert('The data '+data+' has been added to the datacontainer');
-    console.log("WORKING");
-
-    }
 
   ngOnInit() {
       this.data=this._PassToPythonServiceHolder.getData();
