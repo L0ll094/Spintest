@@ -97,7 +97,13 @@ export class InputFormComponent implements OnInit {
       res => console.log(res),
       err => console.log(err)
 
-    );
+    )};
+
+  addToContainer(){
+      /*Empty function for testing */
+    window.alert("You clicked a button")
+      
+  ;
 
 
   }
