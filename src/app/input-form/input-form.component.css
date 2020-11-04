@@ -19,8 +19,13 @@
    
   
 
-    
 }
+
+.Paragraph{
+    font-size: x-large;
+    padding-top: 25px;
+}
+
 .form-field{
     display: flex;
     flex-direction: column;
@@ -36,4 +41,31 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.Datatable-div{
+
+    padding-top:50px;
+}
+.Datatable{
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: large;
+    border: collapse;
+}
+.Datatable-rows{
+    font-size: medium;
+}
+
+
+.Datatable-headers{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-style:outset;
+    text-align: center;
+    background-color: rgb(63, 81, 181);
+    color: white;
+    border-radius: 10px;
+  
 }

@@ -54,6 +54,7 @@ import { FindKQorAeComponent } from './find-kqor-ae/find-kqor-ae.component';
 import { MeetCriteriaComponent } from './meet-criteria/meet-criteria.component';
 import { FindSpintimesComponent } from './find-spintimes/find-spintimes.component';
 import { FindCapacityComponent } from './find-capacity/find-capacity.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -74,6 +75,7 @@ import { FindCapacityComponent } from './find-capacity/find-capacity.component';
       
     FlexLayoutModule,
     RouterModule,
+    FormsModule,
    
 
     BrowserAnimationsModule,

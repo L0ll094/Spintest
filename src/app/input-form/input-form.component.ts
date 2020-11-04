@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PassToPythonService } from '../pass-to-python.service';
+import {MatTableModule} from '@angular/material/table';
 
 @Component({
   selector: 'app-input-form',
@@ -12,7 +13,27 @@ export class InputFormComponent implements OnInit {
   fluid_properties: FormGroup;
   equipment_properties: FormGroup;
   spin_test_data: FormGroup;
-  data;//Attemt to save all my data in this, managed by the pass-to-python service
+  data;
+  options;
+  accTable =[
+    {time:0, speed: 0},
+    {time:6, speed: 600},
+    {time:9, speed: 1200},
+    {time:12, speed: 1800},
+    {time:15, speed: 2400},
+    {time:18,speed: 3000},
+  ];
+  retTable=[
+    {time:0, speed: 3000},
+    {time:6, speed: 2400},
+    {time:9, speed: 1800},
+    {time:12, speed: 1200},
+    {time:15, speed: 600},
+    {time:18,speed: 0},
+  ];
+  
+
+
 
  
   
@@ -25,10 +46,11 @@ export class InputFormComponent implements OnInit {
 
 
   ngOnInit() {
+    
       this.data=this._PassToPythonServiceHolder.getData();
     
       this.fluid_properties=this.formBuilder.group({
-      densityParticle: [null,[Validators.required,]],
+      densityParticle: [null],
       densityFeed:[null,[Validators.required,]],
       kinviscosity: [null,Validators.required],})
 
@@ -37,7 +59,38 @@ export class InputFormComponent implements OnInit {
       L1:[null,[Validators.required,]],
       L2:[null,[Validators.required,]],
       V1:[null,[Validators.required,]],
-      V2: [null,Validators.required],})
+      V2: [null,[Validators.required]],
+      acc_t_1: [null],
+      acc_t_2: [null],
+      acc_t_3: [null],
+      acc_t_4: [null],
+      acc_t_5: [null],
+      acc_t_6: [null],
+
+      acc_rpm_1: [null],
+      acc_rpm_2: [null],
+      acc_rpm_3: [null],
+      acc_rpm_4: [null],
+      acc_rpm_5: [null],
+      acc_rpm_6: [null],
+
+      ret_t_1: [null],
+      ret_t_2: [null],
+      ret_t_3: [null],
+      ret_t_4: [null],
+      ret_t_5: [null],
+      ret_t_6: [null],
+
+      ret_rpm_1: [null],
+      ret_rpm_2: [null],
+      ret_rpm_3: [null],
+      ret_rpm_4: [null],
+      ret_rpm_5: [null],
+      ret_rpm_6: [null], 
+
+    
+    
+    })
 
       this.spin_test_data=this.formBuilder.group({
       
@@ -65,15 +118,59 @@ export class InputFormComponent implements OnInit {
       neededQ: [null,[Validators.required,]],
       
     });
+
+    
   }
   submit_Fluid_Properties(){
    /*Saves the inputed fluid properties */
+    
+   if(this.options){
+     /*If new values for the acceleration and retardation were given, do nothing*/
+  
+
+    }
+    else{
+      /*If no new values for the acceleration and retardation were given, set the values to the existing default originating from the MT&C Hotspin*/
+      this.equipment_properties.controls['acc_t_1'].setValue(this.accTable[0].time);
+      this.equipment_properties.controls['acc_t_2'].setValue(this.accTable[1].time);
+      this.equipment_properties.controls['acc_t_3'].setValue(this.accTable[2].time);
+      this.equipment_properties.controls['acc_t_4'].setValue(this.accTable[3].time);
+      this.equipment_properties.controls['acc_t_5'].setValue(this.accTable[4].time);
+      this.equipment_properties.controls['acc_t_6'].setValue(this.accTable[5].time);
+
+      this.equipment_properties.controls['acc_rpm_1'].setValue(this.accTable[0].speed);
+      this.equipment_properties.controls['acc_rpm_2'].setValue(this.accTable[1].speed);
+      this.equipment_properties.controls['acc_rpm_3'].setValue(this.accTable[2].speed);
+      this.equipment_properties.controls['acc_rpm_4'].setValue(this.accTable[3].speed);
+      this.equipment_properties.controls['acc_rpm_5'].setValue(this.accTable[4].speed);
+      this.equipment_properties.controls['acc_rpm_6'].setValue(this.accTable[5].speed);
+
+
+      this.equipment_properties.controls['ret_t_1'].setValue(this.retTable[0].time);
+      this.equipment_properties.controls['ret_t_2'].setValue(this.retTable[1].time);
+      this.equipment_properties.controls['ret_t_3'].setValue(this.retTable[2].time);
+      this.equipment_properties.controls['ret_t_4'].setValue(this.retTable[3].time);
+      this.equipment_properties.controls['ret_t_5'].setValue(this.retTable[4].time);
+      this.equipment_properties.controls['ret_t_6'].setValue(this.retTable[5].time);
+
+      this.equipment_properties.controls['ret_rpm_1'].setValue(this.retTable[0].speed);
+      this.equipment_properties.controls['ret_rpm_2'].setValue(this.retTable[1].speed);
+      this.equipment_properties.controls['ret_rpm_3'].setValue(this.retTable[2].speed);
+      this.equipment_properties.controls['ret_rpm_4'].setValue(this.retTable[3].speed);
+      this.equipment_properties.controls['ret_rpm_5'].setValue(this.retTable[4].speed);
+      this.equipment_properties.controls['ret_rpm_6'].setValue(this.retTable[5].speed);
+
+
+      
+    }
+   
     let data=JSON.stringify(this.fluid_properties.value)
     this._PassToPythonServiceHolder.sendFluidProperties(data).subscribe(
       res => console.log(res),
       err => console.log(err)
 
     );
+    
   }
 
   submit_Spin_Test_Data(){
