@@ -38,7 +38,7 @@ export class FindQComponent implements OnInit {
     let data=JSON.stringify(this.your_KQ.value);
     //console.log(data)
 
-    this._PassToPythonServiceHolder.sendYourQ(data).subscribe(
+    this._PassToPythonServiceHolder.sendYourKQ(data).subscribe(
       res => console.log(res),
       err => console.log(err)
 

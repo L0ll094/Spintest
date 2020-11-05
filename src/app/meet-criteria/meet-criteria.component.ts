@@ -32,8 +32,7 @@ export class MeetCriteriaComponent implements OnInit {
     this.the_input=this.formBuilder.group({
 
       criteria:[null,[Validators.required,]],
-      KQ:[null],
-      desiredQ:[null]})
+      KQ:[null]})
   }
 
 
