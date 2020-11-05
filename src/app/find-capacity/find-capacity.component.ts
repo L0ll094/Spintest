@@ -10,12 +10,8 @@ import {MatTableModule} from '@angular/material/table';
 })
 export class FindCapacityComponent implements OnInit {
   /*Do I use the FOrmgroup vs just setting it  */
-  Input: FormGroup;
-  Lower_limit_graph=0;
-  Upper_limit_graph=20;
-  Q;
   data;
-  your_Q: FormGroup;
+  theInput: FormGroup;
 
 
   constructor(
@@ -31,8 +27,10 @@ export class FindCapacityComponent implements OnInit {
 
     //Yes i know I don't really need a whole group here, but frankly, I have done groups before but not single
     //form controls and I don't have the extra half an hour to deal with the research and debugging. And this works fine.
-    this.your_Q=this.formBuilder.group({
-      desiredQ:[null,[Validators.required,]]})
+    this.theInput=this.formBuilder.group({
+      desiredQ:[null,[Validators.required,]],
+      Effluent_conc_low:[null],
+      Effluent_conc_high:[null],})
   }
 
 
@@ -40,8 +38,8 @@ export class FindCapacityComponent implements OnInit {
   create_graph(){
     /*Sends the desired Q along to the backend and decides what to do with the response*/
     
-    let data=JSON.stringify(this.your_Q.value);
-    //console.log(data)
+    let data=JSON.stringify(this.theInput.value);
+    console.log(data)
 
     this._PassToPythonServiceHolder.sendYourQ(data).subscribe(
       res => console.log(res),

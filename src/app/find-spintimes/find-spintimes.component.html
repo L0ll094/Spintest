@@ -1,1 +1,54 @@
-<p>find-spintimes works!</p>
+
+<div class="flex-container" >
+
+    <mat-card class="input-card" ><!--Card with input field for fluid properties-->
+
+        <mat-card-header class="welcomeheader">
+            <mat-card-title> Find your Spintimes </mat-card-title>
+            <mat-card-subtitle>Sometimes, your separator isn't functioning properly. Since both Q and KQ is known, running the spintest calculations backwards
+                <br> will yield the spintimes appropriate for your interval of Q. Running a spintest for those spintimes will give you the expected separation of your process.
+            
+            </mat-card-subtitle>
+        </mat-card-header>
+
+        <img mat-card-image src="assets/images/fluid-image.jpg" alt="Photo of spintest">
+
+        <mat-card-content>
+ 
+            <div>
+                <form [formGroup]="theInput" (submit)="getSpinTimes()" class="form-content">  
+                    
+                    
+                    <mat-form-field class="form-field" appearance="fill">
+                        <mat-label> The KQ of your machine </mat-label>
+                        <input type="number" matInput formControlName="KQ" required>
+                    </mat-form-field>
+                    
+                    <mat-form-field class="form-field" appearance="fill">
+                        <mat-label> Lowest flow [m3/h]</mat-label>
+                        <input type="number" matInput formControlName="Qmin" required>
+                    </mat-form-field>
+
+                    <mat-form-field class="form-field" appearance="fill">
+                        <mat-label> Highest flow [m3/h] </mat-label>
+                        <input type="number" matInput formControlName="Qmax" required>
+                    </mat-form-field>
+
+                    <mat-form-field class="form-field" appearance="fill">
+                        <mat-label> Speed of centrifuge </mat-label>
+                        <input type="number" matInput formControlName="rpm" required>
+                    </mat-form-field>
+
+                    <button mat-raised-button color="primary" type="submit" >
+                      Submit data for spintime calculation
+                    </button>
+
+
+                </form>
+            </div>
+        
+        </mat-card-content>
+    </mat-card>
+</div>
+
+

@@ -53,12 +53,12 @@ export class PassToPythonService {
 
   sendYourQ(data): Observable<any>{
     
-    return this.http.post("http://127.0.0.1:5000/fulfill_criteria",data);
+    return this.http.post("http://127.0.0.1:5000/find_capacity",data);
   }
 
   sendForSpintimes(data): Observable<any>{
 
-    return this.http.post("http://127.0.0.1:5000//calculate_spintimes'",data);
+    return this.http.post("http://127.0.0.1:5000/calculate_spintimes",data);
 
   }
 

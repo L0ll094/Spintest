@@ -14,23 +14,23 @@
         <mat-card-content>
  
             <div>
-                <form [formGroup]="Input" (submit)="create_graph()" class="form-content">  
+                <form [formGroup]="theInput" (submit)="create_graph()" class="form-content">  
                     
                     
                     <mat-form-field class="form-field" appearance="fill">
                         <mat-label> Volumetric flowrate Q [m3/h] </mat-label>
-                        <input type="number" matInput formControlName="inputQ" required>
+                        <input type="number" matInput formControlName="desiredQ" required>
                     </mat-form-field>
-                    <!--
+                    
                     <mat-form-field class="form-field" appearance="fill">
-                        <mat-label> Lower end of interval for effluenc concentration</mat-label>
+                        <mat-label> Acceptable lowest conc., must be in the span of effluent concentrations from spintest</mat-label>
                         <input type="number" matInput formControlName="Effluent_conc_low" required>
                     </mat-form-field>
 
                     <mat-form-field class="form-field" appearance="fill">
-                        <mat-label> Higher end of interval for effluenc concentration </mat-label>
+                        <mat-label> Acceptable highest conc., must be in the span of effluent concentrations from spintest </mat-label>
                         <input type="number" matInput formControlName="Effluent_conc_high" required>
-                    </mat-form-field>-->
+                    </mat-form-field>
 
                     <button mat-raised-button color="primary" type="submit" >
                        Create Graph
