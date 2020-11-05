@@ -1,1 +1,37 @@
-<p>find-kqor-ae works!</p>
+
+
+
+<div class="flex-container" >
+
+    <mat-card class="input-card" ><!--Card with input field for fluid properties-->
+
+        <mat-card-header class="welcomeheader" >
+            <mat-card-title>Enter your desired Q</mat-card-title>
+            <mat-card-subtitle>The spintest you ran will be used to plot the efficiency some different separator capacities will 
+                <br> give you given your desired flowrate Q.</mat-card-subtitle>
+        </mat-card-header>
+
+        <img mat-card-image src="assets/images/fluid-image.jpg" alt="Photo of spintest">
+
+        <mat-card-content>
+                      
+            <div class="form-content">
+                <form [formGroup]="your_Q" (submit)="submit_your_Q()">  
+                    
+                    <mat-form-field class="form-field" appearance="fill">
+                        <mat-label> Flowrate Q [m3/h]</mat-label>
+                        <input type="number" matInput formControlName="desiredQ" placeholder="1000" >
+                    </mat-form-field>
+
+                    <button mat-raised-button color="primary" type="submit" >
+                       Submit your Q
+                    </button>
+
+
+                </form>
+            </div>
+        
+        </mat-card-content>
+    </mat-card>
+</div>
+

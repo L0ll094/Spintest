@@ -46,9 +46,7 @@ export class InputFormComponent implements OnInit {
 
 
   ngOnInit() {
-    
-      this.data=this._PassToPythonServiceHolder.getData();
-    
+        
       this.fluid_properties=this.formBuilder.group({
       densityParticle: [null],
       densityFeed:[null,[Validators.required,]],
@@ -165,6 +163,7 @@ export class InputFormComponent implements OnInit {
     }
    
     let data=JSON.stringify(this.fluid_properties.value)
+ 
     this._PassToPythonServiceHolder.sendFluidProperties(data).subscribe(
       res => console.log(res),
       err => console.log(err)
@@ -173,9 +172,22 @@ export class InputFormComponent implements OnInit {
     
   }
 
+  submit_Equipment_Properties(){
+    /*Saves the inputed equipment properties */
+    
+    let data=JSON.stringify(this.equipment_properties.value);
+    console.log(data)
+
+    this._PassToPythonServiceHolder.sendEquipmentProperties(data).subscribe(
+      res => console.log(res),
+      err => console.log(err)
+
+    )};
+
   submit_Spin_Test_Data(){
     /*Saves the inputed spin test data */
     let data=JSON.stringify(this.spin_test_data.value)
+    
      this._PassToPythonServiceHolder.sendSpintestData(data).subscribe(
        res => console.log(res),
        err => console.log(err)
@@ -186,15 +198,7 @@ export class InputFormComponent implements OnInit {
    }
 
    
-  submit_Equipment_Properties(){
-    /*Saves the inputed equipment properties */
 
-    let data=JSON.stringify(this.equipment_properties.value)
-    this._PassToPythonServiceHolder.sendEquipmentProperties(data).subscribe(
-      res => console.log(res),
-      err => console.log(err)
-
-    )};
 
   addToContainer(){
       /*Empty function for testing */

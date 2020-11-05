@@ -10,21 +10,6 @@ export class PassToPythonService {
 
 
   constructor(private http: HttpClient) { }
-  dataContainer=[];
-
-  addToContainer(data) {
-    this.dataContainer.push(data);
-  }
-
-  getData(){
-    return this.dataContainer;
-  }
-
-  clearContainer(){
-    this.dataContainer=[];
-    return this.dataContainer;
-
-  }
 
   
   sendToBackendGet(): Observable<any>{
@@ -50,6 +35,11 @@ export class PassToPythonService {
    
     return this.http.post("http://127.0.0.1:5000/send_spintest_data",data);
     
+  }
+
+  sendYourQ(data): Observable<any>{
+    
+    return this.http.post("http://127.0.0.1:5000/find_KQ_or_Ae",data);
   }
 
 

@@ -1,0 +1,45 @@
+
+
+
+.label{
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-right: 10px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: larger;
+    
+    /* Complete later to make it look better*/
+}
+.form-label{
+
+    display:flex;
+    flex-direction:row;
+    text-align: center;
+   
+  
+
+}
+
+.Paragraph{
+    font-size: x-large;
+    padding-top: 25px;
+}
+
+.form-field{
+    display: flex;
+    flex-direction: column;
+}
+
+.input-table{
+ 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.input-table-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
