@@ -50,7 +50,7 @@ import { PassToPythonService } from './pass-to-python.service';
 import { NavigatorPageComponent } from './navigator-page/navigator-page.component';
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { FindKQorAeComponent } from './find-kqor-ae/find-kqor-ae.component';
+import { FindQComponent } from './find-q/find-q.component';
 import { MeetCriteriaComponent } from './meet-criteria/meet-criteria.component';
 import { FindSpintimesComponent } from './find-spintimes/find-spintimes.component';
 import { FindCapacityComponent } from './find-capacity/find-capacity.component';
@@ -63,7 +63,7 @@ import { FormsModule } from '@angular/forms';
     WelcomeComponent,
     InputFormComponent,
     NavigatorPageComponent,
-    FindKQorAeComponent,
+    FindQComponent,
     MeetCriteriaComponent,
     FindSpintimesComponent,
     FindCapacityComponent

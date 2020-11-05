@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FindKQorAeComponent } from './find-kqor-ae.component';
+import { FindQComponent } from './find-q.component';
 
-describe('FindKQorAeComponent', () => {
-  let component: FindKQorAeComponent;
-  let fixture: ComponentFixture<FindKQorAeComponent>;
+describe('FindQComponent', () => {
+  let component: FindQComponent;
+  let fixture: ComponentFixture<FindQComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FindKQorAeComponent ]
+      declarations: [ FindQComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FindKQorAeComponent);
+    fixture = TestBed.createComponent(FindQComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

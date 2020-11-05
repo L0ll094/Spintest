@@ -38,8 +38,13 @@ export class PassToPythonService {
   }
 
   sendYourQ(data): Observable<any>{
-    
+
     return this.http.post("http://127.0.0.1:5000/find_KQ_or_Ae",data);
+  }
+
+  sendYourCriteria(data): Observable<any>{
+
+    return this.http.post("http://127.0.0.1:5000/fulfill_criteria",data);
   }
 
 

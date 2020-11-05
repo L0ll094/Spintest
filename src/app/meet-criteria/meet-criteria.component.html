@@ -1,1 +1,68 @@
-<p>meet-criteria works!</p>
+
+
+
+<div class="flex-container" >
+
+    <mat-card class="input-card" ><!--Card with input field for fluid properties-->
+
+        <mat-card-header class="welcomeheader" >
+            <mat-card-title>Enter your criteria</mat-card-title>
+            <mat-card-subtitle>The spintest you ran will be used to determine what to do to reach your desired criteria.
+                <br>
+                <br> If you fill in only a criteria, some example capacities will be used to render maximum allowed flows Q.
+                <br>
+                <br> If you give both a criteria and a desired flowrate, a recommended capacity can be calculated
+                <br>
+                <br> If you give a criteria and have some separator capacitiy in mind, they will be used to render maximum allowed flows Q.</mat-card-subtitle>
+        </mat-card-header>
+
+        
+
+        <mat-card-content>
+                      
+            <div class="results">
+
+            </div>
+        
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="input-card" ><!--Card with input field for fluid properties-->
+
+        <mat-card-header class="welcomeheader" >
+            <mat-card-title>View your results</mat-card-title>
+            <mat-card-subtitle></mat-card-subtitle>
+        </mat-card-header>
+
+        <img mat-card-image src="assets/images/fluid-image.jpg" alt="Photo of spintest">
+
+        <mat-card-content>
+                      
+            <div class="form-content">
+                <form [formGroup]="the_input" (submit)="submit_your_data()">  
+                    
+                    <mat-form-field class="form-field" appearance="fill">
+                        <mat-label> Criteria (in %)</mat-label>
+                        <input type="number" matInput formControlName="criteria" placeholder="1000" >
+                    </mat-form-field>
+                    
+                    <mat-form-field class="form-field" appearance="fill">
+                        <mat-label> Capacity</mat-label>
+                        <input type="number" matInput formControlName="KQ" placeholder="1000" >
+                    </mat-form-field>
+                    <mat-form-field class="form-field" appearance="fill">
+                        <mat-label> Flowrate Q [m3/h]</mat-label>
+                        <input type="number" matInput formControlName="desiredQ" placeholder="1000" >
+                    </mat-form-field>
+
+                    <button mat-raised-button color="primary" type="submit" >
+                       Submit your data
+                    </button>
+
+
+                </form>
+            </div>
+        
+        </mat-card-content>
+    </mat-card>
+</div>
+

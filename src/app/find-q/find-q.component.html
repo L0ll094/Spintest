@@ -16,11 +16,11 @@
         <mat-card-content>
                       
             <div class="form-content">
-                <form [formGroup]="your_Q" (submit)="submit_your_Q()">  
+                <form [formGroup]="your_KQ" (submit)="submit_your_KQ()">  
                     
                     <mat-form-field class="form-field" appearance="fill">
                         <mat-label> Flowrate Q [m3/h]</mat-label>
-                        <input type="number" matInput formControlName="desiredQ" placeholder="1000" >
+                        <input type="number" matInput formControlName="KQ" placeholder="1000" >
                     </mat-form-field>
 
                     <button mat-raised-button color="primary" type="submit" >
