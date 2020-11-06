@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PassToPythonService } from '../pass-to-python.service';
 import {MatTableModule} from '@angular/material/table';
+import {ResultsService} from '../common/services/results.service';
 
 @Component({
   selector: 'app-find-capacity',
@@ -15,6 +16,7 @@ export class FindCapacityComponent implements OnInit {
 
 
   constructor(
+    private _results: ResultsService,
     private _PassToPythonServiceHolder: PassToPythonService,
     private formBuilder: FormBuilder,
 

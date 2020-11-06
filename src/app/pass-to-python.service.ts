@@ -1,6 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,19 +12,14 @@ export class PassToPythonService {
 
   constructor(private http: HttpClient) { }
 
-  
-  sendToBackendGet(): Observable<any>{
 
-   //Do not set headers, this fs up the CORS headers
-    return this.http.get("http://127.0.0.1:5000/testpage",{observe: 'response'});
-    
-  }
   sendFluidProperties(data): Observable<any>{
   
     
     return this.http.post("http://127.0.0.1:5000/send_fluid_properties",data);
     
   }
+
   sendEquipmentProperties(data): Observable<any>{
   
    
@@ -43,8 +39,9 @@ export class PassToPythonService {
 
   sendYourKQ(data): Observable<any>{
 
-    return this.http.post("http://127.0.0.1:5000/find_flowrate",data);
+    return this.http.post("http://127.0.0.1:5000/find_flowrate",data).pipe(map((response: any) => console.log(JSON.stringify(response))));
   }
+
 
   sendYourCriteria(data): Observable<any>{
 

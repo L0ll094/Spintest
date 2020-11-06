@@ -55,6 +55,7 @@ import { MeetCriteriaComponent } from './meet-criteria/meet-criteria.component';
 import { FindSpintimesComponent } from './find-spintimes/find-spintimes.component';
 import { FindCapacityComponent } from './find-capacity/find-capacity.component';
 import { FormsModule } from '@angular/forms';
+import {ResultsService} from './common/services/results.service'
 
 
 @NgModule({
@@ -113,7 +114,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
 
   ],
-  providers: [PassToPythonService, HttpClientModule],
+  providers: [PassToPythonService, HttpClientModule,ResultsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

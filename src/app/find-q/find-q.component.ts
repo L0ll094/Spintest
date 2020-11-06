@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PassToPythonService } from '../pass-to-python.service';
 import {MatTableModule} from '@angular/material/table';
-
+import {ResultsService} from '../common/services/results.service';
 @Component({
   selector: 'app-find-q',
   templateUrl: './find-q.component.html',
@@ -13,7 +13,8 @@ export class FindQComponent implements OnInit {
   your_KQ: FormGroup;
 
 
-  constructor(
+  constructor( 
+    private _results: ResultsService,
     private _PassToPythonServiceHolder: PassToPythonService,
     private formBuilder: FormBuilder,
 
@@ -36,7 +37,6 @@ export class FindQComponent implements OnInit {
     /*Sends the desired Q along to the backend and decides what to do with the response*/
     
     let data=JSON.stringify(this.your_KQ.value);
-    //console.log(data)
 
     this._PassToPythonServiceHolder.sendYourKQ(data).subscribe(
       res => console.log(res),

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { PassToPythonService } from '../pass-to-python.service';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatTableModule} from '@angular/material/table';
+import {ResultsService} from '../common/services/results.service';
 
 @Component({
   selector: 'app-meet-criteria',
@@ -17,6 +18,7 @@ export class MeetCriteriaComponent implements OnInit {
 
 
   constructor(
+    private _results: ResultsService,
     private _PassToPythonServiceHolder: PassToPythonService,
     private formBuilder: FormBuilder,
 
