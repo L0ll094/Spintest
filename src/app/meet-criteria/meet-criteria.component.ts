@@ -46,7 +46,14 @@ export class MeetCriteriaComponent implements OnInit {
     //console.log(data)
 
     this._PassToPythonServiceHolder.sendYourCriteria(data).subscribe(
-      res => console.log(res),
+      res => {
+        console.log("The constants 'LF', 'KQ' and 'Qmax' has been added to the database:")
+        let temp=JSON.parse(res)
+        console.log(temp)
+        this._results.LF=temp.LF//Specify what LF units are!
+        this._results.KQ_array=temp.KQ
+        this._results.Qmax_array=temp.Qmax
+      },
       err => console.log(err)
 
     )};

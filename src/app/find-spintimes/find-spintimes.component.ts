@@ -45,7 +45,13 @@ export class FindSpintimesComponent implements OnInit {
     //console.log(data)
 
     this._PassToPythonServiceHolder.sendForSpintimes(data).subscribe(
-      res => console.log(res),
+      res => {
+        console.log("The constant 'recommended spintimes' has been added to the database:")
+        console.log(res)
+        let temp=JSON.parse(res)
+        this._results.recommended_spintimes=temp.Recommended_spintimes//The 4 resulting spintimes 
+        
+      },
       err => console.log(err)
 
     )};

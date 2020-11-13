@@ -40,7 +40,10 @@ export class FindQComponent implements OnInit {
 
     this._PassToPythonServiceHolder.sendYourKQ(data).subscribe(
       res => {
-        this._results.resulting_flows=JSON.parse(res)//The 4 resulting flows can be accessed through the key ["The Flows"]
+        console.log("The constant 'resulting flows' has been added to the database:")
+        console.log(res)
+        let temp=JSON.parse(res)
+        this._results.resulting_flows=temp.The_Flows//The 4 resulting flows as a vector
       },
       err=> console.log(err)
 

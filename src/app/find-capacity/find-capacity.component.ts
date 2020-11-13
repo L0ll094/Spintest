@@ -44,7 +44,12 @@ export class FindCapacityComponent implements OnInit {
     console.log(data)
 
     this._PassToPythonServiceHolder.sendYourQ(data).subscribe(
-      res => console.log(res),
+      res => {
+        console.log("Three Loading factors, and three separator capacities has been added to the database:")
+        console.log(res)
+        let temp=JSON.parse(res)
+       
+      },
       err => console.log(err)
 
     )};

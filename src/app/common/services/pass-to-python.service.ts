@@ -1,14 +1,12 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import {map} from 'rxjs/operators';
-import {ResultsService} from './results.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PassToPythonService {
-  private _results: ResultsService
+
 
 
   constructor(private http: HttpClient) { }
@@ -33,9 +31,6 @@ export class PassToPythonService {
     return this.http.post("http://127.0.0.1:5000/send_spintest_data",data);
     
   }
-
-
-
 
 
   sendYourKQ(data): Observable<any>{

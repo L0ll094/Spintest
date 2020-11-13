@@ -11,7 +11,7 @@
                 <br>
                 <br> If you fill in only a criteria, some example capacities will be used to render maximum allowed flows Q.
                 <br>
-                <br> If you give both a criteria and a desired flowrate, a recommended capacity can be calculated
+                <br>
                 <br>
                 <br> If you give a criteria and have some separator capacitiy in mind, they will be used to render maximum allowed flows Q.</mat-card-subtitle>
         </mat-card-header>
@@ -41,7 +41,7 @@
                 <form [formGroup]="the_input" (submit)="submit_your_data()">  
                     
                     <mat-form-field class="form-field" appearance="fill">
-                        <mat-label> Criteria (in %)</mat-label>
+                        <mat-label> Criteria in %</mat-label>
                         <input type="number" matInput formControlName="criteria" >
                     </mat-form-field>
                     
