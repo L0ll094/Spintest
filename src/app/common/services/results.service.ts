@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ResultsService {
-  result_container1=2;
+  resulting_flows=2;
   result_container2="ABC"
 
   constructor() { }
