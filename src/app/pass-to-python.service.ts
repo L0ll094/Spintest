@@ -2,12 +2,13 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {map} from 'rxjs/operators';
+import {ResultsService} from './common/services/results.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PassToPythonService {
-  //private myURL='http://127.0.0.1:5000/'
+  private _results: ResultsService
 
 
   constructor(private http: HttpClient) { }
@@ -39,7 +40,7 @@ export class PassToPythonService {
 
   sendYourKQ(data): Observable<any>{
 
-    return this.http.post("http://127.0.0.1:5000/find_flowrate",data).pipe(map((response: any) => console.log(JSON.stringify(response))));
+    return this.http.post("http://127.0.0.1:5000/find_flowrate",data);
   }
 
 
