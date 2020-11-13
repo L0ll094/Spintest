@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {map} from 'rxjs/operators';
-import {ResultsService} from './common/services/results.service';
+import {ResultsService} from './results.service';
 
 @Injectable({
   providedIn: 'root'

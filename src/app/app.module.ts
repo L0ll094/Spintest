@@ -46,7 +46,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import { PassToPythonService } from './pass-to-python.service';
+import { PassToPythonService } from './common/services/pass-to-python.service';
 import { NavigatorPageComponent } from './navigator-page/navigator-page.component';
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';

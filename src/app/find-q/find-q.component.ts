@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { PassToPythonService } from '../pass-to-python.service';
+import { PassToPythonService } from '../common/services/pass-to-python.service';
 import {MatTableModule} from '@angular/material/table';
 import {ResultsService} from '../common/services/results.service';
 @Component({
@@ -40,39 +40,7 @@ export class FindQComponent implements OnInit {
 
     this._PassToPythonServiceHolder.sendYourKQ(data).subscribe(
       res => {
-        this._results.resulting_flows=JSON.parse(res)["The_Flows"]
-        console.log("This is the response from backend we get:")
-        console.log(res)//find-q.component.ts:45 {"The Flows": [5.14, 2.57, 1.27, 0.63]}
-        console.log("This is its type:")
-        console.log(typeof(res))//find-q.component.ts:47 string
-        console.log("And after running JSON.parse(res):")
-        console.log(JSON.parse(res))//find-q.component.ts:49 {The Flows: Array(4)}
-        console.log("The parsed version is of type:")
-        console.log(typeof(JSON.parse(res)))//find-q.component.ts:51 object
-        console.log("Attempting to extract the first value by accessing it as JSON.parse(res)['The Flows']:")
-        let temp=JSON.parse(res)
-        console.log(temp["The Flows"])//find-q.component.ts:54 (4) [5.14, 2.57, 1.27, 0.63]
-        let temp2=temp["The Flows"][0]
-        console.log("The first value in the array only:")
-        console.log(temp2)//find-q.component.ts:57 5.14
-      /*
-      when above code was run this is what we got out of it:
-      This is the response from backend we get:
-      
-      find-q.component.ts:46 This is its type:
-      
-      find-q.component.ts:48 And after running JSON.parse(res):
-      
-      find-q.component.ts:50 The parsed version is of type:
-      
-      find-q.component.ts:52 Attempting to extract the first value by accessing it as temp=JSON.parse(res)['The Flows']:
-      
-      find-q.component.ts:56 The first value in the array only:
-      
-
-      */
-
-      
+        this._results.resulting_flows=JSON.parse(res)//The 4 resulting flows can be accessed through the key ["The Flows"]
       },
       err=> console.log(err)
 

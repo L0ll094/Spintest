@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { PassToPythonService } from '../pass-to-python.service';
+import { PassToPythonService } from '../common/services/pass-to-python.service';
 import {MatTableModule} from '@angular/material/table';
 import {ResultsService} from '../common/services/results.service';
 
