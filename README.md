@@ -1,6 +1,25 @@
-# Spintest
+# Spintest Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.8.
+
+## How to start the frontend
+You will need to install the following from the internet
+
+Visual Studio Code  to see and edit the code
+
+node.js - install from nodejs.org, you get npm which works as pip or conda does for python so that we don't manually need to install stuff we need. 
+
+In VS code, open a terminal, and use npm to install the rest:
+
+run npm install -g @angular/cli
+
+Go into the folder that contains the package.json
+run "npm install" and it will read from the package.json and install all that we need from there.
+
+run npm install chart.js
+
+
+
 
 ## Development server
 

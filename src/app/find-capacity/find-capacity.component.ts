@@ -13,6 +13,7 @@ export class FindCapacityComponent implements OnInit {
   /*Do I use the FOrmgroup vs just setting it  */
   data;
   theInput: FormGroup;
+  show_results=false;
 
 
   constructor(
@@ -45,12 +46,22 @@ export class FindCapacityComponent implements OnInit {
 
     this._PassToPythonServiceHolder.sendYourQ(data).subscribe(
       res => {
-        console.log("Three Loading factors, and three separator capacities has been added to the database:")
+        console.log("The constant 'recommended spintimes' has been added to the database:")
         console.log(res)
         let temp=JSON.parse(res)
-       
+        this._results.capacity_low_sep=temp.KQ_1;
+        this._results.capacity_mid_sep=temp.KQ;
+        this._results.capacity_high_sep=temp.KQ_2;
+
+        this._results.LF_low_sep=temp.LF_1;
+        this._results.LF_mid_sep=temp.LF;
+        this._results.LF_high_sep=temp.LF_2; 
       },
       err => console.log(err)
+    );
 
-    )};
+  //Plot:
+    this.show_results=true;
+  }
+
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PassToPythonService } from '../common/services/pass-to-python.service';
-import {MatTableModule} from '@angular/material/table';
+import {ResultsService} from '../common/services/results.service';
 
 @Component({
   selector: 'app-input-form',
@@ -40,6 +40,7 @@ export class InputFormComponent implements OnInit {
   constructor(
     private _PassToPythonServiceHolder: PassToPythonService,
     private formBuilder: FormBuilder,
+    private _results: ResultsService,
 
 
     ) {  }
@@ -179,17 +180,30 @@ export class InputFormComponent implements OnInit {
     console.log(data)
 
     this._PassToPythonServiceHolder.sendEquipmentProperties(data).subscribe(
-      res => console.log(res),
+      res => {
+        let temp=JSON.parse(res);
+        this._results.setup_completed_succesfully=temp.setup_completed_succesfully;
+        console.log(this._results.setup_completed_succesfully)
+
+      },
       err => console.log(err)
 
     )};
 
   submit_Spin_Test_Data(){
     /*Saves the inputed spin test data */
+    this._results.results_spintest=[this.spin_test_data.value['residualSolids1'],this.spin_test_data.value['residualSolids2'],
+    this.spin_test_data.value['residualSolids3'],this.spin_test_data.value['residualSolids4']]
+    console.log("This is the property that was saved to global results")
+    console.log(this._results.results_spintest)
+
     let data=JSON.stringify(this.spin_test_data.value)
     
      this._PassToPythonServiceHolder.sendSpintestData(data).subscribe(
-       res => console.log(res),
+       res =>  res => {
+        let temp=JSON.parse(res);
+        this._results.setup_completed_succesfully=temp.setup_completed_succesfully;
+        console.log(this._results.setup_completed_succesfully)},
        err => console.log(err)
  
      );
