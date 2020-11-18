@@ -1,6 +1,7 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <div class="flex-container" >
 
-    <mat-card class="input-card" ><!--Card with input field for fluid properties-->
+    <mat-card class="input-card" >
 
         <mat-card-header class="welcomeheader">
             <mat-card-title> Find your capacity </mat-card-title>
@@ -42,6 +43,39 @@
         
         </mat-card-content>
     </mat-card>
+
+    <div *ngIf="show_results" ><!--Here we should have a *ngIf="show_results"-->
+        <mat-card class="input-card" ><!--Card that appears only when button "Create Graph" is pressed-->
+
+            <mat-card-header class="welcomeheader">
+                <mat-card-title> Recommended capacity plotted against separation capacity </mat-card-title>
+                <mat-card-subtitle>
+                    
+                </mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content>
+    
+                <div>
+                    Below here is the canvas:
+                    <div class="chart-wrapper">
+                        <canvas baseChart 
+                            [datasets]="lineChartData" 
+                            [labels]="lineChartLabels" 
+                            [options]="lineChartOptions"
+                            [colors]="lineChartColors" 
+                            [legend]="lineChartLegend" 
+                            [chartType]="lineChartType" 
+                            [plugins]="lineChartPlugins">
+                        </canvas>
+                    </div>
+                    
+                 
+                </div>
+            
+            </mat-card-content>
+        </mat-card>
+    </div>
 </div>
 
 

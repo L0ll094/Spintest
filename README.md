@@ -17,6 +17,7 @@ Go into the folder that contains the package.json
 run "npm install" and it will read from the package.json and install all that we need from there.
 
 run npm install chart.js
+run npm install ng2-charts
 
 
 

@@ -16,6 +16,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { RouterModule,Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';  
 
 
 //Angular Material Components
@@ -49,6 +50,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { PassToPythonService } from './common/services/pass-to-python.service';
 import { NavigatorPageComponent } from './navigator-page/navigator-page.component';
 
+import {ChartsModule} from 'ng2-charts';
+
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FindQComponent } from './find-q/find-q.component';
 import { MeetCriteriaComponent } from './meet-criteria/meet-criteria.component';
@@ -67,7 +70,7 @@ import {ResultsService} from './common/services/results.service'
     FindQComponent,
     MeetCriteriaComponent,
     FindSpintimesComponent,
-    FindCapacityComponent
+    FindCapacityComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -77,6 +80,9 @@ import {ResultsService} from './common/services/results.service'
     FlexLayoutModule,
     RouterModule,
     FormsModule,
+    CommonModule,
+    ChartsModule,
+    
    
 
     BrowserAnimationsModule,

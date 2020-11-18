@@ -214,14 +214,7 @@ export class InputFormComponent implements OnInit {
    
 
 
-  addToContainer(){
-      /*Empty function for testing */
-    window.alert("You clicked a button")
-      
-  ;
-
-
-  }
+ 
   
 
 }
