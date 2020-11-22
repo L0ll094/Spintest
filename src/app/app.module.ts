@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -49,7 +49,6 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { PassToPythonService } from './common/services/pass-to-python.service';
 import { NavigatorPageComponent } from './navigator-page/navigator-page.component';
-
 import {ChartsModule} from 'ng2-charts';
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
