@@ -12,12 +12,7 @@ export class PassToPythonService {
   constructor(private http: HttpClient) { }
 
 
-  sendFluidProperties(data): Observable<any>{
-  
-    
-    return this.http.post("http://127.0.0.1:5000/send_fluid_properties",data);
-    
-  }
+
 
   sendEquipmentProperties(data): Observable<any>{
   

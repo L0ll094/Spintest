@@ -20,26 +20,28 @@ export class FindCapacityComponent implements OnInit {
   theInput: FormGroup;
   //Property to keep track of showing or not showing the chart
   show_results: Boolean=false;
+
+
   //Chart properties are saved as class properties so that they can be more easily passed to the chart element in the
   //html file.
   lineChartData: ChartDataSets[]= [
-    { data: [1,2,3], label: 'Initial_Data50' },
+    {fill: false, data: [1,2,3], label: 'Initial_Data50' },
    
    ];
-  lineChartLabels: Label[]= ["First","Second","Third"];
-  lineChartOptions={
-    responsive: true,
-  };
-  lineChartColors: Color[]=[
-    {
-      borderColor: 'black',
-      backgroundColor: 'rgba(255,255,0,0.28)',
-    },
-  ];
 
   lineChartLegend = true;
   lineChartPlugins = [];
   lineChartType = 'line';
+  lineChartLabels: Label[]= ["First","Second","Third"];
+  lineChartOptions={responsive: true};
+  lineChartColors: Color[]=[
+    {
+      borderColor: 'black',
+
+    },
+  ];
+
+
   
   updateChart(){
     //The updating of the chart is done in a function since we want it to update on the click of the submit  button
@@ -49,14 +51,14 @@ export class FindCapacityComponent implements OnInit {
      
      ];
     this.lineChartLabels = ["Fourth","Fifth","Sixth"];
-    let Label1=this.theInput.value['Effluent_conc_low']
-    let Label2=this.theInput.value['Effluent_conc_high']
-    let Label_mid=(Label1+Label2)/2
-    console.log("Labels:")
-    console.log(Label1,Label2,Label_mid)
-    let temp=formatNumber(Label1,"se-SE")
-    console.log("Formatted Label1")
-    console.log(temp)
+    let Label1=this.theInput.value['Effluent_conc_low'];
+    let Label2=this.theInput.value['Effluent_conc_high'];
+    let Label_mid=(Label1+Label2)/2;
+    this.lineChartLabels=[`${Label1}%`,`${Label_mid}%`,`${Label2}%`];
+    console.log("Labels:");
+    console.log(Label1,Label2,Label_mid);
+  
+
 
 
   }
@@ -95,11 +97,11 @@ export class FindCapacityComponent implements OnInit {
     this._PassToPythonServiceHolder.sendYourQ(data).subscribe(
       res => {
 
-        console.log("The constants High, medium and Low capacity as well as High, M and Low LF has been added to the database:")
-        console.log(res)
+        console.log("The constants High, medium and Low capacity as well as High, M and Low LF has been added to the database:");
+        console.log(res);
        
 
-        let temp=JSON.parse(res)
+        let temp=JSON.parse(res);
         this._results.capacity_low_sep=temp.KQ_1;
         this._results.capacity_mid_sep=temp.KQ;
         this._results.capacity_high_sep=temp.KQ_2;
