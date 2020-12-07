@@ -33,7 +33,7 @@ export class FindCapacityComponent implements OnInit {
   lineChartPlugins = [];
   lineChartType = 'line';
   lineChartLabels: Label[]= ["First","Second","Third"];
-  lineChartOptions={responsive: true};
+  lineChartOptions={responsive: true, tooltips: {enabled:true}};
   lineChartColors: Color[]=[
     {
       borderColor: 'black',
@@ -47,7 +47,8 @@ export class FindCapacityComponent implements OnInit {
     //The updating of the chart is done in a function since we want it to update on the click of the submit  button
     //in case you want to try different parameter one after another
     this.lineChartData = [
-      { data: [ this._results.capacity_low_sep,this._results.capacity_mid_sep,this._results.capacity_high_sep], label: '3 Suggested capacities' },
+      { data: [ this._results.capacity_low_sep,this._results.capacity_mid_sep,this._results.capacity_high_sep], 
+        label: '3 Suggested capacities' },
      
      ];
     this.lineChartLabels = ["Fourth","Fifth","Sixth"];
@@ -55,11 +56,6 @@ export class FindCapacityComponent implements OnInit {
     let Label2=this.theInput.value['Effluent_conc_high'];
     let Label_mid=(Label1+Label2)/2;
     this.lineChartLabels=[`${Label1}%`,`${Label_mid}%`,`${Label2}%`];
-    console.log("Labels:");
-    console.log(Label1,Label2,Label_mid);
-  
-
-
 
   }
 

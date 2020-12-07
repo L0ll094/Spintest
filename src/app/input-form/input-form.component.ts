@@ -14,6 +14,8 @@ export class InputFormComponent implements OnInit {
   equipment_properties: FormGroup;
   spin_test_data: FormGroup;
   data;
+
+  //Options determines if user wants to input their own acc/ret table
   options;
   accTable =[
     {time:0, speed: 0},
@@ -47,6 +49,7 @@ export class InputFormComponent implements OnInit {
 
 
   ngOnInit() {
+
       
       this.equipment_properties=this.formBuilder.group({
       Rcentrifuge: [null,[Validators.required,]],
@@ -160,44 +163,36 @@ export class InputFormComponent implements OnInit {
     this._PassToPythonServiceHolder.sendEquipmentProperties(data).subscribe(
       res => {
         let temp=JSON.parse(res);
-        this._results.equipment_setup_successfully=temp.setup_completed_succesfully;
+        this._results.equipment_setup_successfully=temp.equipment_setup_successfully;
         console.log("Setup of equipment was completed successfully:");
-        //console.log(this._results.equipment_setup_successfully);
-        console.log(temp.setup_completed_succesfully);
-
       },
-      err => console.log(err)
+      err => console.log("An error occurred in input-form-components.ts, submit_Equipment_Properties()")
 
     )};
 
   submit_Spin_Test_Data(){
+
     /*Saves the inputed spin test data and changes the global variable spintest_setup_successfully to true */
 
     //Here, the residual solids entered in the formula are made accessible by the rest of the frontend for plotting
-    this._results.results_spintest=[this.spin_test_data.value['residualSolids1'],this.spin_test_data.value['residualSolids2'],
-    this.spin_test_data.value['residualSolids3'],this.spin_test_data.value['residualSolids4']]
+    this._results.results_spintest=[this.spin_test_data.value['residualSolids1'],this.spin_test_data.value['residualSolids2'],this.spin_test_data.value['residualSolids3'],this.spin_test_data.value['residualSolids4']];
     //console.log("This is the property that was saved to global results")
     //console.log(this._results.results_spintest)
 
-    let data=JSON.stringify(this.spin_test_data.value)
-    console.log("Before the subscription:")
-    console.log(this._results.spintest_setup_successfully);
+    let data=JSON.stringify(this.spin_test_data.value);
 
      this._PassToPythonServiceHolder.sendSpintestData(data).subscribe(
-       res => {
-        console.log("Attempting to parse it:")
-        let temp=JSON.parse(res)//Error:Unexpected token o in JSON at position 1
-        console.log(temp.spintest_setup_successfully);
-        this._results.spintest_setup_successfully=temp.spintest_setup_successfully;
-        console.log("Setup of spintest was completed successfully:");
-        console.log(res["spintest_setup_successfully"])},
-       err => console.log("There was an error!")
- 
-     );
-     console.log("After the subscription:")
-     console.log(this._results.spintest_setup_successfully);
-   
- 
+      res => {
+
+                let temp=JSON.parse(res);    
+                //console.log(temp);
+                this._results.spintest_setup_successfully=temp.spintest_setup_successfully;
+                console.log("Setup of spintest was completed successfully:");
+
+      },
+      err =>    console.log("An error occurred in input-form-components.ts, submit_Spin_Test_Data()")
+    );
+
  
    }
 

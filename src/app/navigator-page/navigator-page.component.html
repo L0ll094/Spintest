@@ -6,7 +6,17 @@
             <mat-card-header class="welcomeheader">
                 <div mat-card-avatar class="example-header-image"></div>
                 <mat-card-title >Explore Extended</mat-card-title>
-                <mat-card-subtitle>Initiate Spintest Calculations</mat-card-subtitle>
+                <mat-card-subtitle>
+                    <p>Initiate Spintest Calculations</p>
+                    <p *ngIf="spintest_setup_completed==false" class="ErrorMessage">
+                        It seems the spintest was not completed succesfully. Please return to setup and complete it again.¨
+                        Make sure to not refresh the page before coming back here. 
+                    </p>
+                    <p *ngIf="equipment_setup_completed==false"class="ErrorMessage">
+                        It seems the equipment was not completed succesfully. Please return to setup and complete it again.¨
+                        Make sure to not refresh the page before coming back here. 
+                    </p>
+                </mat-card-subtitle>
             </mat-card-header>
 
             <img mat-card-image src="assets/images/AL-logo.jpg" alt="Photo of spintest">

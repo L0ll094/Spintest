@@ -38,4 +38,6 @@
     width: 60%;
     padding-bottom: 30px;
 }
-
+.ErrorMessage{
+    color: red;
+}
