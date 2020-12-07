@@ -48,7 +48,7 @@
         <mat-card class="input-card" ><!--Card that appears only when button "Create Graph" is pressed-->
 
             <mat-card-header>
-                <mat-card-title> Recommended capacity plotted against separation capacity </mat-card-title>
+                
                 <mat-card-subtitle>
                     
                 </mat-card-subtitle>
@@ -60,13 +60,13 @@
 
                    
                     <canvas baseChart 
-                        [datasets]="lineChartData" 
-                        [labels]="lineChartLabels" 
-                        [options]="lineChartOptions"
-                        [colors]="lineChartColors" 
-                        [legend]="lineChartLegend" 
-                        [chartType]="lineChartType" 
-                        [plugins]="lineChartPlugins">
+                        [datasets]="ChartData" 
+                        [labels]="ChartLabels" 
+                        [options]="ChartOptions"
+                        [colors]="ChartColors" 
+                        [legend]="ChartLegend" 
+                        [chartType]="ChartType"
+                        [plugins]="ChartPlugins">
                 
                     </canvas>
                   

@@ -7,6 +7,7 @@ import {CommonModule} from '@angular/common';
 import {ChartDataSets,ChartOptions} from 'chart.js';
 import {Color,Label} from 'ng2-charts';
 import { formatNumber} from '@angular/common';
+import * as crosshair from 'chartjs-plugin-crosshair';
 
 
 @Component({
@@ -24,38 +25,87 @@ export class FindCapacityComponent implements OnInit {
 
   //Chart properties are saved as class properties so that they can be more easily passed to the chart element in the
   //html file.
-  lineChartData: ChartDataSets[]= [
-    {fill: false, data: [1,2,3], label: 'Initial_Data50' },
-   
+  //Fake initial values
+  ChartData: ChartDataSets[]= [
+    {data: [1,2,3], label: 'Initial_Data50' },
    ];
+  ChartFontSize=16;
+  ChartLegend = true;
+  ChartType = 'line';
+  ChartLabels: Label[]= ["First","Second","Third"];
+  ChartPlugins=[crosshair];
+  ChartOptions={
+    title:{
+      text:"Capacity needed for different efficiencies",
+      display: true,
+      fontSize: 30,
+    },
+    responsive: true, 
+    legend:{
+      display:false
+    },
 
-  lineChartLegend = true;
-  lineChartPlugins = [];
-  lineChartType = 'line';
-  lineChartLabels: Label[]= ["First","Second","Third"];
-  lineChartOptions={responsive: true, tooltips: {enabled:true}};
-  lineChartColors: Color[]=[
+    tooltips: {
+      enabled:true,
+      mode: 'interpolate'},
+    
+    scales:{
+      yAxes:[{
+        scaleLabel: {
+          display: true, 
+          labelString:'Capacity',
+          fontSize:20,
+        }   ,    
+        gridlines: {
+          display:true,
+        }
+      }],
+      xAxes:[{
+        scaleLabel: {
+          display: true, 
+          labelString:'Separation Efficiency',
+          fontSize:20,
+        },       
+        gridlines: {
+          display:true,
+        },
+        ticks: {
+          min:0,
+          stepSize:0.5,           
+        }
+      }]
+    },
+   
+  };
+  ChartColors: Color[]=[
     {
       borderColor: 'black',
+      borderWidth: 1,
+      hoverBorderWidth:2,
+      hoverBorderColor:'red',
 
     },
   ];
-
-
   
   updateChart(){
     //The updating of the chart is done in a function since we want it to update on the click of the submit  button
     //in case you want to try different parameter one after another
-    this.lineChartData = [
-      { data: [ this._results.capacity_low_sep,this._results.capacity_mid_sep,this._results.capacity_high_sep], 
-        label: '3 Suggested capacities' },
-     
+
+    this.ChartData = [
+      {data: [ this._results.capacity_low_sep,this._results.capacity_mid_sep,this._results.capacity_high_sep], 
+        label: 'Suggested capacity',
+        pointRadius:10,
+        pointHoverRadius:15,
+        fill: false,
+      },
      ];
-    this.lineChartLabels = ["Fourth","Fifth","Sixth"];
+
     let Label1=this.theInput.value['Effluent_conc_low'];
     let Label2=this.theInput.value['Effluent_conc_high'];
     let Label_mid=(Label1+Label2)/2;
-    this.lineChartLabels=[`${Label1}%`,`${Label_mid}%`,`${Label2}%`];
+    //this.ChartLabels=[`${Label1}%`,`${Label_mid}%`,`${Label2}%`];
+    this.ChartLabels=[`${Label1}%`,`${Label_mid}%`,`${Label2}%`];
+
 
   }
 

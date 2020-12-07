@@ -18,6 +18,7 @@ run "npm install" and it will read from the package.json and install all that we
 
 run npm install chart.js
 run npm install ng2-charts
+run npm install chartjs-plugin-crosshair
 
 
 
