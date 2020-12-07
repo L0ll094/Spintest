@@ -61,18 +61,12 @@ export class FindCapacityComponent implements OnInit {
         }
       }],
       xAxes:[{
+        type:'linear',
         scaleLabel: {
           display: true, 
           labelString:'Separation Efficiency',
           fontSize:20,
-        },       
-        gridlines: {
-          display:true,
-        },
-        ticks: {
-          min:0,
-          stepSize:0.5,           
-        }
+        },   
       }]
     },
    
@@ -90,9 +84,20 @@ export class FindCapacityComponent implements OnInit {
   updateChart(){
     //The updating of the chart is done in a function since we want it to update on the click of the submit  button
     //in case you want to try different parameter one after another
+    let y1=this._results.capacity_low_sep;
+    let y2=this._results.capacity_mid_sep;
+    let y3=this._results.capacity_high_sep;
+
+    let x1=this.theInput.value['Effluent_conc_low'];
+    let x3=this.theInput.value['Effluent_conc_high'];
+    let x2=(x1+x3)/2;
 
     this.ChartData = [
-      {data: [ this._results.capacity_low_sep,this._results.capacity_mid_sep,this._results.capacity_high_sep], 
+      {data: [
+        {x:x1,y:y1},
+        {x:x2,y:y2},
+        {x:x3,y:y3}
+      ],
         label: 'Suggested capacity',
         pointRadius:10,
         pointHoverRadius:15,
@@ -100,11 +105,11 @@ export class FindCapacityComponent implements OnInit {
       },
      ];
 
-    let Label1=this.theInput.value['Effluent_conc_low'];
-    let Label2=this.theInput.value['Effluent_conc_high'];
-    let Label_mid=(Label1+Label2)/2;
+    //let Label1=this.theInput.value['Effluent_conc_low'];
+    //let Label2=this.theInput.value['Effluent_conc_high'];
+    //let Label_mid=(Label1+Label2)/2;
     //this.ChartLabels=[`${Label1}%`,`${Label_mid}%`,`${Label2}%`];
-    this.ChartLabels=[`${Label1}%`,`${Label_mid}%`,`${Label2}%`];
+    //this.ChartLabels=[`${Label1}%`,`${Label_mid}%`,`${Label2}%`];
 
 
   }
