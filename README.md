@@ -5,9 +5,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## How to start the frontend
 You will need to install the following from the internet
 
-Visual Studio Code  to see and edit the code
+Visual Studio Code to see and edit the code www.code.visualstudio.com
 
-node.js - install from nodejs.org, you get npm which works as pip or conda does for python so that we don't manually need to install stuff we need. 
+node.js - install from nodejs.org/en/download, you get npm which works as pip or conda does for python so that we don't manually need to install stuff we need.  
 
 In VS code, open a terminal, and use npm to install the rest:
 
