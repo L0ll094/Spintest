@@ -6,7 +6,7 @@
     <mat-card class="input-card" ><!--Card with input field for fluid properties-->
 
         <mat-card-header class="welcomeheader" >
-            <mat-card-title>Enter your desired Q</mat-card-title>
+            <mat-card-title>Enter your desired KQ</mat-card-title>
             <mat-card-subtitle>The spintest you ran will be used to find 4 different flowrates you can run through your separator 
                 <br> that corresponds to the given separation efficencies yielded by spinning samples in a centrifuge.</mat-card-subtitle>
         </mat-card-header>
@@ -33,5 +33,44 @@
         
         </mat-card-content>
     </mat-card>
+
+
+    <div *ngIf="show_results" ><!--Here we should have a *ngIf="show_results"-->
+        <mat-card class="input-card" ><!--Card that appears only when button "Create Graph" is pressed-->
+
+            <mat-card-header>
+                
+                <mat-card-subtitle>
+                    
+                </mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content class="chart-wrapper">
+    
+                <div>
+
+                   
+                    <canvas baseChart 
+                        [datasets]="ChartData" 
+                  
+                        [options]="ChartOptions"
+                        [colors]="ChartColors" 
+                        [legend]="ChartLegend" 
+                        [chartType]="ChartType"
+                        [plugins]="ChartPlugins">
+                
+                    </canvas>
+                  
+                    
+                 
+                </div>
+            
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+
+
+
 </div>
 

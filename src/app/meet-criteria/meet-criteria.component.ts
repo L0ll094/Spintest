@@ -16,11 +16,10 @@ import * as crosshair from 'chartjs-plugin-crosshair';
   styleUrls: ['./meet-criteria.component.css']
 })
 export class MeetCriteriaComponent implements OnInit {
-
-
   data;
   the_input: FormGroup;
-  show_results: Boolean=true;//Change for debugging
+
+  show_results: Boolean=false;//Change for debugging
   stepsize_y=5;
   Loadfactor=0;
 
@@ -43,7 +42,7 @@ export class MeetCriteriaComponent implements OnInit {
         {x:2,y:2},
         {x:3,y:3}
       ],
-        label: 'Max. flow to reach desired criteria',
+        label: 'DEFAULT',
         pointRadius:10,
         pointHoverRadius:15,
         fill: false,
@@ -161,7 +160,6 @@ export class MeetCriteriaComponent implements OnInit {
 
   ngOnInit() {
 
-
     //Yes i know I don't really need a whole group here, but frankly, I have done groups before but not single
     //form controls and I don't have the extra half an hour to deal with the research and debugging. And this works fine.
     this.the_input=this.formBuilder.group({
@@ -178,7 +176,7 @@ export class MeetCriteriaComponent implements OnInit {
     
     let data=JSON.stringify(this.the_input.value);
     //console.log(data)
-    this.show_results=true
+    this.show_results=true;
 
 
     this._PassToPythonServiceHolder.sendYourCriteria(data).subscribe(
