@@ -4,6 +4,11 @@ import { PassToPythonService } from '../common/services/pass-to-python.service';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatTableModule} from '@angular/material/table';
 import {ResultsService} from '../common/services/results.service';
+import {ChartDataSets,ChartOptions} from 'chart.js';
+import {Color,Label} from 'ng2-charts';
+import { formatNumber} from '@angular/common';
+import * as crosshair from 'chartjs-plugin-crosshair';
+
 
 @Component({
   selector: 'app-meet-criteria',
@@ -15,15 +20,143 @@ export class MeetCriteriaComponent implements OnInit {
 
   data;
   the_input: FormGroup;
+  show_results: Boolean=true;//Change for debugging
+  stepsize_y=5;
+  Loadfactor=0;
+
 
 
   constructor(
     private _results: ResultsService,
     private _PassToPythonServiceHolder: PassToPythonService,
     private formBuilder: FormBuilder,
-
-
     ) {  }
+
+
+  //Chart properties are saved as class properties so that they can be more easily passed to the chart element in the
+  //html file. They are given fake initial values before they are updated by the "submit"-button
+  
+  //Initial values so I know if something didn't update
+  ChartData: ChartDataSets[]= [
+      {data: [
+        {x:1,y:1},
+        {x:2,y:2},
+        {x:3,y:3}
+      ],
+        label: 'Max. flow to reach desired criteria',
+        pointRadius:10,
+        pointHoverRadius:15,
+        fill: false,
+      },
+     ];
+  
+  
+  ChartFontSize=16;
+  //ChartLegend = true;
+  ChartType = 'line';
+  
+  //Tool to read data off graph more easily
+  ChartPlugins=[crosshair];
+  
+  ChartOptions={
+    title:{
+      text:"Maximum Q through different capacity machines",
+      display: true,
+      fontSize: 30,
+    },
+    responsive: true, 
+    legend:{
+      display:false
+    },
+
+    tooltips: {
+      enabled:true,
+      mode: 'interpolate'
+    },
+    
+    scales:{
+      yAxes:[{
+        scaleLabel: {
+          display: true, 
+          labelString:'Maximum Flow Q [L/h]',
+          fontSize:20,
+          
+        },    
+        gridlines: {
+          display:true,
+          
+        },
+        
+        ticks: {
+          stepSize:this.stepsize_y,
+        }
+      }],
+      xAxes:[{
+        type:'linear',
+        scaleLabel: {
+          display: true, 
+          labelString:'Capacity [KQ]',
+          fontSize:20,
+        },   
+      }]
+    },
+    
+  };
+  ChartColors: Color[]=[
+    {
+      borderColor: 'black',
+      borderWidth: 1,
+      hoverBorderWidth:2,
+      hoverBorderColor:'red',
+
+    },
+  ];
+
+    
+    updateChart(){
+      //The updating of the chart is done in a function since we want it to update on the click of the submit  button
+      //in case you want to try different parameter one after another
+      let KQs=this._results.KQ_array;
+      let Qs=this._results.Qmax_array;
+      
+
+      let x1=KQs[0];
+      let x2=KQs[1];
+      let x3=KQs[2];
+      let x4=KQs[3];
+      let x5=KQs[4];
+    
+    
+
+      let y1=Qs[0];
+      let y2=Qs[1];
+      let y3=Qs[2];
+      let y4=Qs[3];
+      let y5=Qs[4];
+
+      this.stepsize_y=(y2-y1)/2;
+      this.Loadfactor=this._results.LF_crit;
+    
+ 
+ 
+
+  
+      this.ChartData = [
+        {data: [
+          {x:x1,y:y1},
+          {x:x2,y:y2},
+          {x:x3,y:y3},
+          {x:x4,y:y4},
+          {x:x5,y:y5},
+        ],
+          label: 'Max. flow to reach desired criteria ',
+          pointRadius:10,
+          pointHoverRadius:15,
+          fill: false,
+        },
+       ];
+      }
+      
 
 
   ngOnInit() {
@@ -34,7 +167,8 @@ export class MeetCriteriaComponent implements OnInit {
     this.the_input=this.formBuilder.group({
 
       criteria:[null,[Validators.required,]],
-      KQ:[null]})
+      KQ:[null]
+    })
   }
 
 
@@ -44,17 +178,25 @@ export class MeetCriteriaComponent implements OnInit {
     
     let data=JSON.stringify(this.the_input.value);
     //console.log(data)
+    this.show_results=true
+
 
     this._PassToPythonServiceHolder.sendYourCriteria(data).subscribe(
       res => {
-        console.log("The constants 'LF', 'KQ' and 'Qmax' has been added to the database:")
+        console.log("The constants 'LF_crit', 'KQ' and 'Qmax' has been added to the database:")
         let temp=JSON.parse(res)
         console.log(temp)
-        this._results.LF=temp.LF//Specify what LF units are!
+        this._results.LF_crit=temp.LF//Specify what LF units are!
         this._results.KQ_array=temp.KQ
         this._results.Qmax_array=temp.Qmax
+        this.updateChart();//Updating must happen after results have been recieved
       },
       err => console.log(err)
 
-    )};
+    )
+    
+  };
+
 }
+
+

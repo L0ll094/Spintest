@@ -8,16 +8,17 @@ export class ResultsService {
   equipment_setup_successfully=false;
   spintest_setup_successfully=false;
   //The results coming in from the backend will be saved as JSON objects.
-  /* resulting_flows;//From the Find Your Q-feature. Contains ["The Flows"] which are the corresponding flows to the separation efficiencies found by the spintest
+  resulting_flows;//From the Find Your Q-feature. Contains ["The Flows"] which are the corresponding flows to the separation efficiencies found by the spintest
  
   recommended_spintimes; //From the Find your Spintimes, given a centrifuge rpm and highest and lowest Q you run on your machine, as well as KQ of the machine
 
   //From Meet a criteria, different Qmax are given for different separator capacities that will yield a sufficient separation efficiency
   KQ_array;//Contains actual numbers as vector
-  LF;//Actual number
+  LF_crit;//Actual number
   Qmax_array;//Contains actual numbers as vecto
 
-  //From find your capacity
+  //From find your capacity, a chosen interval of efficiencies give high and low bounds of capacities, and loadfactors
+  //corresponding to the dessired separation efficiency
   capacity_high_sep;
   capacity_mid_sep;
   capacity_low_sep;
@@ -26,7 +27,9 @@ export class ResultsService {
   LF_low_sep;
 
   //Saving the input form spintest so that it can be used for plots.
-  results_spintest; */
+  results_spintest; 
+
+  /*
 
   //Data below is only for testing purposes
   //To run for real please remove below code and uncomment the block above
@@ -49,6 +52,7 @@ export class ResultsService {
 
   //Saving the input form spintest so that it can be used for plots.
   results_spintest=[40,30,20,10]; 
+  */
 
 
 

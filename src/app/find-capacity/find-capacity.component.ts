@@ -129,11 +129,6 @@ export class FindCapacityComponent implements OnInit {
       },
      ];
 
-    //let Label1=this.theInput.value['Effluent_conc_low'];
-    //let Label2=this.theInput.value['Effluent_conc_high'];
-    //let Label_mid=(Label1+Label2)/2;
-    //this.ChartLabels=[`${Label1}%`,`${Label_mid}%`,`${Label2}%`];
-    //this.ChartLabels=[`${Label1}%`,`${Label_mid}%`,`${Label2}%`];
 
 
   }
