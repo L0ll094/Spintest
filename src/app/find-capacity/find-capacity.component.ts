@@ -22,18 +22,29 @@ export class FindCapacityComponent implements OnInit {
   //Property to keep track of showing or not showing the chart
   show_results: Boolean=false;
 
-
+  Loadfactor1;
+  Loadfactor2;
+  Loadfactor3;
+  conc1;
+  conc2;
+  conc3;
   //Chart properties are saved as class properties so that they can be more easily passed to the chart element in the
-  //html file.
-  //Fake initial values
+  //html file. They are given fake initial values before they are updated by the "submit"-button
+  
+  //Initial values so I know if something didn't update
   ChartData: ChartDataSets[]= [
     {data: [1,2,3], label: 'Initial_Data50' },
    ];
-  ChartFontSize=16;
-  ChartLegend = true;
-  ChartType = 'line';
   ChartLabels: Label[]= ["First","Second","Third"];
+  
+  
+  ChartFontSize=16;
+  //ChartLegend = true;
+  ChartType = 'line';
+  
+  //Tool to read data off graph more easily
   ChartPlugins=[crosshair];
+  
   ChartOptions={
     title:{
       text:"Capacity needed for different efficiencies",
@@ -53,11 +64,17 @@ export class FindCapacityComponent implements OnInit {
       yAxes:[{
         scaleLabel: {
           display: true, 
-          labelString:'Capacity',
+          labelString:'Capacity KQ',
           fontSize:20,
-        }   ,    
+          
+        },    
         gridlines: {
           display:true,
+          
+        },
+        
+        ticks: {
+          stepSize:25,
         }
       }],
       xAxes:[{
@@ -91,6 +108,13 @@ export class FindCapacityComponent implements OnInit {
     let x1=this.theInput.value['Effluent_conc_low'];
     let x3=this.theInput.value['Effluent_conc_high'];
     let x2=(x1+x3)/2;
+
+    this.Loadfactor1=this._results.LF_low_sep;
+    this.Loadfactor2=this._results.LF_mid_sep;
+    this.Loadfactor3=this._results.LF_high_sep;
+    this.conc1=x1;
+    this.conc2=x2;
+    this.conc3=x3;
 
     this.ChartData = [
       {data: [
