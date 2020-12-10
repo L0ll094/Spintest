@@ -18,7 +18,7 @@ export class FindSpintimesComponent implements OnInit {
 
   data;
   theInput: FormGroup;
-  show_results: Boolean=true//Change for debugging
+  show_results: Boolean=false//Change for debugging
   //Chart properties are saved as class properties so that they can be more easily passed to the chart element in the
   //html file. They are given fake initial values before they are updated by the "submit"-button
   
@@ -53,7 +53,6 @@ barChartOptions: ChartOptions={
     yAxes:[{
         ticks: {
           beginAtZero: true,
-          max:6,
          
         },
       scaleLabel: {
@@ -98,9 +97,22 @@ ChartColors: Color[]=[
     //The updating of the chart is done in a function since we want it to update on the click of the submit  button
     //in case you want to try different parameter one after another
     let spintimes=this._results.recommended_spintimes;
-    let temp=this.yourFlows[1];
-    let tempStr=`${temp}`;
-    console.log('This is a number in string format:'+tempStr)
+    let Label1=`${this.yourFlows[0]}`;
+    let Label2=`${this.yourFlows[1]}`;
+    let Label3=`${this.yourFlows[2]}`;
+    let Label4=`${this.yourFlows[3]}`;
+    console.log("Data in Updatechart")
+       
+    this.ChartData = [
+      {data: spintimes,
+        label: 'Suggested spintime',
+        pointRadius:10,
+        pointHoverRadius:15,
+        fill: false,
+      },
+     ];
+     this.DataLabels=[Label1,Label2,Label3,Label4];
+
 
 
 

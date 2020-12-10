@@ -5,24 +5,21 @@
 
             <mat-card-header class="welcomeheader">
                 <div mat-card-avatar class="example-header-image"></div>
-                <mat-card-title >Explore Extended</mat-card-title>
-                <mat-card-subtitle>
-                    <p>Initiate Spintest Calculations</p>
-                    <p *ngIf="spintest_setup_completed==false" class="ErrorMessage">
-                        It seems the spintest was not completed succesfully. Please return to setup and complete it again.¨
-                        Make sure to not refresh the page before coming back here. 
-                    </p>
-                    <p *ngIf="equipment_setup_completed==false"class="ErrorMessage">
-                        It seems the equipment was not completed succesfully. Please return to setup and complete it again.¨
-                        Make sure to not refresh the page before coming back here. 
-                    </p>
-                </mat-card-subtitle>
+                <mat-card-title class="cardtitle">Initiate Spintest Calculations</mat-card-title>
+
             </mat-card-header>
 
-            <img mat-card-image src="assets/images/AL-logo.jpg" alt="Photo of spintest">
+            <img mat-card-image src="assets/images/2Liquids.jpg" alt="Photo of spintest">
 
             <mat-card-content>
-    
+                <p *ngIf="spintest_setup_completed==false" class="ErrorMessage">
+                    It seems the spintest was not completed succesfully. Please return to setup and complete it again.
+                    Make sure to not refresh the page before coming back here. 
+                </p>
+                <p *ngIf="equipment_setup_completed==false"class="ErrorMessage">
+                    It seems the equipment was not completed succesfully. Please return to setup and complete it again.
+                    Make sure to not refresh the page before coming back here. 
+                </p>
             </mat-card-content>
         </mat-card>
     </div>
@@ -35,12 +32,12 @@
             <mat-card class="input-card" style="text-align:center">
                 <mat-card-header class="welcomeheader">
                     <div mat-card-avatar class="example-header-image"></div>
-                    <mat-card-title >Find your Q</mat-card-title>
+                    <mat-card-title class="cardtitle" >Find your Q</mat-card-title>
                     <mat-card-subtitle class="equalspace">You already have a separator in mind. 
                         <br>Given its KQ, see a plot of possible flowrates vs separation efficiency.</mat-card-subtitle>
                 </mat-card-header>
         
-                <img mat-card-image src="assets/images/Bild1.JPG" alt="Photo of spintest">
+                <img mat-card-image src="assets/images/Slide4.JPG" alt="Photo of spintest">
         
                 <mat-card-content class="equalspaceCard">
                     <button mat-button routerLink="/find-q" routerLinkActive="active" >
@@ -60,7 +57,7 @@
                     </mat-card-subtitle>
                 </mat-card-header>
         
-                <img mat-card-image src="assets/images/Bild2.JPG" alt="Photo of spintest">
+                <img mat-card-image src="assets/images/Slide3.JPG" alt="Photo of spintest">
             
                 <mat-card-content class="equalspaceCard">
                     <button mat-button routerLink="/meet-criteria" routerLinkActive="active" >
@@ -78,7 +75,7 @@
                     <mat-card-subtitle class="equalspace"> Volumetric flow Q is known, and required separator capacity for different efficienceies are plotted</mat-card-subtitle>
                 </mat-card-header>
         
-                <img mat-card-image src="assets/images/Bild3.JPG" alt="Photo of spintest">
+                <img mat-card-image src="assets/images/Slide2.JPG" alt="Photo of spintest">
             
                 <mat-card-content class="equalspaceCard">
                     <button mat-button routerLink="/find-capacity" routerLinkActive="active" >
@@ -96,7 +93,7 @@
                     <mat-card-subtitle class="equalspace">Given the KQ of your separator, generate spinning times to find the expected effluent conc. running at [Q1, Q2] m3/h</mat-card-subtitle>
                 </mat-card-header>
             
-                <img mat-card-image src="assets/images/Bild4.JPG" alt="Photo of spintest">
+                <img mat-card-image src="assets/images/Slide1.JPG" alt="Photo of spintest">
             
                 <mat-card-content class="equalspaceCard">
                     <button mat-button routerLink="/find-spintimes" routerLinkActive="active" >

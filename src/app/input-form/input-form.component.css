@@ -48,7 +48,7 @@
     padding-top:50px;
 }
 .Datatable{
-    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border-collapse: collapse;
     width: 100%;
     font-size: large;
@@ -64,8 +64,9 @@
     padding-bottom: 12px;
     border-style:outset;
     text-align: center;
-    background-color: rgb(63, 81, 181);
+    background-color: rgb(160, 161, 170);
     color: white;
     border-radius: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   
 }

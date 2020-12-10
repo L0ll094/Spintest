@@ -26,12 +26,15 @@
 }
 .equalspace{
     height: 80px;
+    font-size: 16px;
     
     
     
 }
 .nav-card{
-    width: 25%
+    width: 25%;
+    height:auto;
+    
 }
 
 .heading-card{
@@ -40,4 +43,7 @@
 }
 .ErrorMessage{
     color: red;
+}
+.infotext{
+    font-size: 18px;
 }

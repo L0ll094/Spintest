@@ -50,3 +50,10 @@ a, a:link, a:visited, a:focus, a:active{
   .chart-wrapper{
     width:1000px;
 }
+mat-card-header.mat-card-title{
+  font-size: 25px;
+}
+mat-card-subtitle.infotext{
+  font-size:large;
+
+}
