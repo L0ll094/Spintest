@@ -20,22 +20,22 @@
                     
                     
                     <mat-form-field class="form-field" appearance="fill">
-                        <mat-label> The KQ of your machine </mat-label>
+                        <mat-label> The KQ of your machine</mat-label>
                         <input type="number" matInput formControlName="KQ" required>
                     </mat-form-field>
                     
                     <mat-form-field class="form-field" appearance="fill">
-                        <mat-label> Lowest flow [m3/h]</mat-label>
+                        <mat-label> Lowest flow [L/h]</mat-label>
                         <input type="number" matInput formControlName="Qmin" required>
                     </mat-form-field>
 
                     <mat-form-field class="form-field" appearance="fill">
-                        <mat-label> Highest flow [m3/h] </mat-label>
+                        <mat-label> Highest flow [L/h] </mat-label>
                         <input type="number" matInput formControlName="Qmax" required>
                     </mat-form-field>
 
                     <mat-form-field class="form-field" appearance="fill">
-                        <mat-label> Speed of centrifuge </mat-label>
+                        <mat-label> Speed of centrifuge [RPM] </mat-label>
                         <input type="number" matInput formControlName="rpm" required>
                     </mat-form-field>
 
@@ -49,6 +49,47 @@
         
         </mat-card-content>
     </mat-card>
+
+
+    <div *ngIf="show_results" ><!--Here we should have a *ngIf="show_results"-->
+        <mat-card class="input-card" ><!--Card that appears only when button "Create Graph" is pressed-->
+
+            <mat-card-header>
+                
+                <mat-card-subtitle>
+                    
+                </mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content class="chart-wrapper">
+    
+                <div>
+
+                   
+                    <canvas baseChart 
+                        [datasets]="ChartData" 
+                        [labels]="DataLabels"
+                        [options]="barChartOptions"
+                        [colors]="ChartColors" 
+                        [legend]="ChartLegend" 
+                        [chartType]="ChartType"
+                        >
+                
+                    </canvas>
+                  
+                    
+                 
+                </div>
+            
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+
+
+
+
+
 </div>
 
 
