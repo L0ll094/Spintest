@@ -16,9 +16,9 @@ import * as crosshair from 'chartjs-plugin-crosshair';
 export class FindQComponent implements OnInit {
   data;
   your_KQ: FormGroup;
-  //Uncomment below when exciting debugger mode. Remove hardcoded efficiencies
-  //efficiencies=this._results.results_spintest;
-  efficiencies=[38,22,10,4];
+  //Uncomment below when exciting debugger mode. Remove hardcoded sep_results
+  //sep_results=this._results.results_spintest;
+  sep_results=[38,22,10,4];
   stepsize_y=5;
   show_results: Boolean=false;//Change for debugging
 
@@ -58,7 +58,7 @@ ChartPlugins=[crosshair];
 
 ChartOptions={
   title:{
-    text:"Flow Q corresponding to separation results",
+    text:"Allowable flow to yield the spintest separation results",
     display: true,
     fontSize: 30,
   },
@@ -76,7 +76,7 @@ ChartOptions={
     yAxes:[{
       scaleLabel: {
         display: true, 
-        labelString:'Flow Q [L per h]',
+        labelString: this._results.separation_result,
         fontSize:20,
         
       },    
@@ -93,7 +93,7 @@ ChartOptions={
       type:'linear',
       scaleLabel: {
         display: true, 
-        labelString:'Separation result [%]',
+        labelString:'Flow Q [L per h]',
         fontSize:20,
       },   
     }]
@@ -117,18 +117,18 @@ ChartColors: Color[]=[
     let Qs=this._results.resulting_flows;
     
 
-    let x1=this.efficiencies[0];
-    let x2=this.efficiencies[1];
-    let x3=this.efficiencies[2];
-    let x4=this.efficiencies[3];
+    let y1=this.sep_results[0];
+    let y2=this.sep_results[1];
+    let y3=this.sep_results[2];
+    let y4=this.sep_results[3];
    
   
   
 
-    let y1=Qs[0];
-    let y2=Qs[1];
-    let y3=Qs[2];
-    let y4=Qs[3];
+    let x1=Qs[0];
+    let x2=Qs[1];
+    let x3=Qs[2];
+    let x4=Qs[3];
 
     this.stepsize_y=(y2-y1)/3;
     //this.ChartOptions.scales.yAxes[3].ticks.stepSize=this.stepsize_y;
