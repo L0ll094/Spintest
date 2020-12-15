@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ResultsService {
-  
+  separation_result="Effluent conc. [vol%]"
   equipment_setup_successfully=false;
   spintest_setup_successfully=false;
   //The results coming in from the backend will be saved as JSON objects.

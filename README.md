@@ -9,12 +9,11 @@ Visual Studio Code to see and edit the code www.code.visualstudio.com
 
 node.js - install from nodejs.org/en/download, you get npm which works as pip or conda does for python so that we don't manually need to install stuff we need.  
 
-In VS code, open a terminal, and use npm to install the rest:
+In VS code, open a terminal, and use npm to install:
 
 run npm install -g @angular/cli
 
-Go into the folder that contains the package.json
-run "npm install" and it will read from the package.json and install all that we need from there.
+npm will go into the folder that contains the package.json and it will read from the package.json and install all that we need from there.
 
 
 

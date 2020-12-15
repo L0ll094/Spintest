@@ -18,12 +18,12 @@
                 <form [formGroup]="the_input" (submit)="submit_your_data()">  
                     
                     <mat-form-field class="form-field" appearance="fill">
-                        <mat-label> Criteria in %</mat-label>
+                        <mat-label> Criteria in {{this._results.separation_result}}</mat-label>
                         <input type="number" matInput formControlName="criteria" >
                     </mat-form-field>
                     
                     <mat-form-field class="form-field" appearance="fill">
-                        <mat-label> Capacity KQ, if available</mat-label>
+                        <mat-label> Separator size KQ, if available</mat-label>
                         <input type="number" matInput formControlName="KQ"  >
                     </mat-form-field>
       
@@ -65,7 +65,18 @@
                         [plugins]="ChartPlugins">
                 
                     </canvas>
-                  
+                <p>Next chart</p>
+                    <canvas baseChart 
+                    [datasets]="ChartData" 
+              
+                    [options]="ChartOptions"
+                    [colors]="ChartColors" 
+                    [legend]="ChartLegend" 
+                    [chartType]="ChartType"
+                    [plugins]="ChartPlugins">
+            
+                </canvas>
+              
                  
                 </div>
             
