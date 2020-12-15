@@ -93,7 +93,7 @@ ChartOptions={
       type:'linear',
       scaleLabel: {
         display: true, 
-        labelString:'Separation result [%]',
+        labelString:'Residuals [%]',
         fontSize:20,
       },   
     }]
