@@ -26,7 +26,7 @@ export class MeetCriteriaComponent implements OnInit {
 
 
   constructor(
-    private _results: ResultsService,
+    public _results: ResultsService,
     private _PassToPythonServiceHolder: PassToPythonService,
     private formBuilder: FormBuilder,
     ) {  }
@@ -48,6 +48,19 @@ export class MeetCriteriaComponent implements OnInit {
         fill: false,
       },
      ];
+  ChartData2: ChartDataSets[]= [
+      {data: [
+        {x:1,y:1},
+        {x:2,y:2},
+        {x:3,y:3}
+      ],
+        label: 'DEFAULT',
+        pointRadius:10,
+        pointHoverRadius:15,
+        fill: false,
+      },
+     ];
+  
   
   
   ChartFontSize=16;
@@ -59,7 +72,7 @@ export class MeetCriteriaComponent implements OnInit {
   
   ChartOptions={
     title:{
-      text:"Maximum Q through different capacity machines",
+      text:"Maximum Q for machine size [KQ]",
       display: true,
       fontSize: 30,
     },
@@ -87,20 +100,65 @@ export class MeetCriteriaComponent implements OnInit {
         },
         
         ticks: {
-          stepSize:this.stepsize_y,
+          stepSize:10,
         }
       }],
       xAxes:[{
         type:'linear',
         scaleLabel: {
           display: true, 
-          labelString:'Capacity [KQ]',
+          labelString:'Separator Size [KQ]',
           fontSize:20,
         },   
       }]
     },
     
   };
+  ChartOptions2={
+    title:{
+      text:"Maximum Q  for machine size [Ae]",
+      display: true,
+      fontSize: 30,
+    },
+    responsive: true, 
+    legend:{
+      display:false
+    },
+
+    tooltips: {
+      enabled:true,
+      mode: 'interpolate'
+    },
+    
+    scales:{
+      yAxes:[{
+        scaleLabel: {
+          display: true, 
+          labelString:'Maximum Flow Q [L/h]',
+          fontSize:20,
+          
+        },    
+        gridlines: {
+          display:true,
+          
+        },
+        
+        ticks: {
+          stepSize:10,
+        }
+      }],
+      xAxes:[{
+        type:'linear',
+        scaleLabel: {
+          display: true, 
+          labelString:'Separator Size [Ae]',
+          fontSize:20,
+        },   
+      }]
+    },
+    
+  };
+
   ChartColors: Color[]=[
     {
       borderColor: 'black',
@@ -124,6 +182,14 @@ export class MeetCriteriaComponent implements OnInit {
       let x3=KQs[2];
       let x4=KQs[3];
       let x5=KQs[4];
+
+      //Bad coding here I know, but not familiar with ts syntax, will fix if have time
+
+      let z1=KQs[0]*38.2;
+      let z2=KQs[1]*38.2;
+      let z3=KQs[2]*38.2;
+      let z4=KQs[3]*38.2;
+      let z5=KQs[4]*38.2;
     
     
 
@@ -135,7 +201,8 @@ export class MeetCriteriaComponent implements OnInit {
 
       this.stepsize_y=(y2-y1)/2;
       this.Loadfactor=this._results.LF_crit;
-    
+      //this.ChartOptions.scales.yAxes[3].ticks.stepSize=1
+      //this.ChartOptions2.scales.yAxes[3].ticks.stepSize=1
  
  
 
@@ -147,6 +214,21 @@ export class MeetCriteriaComponent implements OnInit {
           {x:x3,y:y3},
           {x:x4,y:y4},
           {x:x5,y:y5},
+        ],
+          label: 'Max. flow to reach desired criteria ',
+          pointRadius:10,
+          pointHoverRadius:15,
+          fill: false,
+        },
+       ];
+      
+      this.ChartData2 = [
+        {data: [
+          {x:z1,y:y1},
+          {x:z2,y:y2},
+          {x:z3,y:y3},
+          {x:z4,y:y4},
+          {x:z5,y:y5},
         ],
           label: 'Max. flow to reach desired criteria ',
           pointRadius:10,
