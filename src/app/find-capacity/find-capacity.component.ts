@@ -33,7 +33,7 @@ export class FindCapacityComponent implements OnInit {
   
   //Initial values so I know if something didn't update
   ChartData: ChartDataSets[]= [
-    {data: [1,2,3], label: 'Initial_Data50' },
+    {data: [1,2,3], label: 'Initial_Data' },
    ];
   ChartLabels: Label[]= ["First","Second","Third"];
   
@@ -47,7 +47,7 @@ export class FindCapacityComponent implements OnInit {
   
   ChartOptions={
     title:{
-      text:"Capacity needed for different efficiencies",
+      text:"Separator size req. for different"+`${this._results.separation_result}`,
       display: true,
       fontSize: 30,
     },

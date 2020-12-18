@@ -24,7 +24,7 @@ export class FindQComponent implements OnInit {
 
 
   constructor( 
-    private _results: ResultsService,
+    public _results: ResultsService,
     private _PassToPythonServiceHolder: PassToPythonService,
     private formBuilder: FormBuilder,
 
@@ -85,15 +85,13 @@ ChartOptions={
         
       },
       
-      ticks: {
-        stepSize:this.stepsize_y,
-      }
+    
     }],
     xAxes:[{
       type:'linear',
       scaleLabel: {
         display: true, 
-        labelString:'Residuals [%]',
+        labelString:this._results.separation_result,
         fontSize:20,
       },   
     }]

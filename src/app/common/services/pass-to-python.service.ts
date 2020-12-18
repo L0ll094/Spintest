@@ -15,7 +15,8 @@ export class PassToPythonService {
 
 
   sendEquipmentProperties(data): Observable<any>{
-  
+  //The address below needs to change once it is all inside docker, since the address should
+  //point to the docker network's port where backend sits.
    
     return this.http.post("http://127.0.0.1:5000/send_equipment_properties",data);
     

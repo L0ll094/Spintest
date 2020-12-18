@@ -42,7 +42,7 @@ export class InputFormComponent implements OnInit {
   constructor(
     private _PassToPythonServiceHolder: PassToPythonService,
     private formBuilder: FormBuilder,
-    private _results: ResultsService,
+    public _results: ResultsService,
 
 
     ) {  }
