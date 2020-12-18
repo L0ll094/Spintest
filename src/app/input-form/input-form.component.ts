@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PassToPythonService } from '../common/services/pass-to-python.service';
 import {ResultsService} from '../common/services/results.service';
+import {MatMenuModule} from '@angular/material/menu';
 
 @Component({
   selector: 'app-input-form',
@@ -14,6 +15,7 @@ export class InputFormComponent implements OnInit {
   equipment_properties: FormGroup;
   spin_test_data: FormGroup;
   data;
+
 
   //Options determines if user wants to input their own acc/ret table
   options;

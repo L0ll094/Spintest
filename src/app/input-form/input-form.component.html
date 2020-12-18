@@ -8,10 +8,13 @@
         <mat-card class="input-card"><!--Card with input fields for spin test-->
             <mat-card-header class="welcomeheader">
                 <mat-card-title>Spin Test Data</mat-card-title>
-                <mat-card-subtitle class="infotext">Some data is needed to perform the calculation. Enter information about your spintest. </mat-card-subtitle >
+                <mat-card-subtitle class="infotext">Some data is needed to perform the calculation. Enter information about your spintest.
+                <!--Here put another formgroup with just one control which connects to this._results.separation_result?-->    
+                </mat-card-subtitle >
             </mat-card-header>
 
             <img mat-card-image src="assets/images/3-test-tubes.jpg" alt="Photo of spintest">
+           
 
             <mat-card-content>
                     
@@ -102,22 +105,22 @@
                             
                             <div class="input-table-column">
                                 <mat-form-field class="form-field" appearance="fill">
-                                    <mat-label> {{this.separation_result}} 1 </mat-label>
+                                    <mat-label> {{this._results.separation_result}} 1 </mat-label>
                                         <input type="number" matInput formControlName="residualSolids1" required>
                                 </mat-form-field>     
 
                                 <mat-form-field class="form-field" appearance="fill">
-                                    <mat-label> Residual solids [%] 2 </mat-label>
+                                    <mat-label> {{this._results.separation_result}} 2 </mat-label>
                                         <input type="number" matInput formControlName="residualSolids2" required>
                                 </mat-form-field> 
 
                                 <mat-form-field class="form-field" appearance="fill">
-                                    <mat-label> Residual solids [%] 3 </mat-label>
+                                    <mat-label> {{this._results.separation_result}} 3 </mat-label>
                                         <input type="number" matInput formControlName="residualSolids3" required>
                                 </mat-form-field>
 
                                 <mat-form-field class="form-field" appearance="fill">
-                                    <mat-label> Residual solids [%] 4 </mat-label>
+                                    <mat-label> {{this._results.separation_result}} 4 </mat-label>
                                         <input type="number" matInput formControlName="residualSolids4" required>
                                 </mat-form-field>
 
