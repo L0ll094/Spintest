@@ -22,6 +22,8 @@ export class MeetCriteriaComponent implements OnInit {
   show_results: Boolean=false;//Change for debugging
   stepsize_y=5;
   Loadfactor=0;
+ 
+
 
 
 
@@ -30,8 +32,7 @@ export class MeetCriteriaComponent implements OnInit {
     private _PassToPythonServiceHolder: PassToPythonService,
     private formBuilder: FormBuilder,
     ) {  }
-
-
+  
   //Chart properties are saved as class properties so that they can be more easily passed to the chart element in the
   //html file. They are given fake initial values before they are updated by the "submit"-button
   
@@ -72,7 +73,7 @@ export class MeetCriteriaComponent implements OnInit {
   
   ChartOptions={
     title:{
-      text:"Maximum Q for machine size [KQ]",
+      text:"Maximum Q for machine size KQ [L/h]",
       display: true,
       fontSize: 30,
     },
@@ -98,10 +99,7 @@ export class MeetCriteriaComponent implements OnInit {
           display:true,
           
         },
-        
-        ticks: {
-          stepSize:10,
-        }
+
       }],
       xAxes:[{
         type:'linear',
@@ -142,10 +140,8 @@ export class MeetCriteriaComponent implements OnInit {
           display:true,
           
         },
+ 
         
-        ticks: {
-          stepSize:10,
-        }
       }],
       xAxes:[{
         type:'linear',
@@ -241,6 +237,16 @@ export class MeetCriteriaComponent implements OnInit {
 
 
   ngOnInit() {
+      //For debugging
+    this._results.results_spintest=[10,20,30,40];
+
+    
+    let lowest = this._results.results_spintest[0];
+    let highest=this._results.results_spintest[this._results.results_spintest.length-1];
+    console.log("lowest");
+    console.log(lowest);
+    console.log("Highest:");
+    console.log(highest);
 
     //Yes i know I don't really need a whole group here, but frankly, I have done groups before but not single
     //form controls and I don't have the extra half an hour to deal with the research and debugging. And this works fine.

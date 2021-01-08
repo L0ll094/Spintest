@@ -7,7 +7,11 @@
 
         <mat-card-header class="welcomeheader" >
             <mat-card-title>What's your desired separation?</mat-card-title>
-            <mat-card-subtitle class="infotext">Please ony enter a separation within the bounds of what your spintest achieved.</mat-card-subtitle>
+            <mat-card-subtitle class="infotext">Please ony enter an {{this._results.separation_result}} within the bounds of what your spintest achieved.
+                <br> That is, no lower than {{this._results.results_spintest[0]}} and no higher than {{this._results.results_spintest[this._results.results_spintest.length-1]}} 
+
+
+            </mat-card-subtitle>
         </mat-card-header>
 
         <img mat-card-image src="assets/images/fluid-image.jpg" alt="Photo of spintest">
@@ -65,7 +69,7 @@
                         [plugins]="ChartPlugins">
                 
                     </canvas>
-                <p>Next chart</p>
+      
                     <canvas baseChart 
                     [datasets]="ChartData2" 
                     [options]="ChartOptions2"
@@ -86,10 +90,12 @@
             <mat-card class=row><!--Card that appears only when button "Create Graph" is pressed-->
 
                 <mat-card-header>
-                    <mat-card-title>Load factor to reach criteria</mat-card-title>
-                    <mat-card-subtitle>
-                    LF={{Loadfactor}}
-                    </mat-card-subtitle>
+                    <mat-card-title>Load factor to reach criteria [L/h*KQ]
+                        <br>
+                        <br><p class="Paragraph">LF={{Loadfactor}}</p>
+                        <br>
+                    </mat-card-title>
+          
                 </mat-card-header>
 
                 <mat-card-content >

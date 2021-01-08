@@ -24,6 +24,8 @@
 .Paragraph{
     font-size: x-large;
     padding-top: 25px;
+    font-weight:normal;
+    
 }
 
 .form-field{
