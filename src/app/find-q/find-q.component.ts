@@ -7,6 +7,7 @@ import {ChartDataSets,ChartOptions} from 'chart.js';
 import {Color,Label} from 'ng2-charts';
 import { formatNumber} from '@angular/common';
 import * as crosshair from 'chartjs-plugin-crosshair';
+import {MatMenuModule} from '@angular/material/menu';
 
 @Component({
   selector: 'app-find-q',
@@ -21,10 +22,13 @@ export class FindQComponent implements OnInit {
   efficiencies=[38,22,10,4];
   stepsize_y=5;
   show_results: Boolean=false;//Change for debugging
+  chosen_unit="KQ"; //The user can choose to use KQ or use Ae for their plot
+  //KQ is set as default. The choice is put underneath the picture on the mat-card
 
+  lastAe=0;//When using Ae, this is the latest value that was used to plot in case the user is plotting many times
 
   constructor( 
-    private _results: ResultsService,
+    public _results: ResultsService,
     private _PassToPythonServiceHolder: PassToPythonService,
     private formBuilder: FormBuilder,
 
@@ -85,15 +89,13 @@ ChartOptions={
         
       },
       
-      ticks: {
-        stepSize:this.stepsize_y,
-      }
+    
     }],
     xAxes:[{
       type:'linear',
       scaleLabel: {
         display: true, 
-        labelString:'Residuals [%]',
+        labelString:this._results.separation_result,
         fontSize:20,
       },   
     }]
@@ -156,19 +158,46 @@ ChartColors: Color[]=[
     this.your_KQ=this.formBuilder.group({
       KQ:[null,[Validators.required,]]})
   };
+  changeUnitChoice(unitChoice: string){
+    if (unitChoice=="KQ"){
+      console.log("It is KQ");
+      this.chosen_unit=unitChoice;
+
+    }
+    if (unitChoice=="Ae"){
+      console.log("It is Ae");
+      this.chosen_unit=unitChoice;
+
+    }
+    
+  }
 
 
 
   submit_your_KQ(){
     /*Sends the desired Q along to the backend and decides what to do with the response*/
+    
+
+  
+
     this.show_results=true;
+
+    if(this.chosen_unit=="Ae"){
+        this.your_KQ.value["KQ"]=this.your_KQ.value["KQ"]/38.2;
+      }
+
+ 
+    console.log("This is sent to the backend:");
+    console.log(this.your_KQ.value);
     let data=JSON.stringify(this.your_KQ.value);
+    this.your_KQ.reset()
 
     this._PassToPythonServiceHolder.sendYourKQ(data).subscribe(
       res => {
         console.log("The constant 'resulting flows' has been added to the database:")
         console.log(res)
         let temp=JSON.parse(res)
+        
         this._results.resulting_flows=temp.The_Flows//The 4 resulting flows as a vector
         //this.updateChart();//Updating must happen after results have been recieved
         
