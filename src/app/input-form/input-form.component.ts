@@ -3,6 +3,7 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { PassToPythonService } from '../common/services/pass-to-python.service';
 import {ResultsService} from '../common/services/results.service';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatRadioModule} from '@angular/material/radio';
 
 @Component({
   selector: 'app-input-form',
@@ -17,8 +18,10 @@ export class InputFormComponent implements OnInit {
   data;
 
 
+
   //Options determines if user wants to input their own acc/ret table
   options;
+
   accTable =[
     {time:0, speed: 0},
     {time:6, speed: 600},
@@ -116,6 +119,13 @@ export class InputFormComponent implements OnInit {
     });
 
     
+  }
+  printValue(){
+    console.log("Options is:")
+    console.log(this.options)
+  }
+  isOptionsTrue(){
+    return this.options=='true';
   }
  
 

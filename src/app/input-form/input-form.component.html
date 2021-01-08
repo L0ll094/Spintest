@@ -152,6 +152,9 @@
             <mat-card-content>
                           
                 <div class="form-content">
+
+ 
+
                     <form [formGroup]="equipment_properties" (submit)="submit_Equipment_Properties()">  
                         
                         <mat-form-field class="form-field" appearance="fill">
@@ -232,16 +235,20 @@
                             Submit equipment properties
                         </button> 
                     </form>                  
-                        <p class="Paragraph">Do you want to change these default values?</p>
-                        <input name="options"  [(ngModel)]="options" type="radio" [value]="true" [checked]="options"/> Yes
-                        <input name="options"[(ngModel)]="options" type="radio" [value]="false" [checked]="!options" /> No
+                        <br>
 
-
-                    
+                        <label id="radioButton">Do you want to change these default values?</label>
+                        <mat-radio-group aria-labelledby="radioButton" [(ngModel)]="options">
+                           <br>
+                            <mat-radio-button (click)="printValue()" value="true">Yes</mat-radio-button>
+                            <br>
+                            <mat-radio-button (click)="printValue()" value="false">No</mat-radio-button>
+                          </mat-radio-group>
+                          <div>The value of "options": {{options}}</div>
                         
 
                     <form [formGroup]="equipment_properties">
-                        <div *ngIf="options" class="form-content">                            
+                        <div *ngIf="isOptionsTrue()" class="form-content">                            
                             <div class="input-table">
 
 
