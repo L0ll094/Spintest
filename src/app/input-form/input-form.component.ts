@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators, SelectControlValueAccessor } from '@angular/forms';
 import { PassToPythonService } from '../common/services/pass-to-python.service';
 import {ResultsService} from '../common/services/results.service';
 import {MatMenuModule} from '@angular/material/menu';
@@ -22,6 +22,10 @@ export class InputFormComponent implements OnInit {
   //Options determines if user wants to input their own acc/ret table
   options;
 
+  //change_centrifuge determines if user wants to input their own centrifuge size parameters
+  change_centrifuge;
+
+  //Default values corresponding to the hotspin centrifuge
   accTable =[
     {time:0, speed: 0},
     {time:6, speed: 600},
@@ -38,6 +42,25 @@ export class InputFormComponent implements OnInit {
     {time:15, speed: 600},
     {time:18,speed: 0},
   ];
+
+  default_Rcentrifuge=146.4;
+  default_L1=76.2;
+  default_L2=24.8;
+
+  default_V1=100;
+  default_V2=20;
+
+centrifugeSizes=[
+  {param:"Rcentrifuge [cm]",value: this.default_Rcentrifuge},
+  {param:"L1 [cm]",value:this.default_L1},
+  {param:"L2 [cm]",value:this.default_L2},
+  {param:"V1 [%]",value:this.default_V1},
+  {param:"V2 [%]",value:this.default_V2},
+  
+
+]
+  
+
   
 
 
@@ -55,13 +78,13 @@ export class InputFormComponent implements OnInit {
 
   ngOnInit() {
 
-      
+      //The parameters regarding the centrifuge are voluntary to input
       this.equipment_properties=this.formBuilder.group({
-      Rcentrifuge: [null,[Validators.required,]],
-      L1:[null,[Validators.required,]],
-      L2:[null,[Validators.required,]],
-      V1:[null,[Validators.required,]],
-      V2: [null,[Validators.required]],
+      Rcentrifuge: [null],
+      L1:[null],
+      L2:[null],
+      V1:[null],
+      V2: [null],
       acc_t_1: [null],
       acc_t_2: [null],
       acc_t_3: [null],
@@ -120,22 +143,22 @@ export class InputFormComponent implements OnInit {
 
     
   }
-  printValue(){
-    console.log("Options is:")
-    console.log(this.options)
+  printValue() {
+    console.log("Value of options:");
+    console.log(this.options);
   }
+
   isOptionsTrue(){
-    return this.options=='true';
+    return this.options=='yes';
   }
- 
+  isChange_centrifugeTrue(){
+    return this.change_centrifuge=='yes';
+  }
 
   submit_Equipment_Properties(){
-    /*Saves the inputed equipment properties */
+
     
-    let data=JSON.stringify(this.equipment_properties.value);
-    console.log(data)
-    
-   if(this.options){
+   if(this.options=='yes'){
     /*If new values for the acceleration and retardation were given, do nothing*/
  
 
@@ -171,6 +194,26 @@ export class InputFormComponent implements OnInit {
      this.equipment_properties.controls['ret_rpm_5'].setValue(this.retTable[4].speed);
      this.equipment_properties.controls['ret_rpm_6'].setValue(this.retTable[5].speed);    
    }
+
+   if (this.change_centrifuge='yes'){
+     //if new values for the centrifuge were given, do nothing.
+   }
+
+   else{
+     //If no new values were given, use defaults.
+    this.equipment_properties.controls['Rcentrifuge'].setValue(this.default_Rcentrifuge);
+    this.equipment_properties.controls['L1'].setValue(this.default_L1);
+    this.equipment_properties.controls['L2'].setValue(this.default_L2);
+  
+    this.equipment_properties.controls['V1'].setValue(this.default_V1);
+    this.equipment_properties.controls['V2'].setValue(this.default_V2);
+
+   }
+
+       /*Saves the inputed equipment properties */
+    
+    let data=JSON.stringify(this.equipment_properties.value);
+    console.log(data)
 
     this._PassToPythonServiceHolder.sendEquipmentProperties(data).subscribe(
       res => {

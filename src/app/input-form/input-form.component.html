@@ -1,218 +1,219 @@
+<div class="flex-container">
 
 
+    <mat-card class="input-card">
+        <!--Card with input fields for spin test-->
+        <mat-card-header class="welcomeheader">
+            <mat-card-title>Spin Test Data</mat-card-title>
+            <mat-card-subtitle class="infotext">Some data is needed to perform the calculation. Enter information about
+                your spintest.
+                <!--Here put another formgroup with just one control which connects to this._results.separation_result?-->
+            </mat-card-subtitle>
+        </mat-card-header>
+
+        <img mat-card-image src="assets/images/3-test-tubes.jpg" alt="Photo of spintest">
 
 
-<div class="flex-container" >
-        
-       
-        <mat-card class="input-card"><!--Card with input fields for spin test-->
-            <mat-card-header class="welcomeheader">
-                <mat-card-title>Spin Test Data</mat-card-title>
-                <mat-card-subtitle class="infotext">Some data is needed to perform the calculation. Enter information about your spintest.
-                <!--Here put another formgroup with just one control which connects to this._results.separation_result?-->    
-                </mat-card-subtitle >
-            </mat-card-header>
+        <mat-card-content>
 
-            <img mat-card-image src="assets/images/3-test-tubes.jpg" alt="Photo of spintest">
-           
+            <div class="form-content">
+                <form [formGroup]="spin_test_data" (submit)="submit_Spin_Test_Data()">
 
-            <mat-card-content>
-                    
-                <div class="form-content">
-                        <form [formGroup]="spin_test_data" (submit)="submit_Spin_Test_Data()">
-                                
-                        <div class="input-table">
+                    <div class="input-table">
 
 
-                            <div class="input-table-column">
-                                <div class="form-label">
-                                    <mat-label class="label"> Sample Tube 1</mat-label>
-                                    <mat-form-field class="form-field" appearance="fill">
-                                        <mat-label> Nr of starts 1</mat-label>
-                                        <input type="number" matInput formControlName="Nstart1" required>
-                                    </mat-form-field>   
-                                </div>   
-                                <div class="form-label">
-                                    <mat-label class="label"> Sample Tube 2</mat-label>
-                                    <mat-form-field class="form-field" appearance="fill">
-                                        <mat-label> Nr of starts 2 </mat-label>
-                                        <input type="number" matInput formControlName="Nstart2" required>
-                                    </mat-form-field> 
-                                </div>
-
-                                <div class="form-label">
-                                    <mat-label class="label"> Sample Tube 3</mat-label>
-                                    <mat-form-field class="form-field" appearance="fill">
-                                        <mat-label> Nr of starts 3</mat-label>
-                                        <input type="number" matInput formControlName="Nstart3" required>
-                                    </mat-form-field>
-                                </div>
-
-                                <div class="form-label">
-                                    <mat-label class="label"> Sample Tube 4</mat-label>
-                                    <mat-form-field class="form-field" appearance="fill">
-                                        <mat-label> Nr of starts 4</mat-label>
-                                        <input type="number" matInput formControlName="Nstart4" required>
+                        <div class="input-table-column">
+                            <div class="form-label">
+                                <mat-label class="label"> Sample Tube 1</mat-label>
+                                <mat-form-field class="form-field" appearance="fill">
+                                    <mat-label> Nr of starts 1</mat-label>
+                                    <input type="number" matInput formControlName="Nstart1" required>
                                 </mat-form-field>
-                                </div>
                             </div>
-
-
-                            <div class="input-table-column">
+                            <div class="form-label">
+                                <mat-label class="label"> Sample Tube 2</mat-label>
                                 <mat-form-field class="form-field" appearance="fill">
-                                    <mat-label> Spin time 1 </mat-label>
-                                        <input type="time" matInput formControlName="spintime1" required>
-                                </mat-form-field>     
-
-                                <mat-form-field class="form-field" appearance="fill">
-                                    <mat-label> Spin time 2 </mat-label>
-                                        <input type="time" matInput formControlName="spintime2" required>
-                                </mat-form-field>
-
-                                <mat-form-field class="form-field" appearance="fill">
-                                    <mat-label> Spin time 3 </mat-label>
-                                        <input type="time" matInput formControlName="spintime3" required>
-                                </mat-form-field>
-
-                                <mat-form-field class="form-field" appearance="fill">
-                                    <mat-label> Spin time 4 </mat-label>
-                                        <input type="time" matInput formControlName="spintime4" required>
+                                    <mat-label> Nr of starts 2 </mat-label>
+                                    <input type="number" matInput formControlName="Nstart2" required>
                                 </mat-form-field>
                             </div>
 
-                            <div class="input-table-column">
+                            <div class="form-label">
+                                <mat-label class="label"> Sample Tube 3</mat-label>
                                 <mat-form-field class="form-field" appearance="fill">
-                                    <mat-label> Speed [rpm] 1 </mat-label>
-                                        <input type="number" matInput formControlName="speed1" required>
-                                </mat-form-field>
-
-                                <mat-form-field class="form-field" appearance="fill">
-                                    <mat-label> Speed [rpm] 2 </mat-label>
-                                        <input type="number" matInput formControlName="speed2" required>
-                                </mat-form-field>
-
-                                <mat-form-field class="form-field" appearance="fill">
-                                    <mat-label> Speed [rpm] 3 </mat-label>
-                                        <input type="number" matInput formControlName="speed3" required>
-                                </mat-form-field>
-
-                                <mat-form-field class="form-field" appearance="fill">
-                                    <mat-label> Speed [rpm] 4 </mat-label>
-                                        <input type="number" matInput formControlName="speed4" required>
+                                    <mat-label> Nr of starts 3</mat-label>
+                                    <input type="number" matInput formControlName="Nstart3" required>
                                 </mat-form-field>
                             </div>
 
-                            
-                            <div class="input-table-column">
+                            <div class="form-label">
+                                <mat-label class="label"> Sample Tube 4</mat-label>
                                 <mat-form-field class="form-field" appearance="fill">
-                                    <mat-label> {{this._results.separation_result}} 1 </mat-label>
-                                        <input type="number" matInput formControlName="residualSolids1" required>
-                                </mat-form-field>     
-
-                                <mat-form-field class="form-field" appearance="fill">
-                                    <mat-label> {{this._results.separation_result}} 2 </mat-label>
-                                        <input type="number" matInput formControlName="residualSolids2" required>
-                                </mat-form-field> 
-
-                                <mat-form-field class="form-field" appearance="fill">
-                                    <mat-label> {{this._results.separation_result}} 3 </mat-label>
-                                        <input type="number" matInput formControlName="residualSolids3" required>
+                                    <mat-label> Nr of starts 4</mat-label>
+                                    <input type="number" matInput formControlName="Nstart4" required>
                                 </mat-form-field>
-
-                                <mat-form-field class="form-field" appearance="fill">
-                                    <mat-label> {{this._results.separation_result}} 4 </mat-label>
-                                        <input type="number" matInput formControlName="residualSolids4" required>
-                                </mat-form-field>
-
                             </div>
-                            
-                        </div>  
+                        </div>
 
-                        <button mat-raised-button color="primary" type="submit">
-                            Submit spintest data
-                        </button>
-                    
-                    </form>
-                        
-                </div>
+
+                        <div class="input-table-column">
+                            <mat-form-field class="form-field" appearance="fill">
+                                <mat-label> Spin time 1 </mat-label>
+                                <input type="time" matInput formControlName="spintime1" required>
+                            </mat-form-field>
+
+                            <mat-form-field class="form-field" appearance="fill">
+                                <mat-label> Spin time 2 </mat-label>
+                                <input type="time" matInput formControlName="spintime2" required>
+                            </mat-form-field>
+
+                            <mat-form-field class="form-field" appearance="fill">
+                                <mat-label> Spin time 3 </mat-label>
+                                <input type="time" matInput formControlName="spintime3" required>
+                            </mat-form-field>
+
+                            <mat-form-field class="form-field" appearance="fill">
+                                <mat-label> Spin time 4 </mat-label>
+                                <input type="time" matInput formControlName="spintime4" required>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="input-table-column">
+                            <mat-form-field class="form-field" appearance="fill">
+                                <mat-label> Speed [rpm] 1 </mat-label>
+                                <input type="number" matInput formControlName="speed1" required>
+                            </mat-form-field>
+
+                            <mat-form-field class="form-field" appearance="fill">
+                                <mat-label> Speed [rpm] 2 </mat-label>
+                                <input type="number" matInput formControlName="speed2" required>
+                            </mat-form-field>
+
+                            <mat-form-field class="form-field" appearance="fill">
+                                <mat-label> Speed [rpm] 3 </mat-label>
+                                <input type="number" matInput formControlName="speed3" required>
+                            </mat-form-field>
+
+                            <mat-form-field class="form-field" appearance="fill">
+                                <mat-label> Speed [rpm] 4 </mat-label>
+                                <input type="number" matInput formControlName="speed4" required>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="input-table-column">
+                            <mat-form-field class="form-field" appearance="fill">
+                                <mat-label> {{this._results.separation_result}} 1 </mat-label>
+                                <input type="number" matInput formControlName="residualSolids1" required>
+                            </mat-form-field>
+
+                            <mat-form-field class="form-field" appearance="fill">
+                                <mat-label> {{this._results.separation_result}} 2 </mat-label>
+                                <input type="number" matInput formControlName="residualSolids2" required>
+                            </mat-form-field>
+
+                            <mat-form-field class="form-field" appearance="fill">
+                                <mat-label> {{this._results.separation_result}} 3 </mat-label>
+                                <input type="number" matInput formControlName="residualSolids3" required>
+                            </mat-form-field>
+
+                            <mat-form-field class="form-field" appearance="fill">
+                                <mat-label> {{this._results.separation_result}} 4 </mat-label>
+                                <input type="number" matInput formControlName="residualSolids4" required>
+                            </mat-form-field>
+
+                        </div>
+
+                    </div>
+
+                    <button mat-raised-button color="primary" type="submit">
+                        Submit spintest data
+                    </button>
+
+                </form>
+
+            </div>
+
+        </mat-card-content>
+    </mat-card>
+
+
+
+    <mat-card class="input-card">
+        <!--Card with input field for equipment properties-->
+
+        <mat-card-header class="welcomeheader">
+            <mat-card-title>Centrifuge and test tube</mat-card-title>
+            <mat-card-subtitle class="infotext">A swing out centrifuge is needed for this experiment, so that all test
+                tubes will be horizontal during the spinning.
+                <br>Enter the indicated measurements in the desired unit [to be set].The centrifuge does not have to be
+                identical to the image.
+            </mat-card-subtitle>
+        </mat-card-header>
+
+        <img mat-card-image src="assets/images/centrifuge.JPG" alt="Photo of spintest">
+
+        <mat-card-content>
+
+            <div class="form-content">
                 
-            </mat-card-content>
-        </mat-card>
-
-        <mat-card class="input-card" ><!--Card with input field for equipment properties-->
-
-            <mat-card-header class="welcomeheader">
-                <mat-card-title>Centrifuge and test tube</mat-card-title>
-                <mat-card-subtitle class="infotext">A swing out centrifuge is needed for this experiment, so that all test tubes will be horizontal during the spinning. 
-                    <br>Enter the indicated measurements in the desired unit [to be set].The centrifuge does not have to be identical to the image.</mat-card-subtitle>
-            </mat-card-header>
-
-            <img mat-card-image src="assets/images/centrifuge.JPG" alt="Photo of spintest">
-
-            <mat-card-content>
-                          
-                <div class="form-content">
-
- 
-
-                    <form [formGroup]="equipment_properties" (submit)="submit_Equipment_Properties()">  
-                        
-                        <mat-form-field class="form-field" appearance="fill">
-                            <mat-label> Radius from center of centrifuge to end of the test tube when it is horizontal [cm]. </mat-label>
-                            <input type="number" matInput formControlName="Rcentrifuge" required>
-                        </mat-form-field>
-                        
-                        <mat-form-field class="form-field" appearance="fill">
-                            <mat-label> Vol% at V1, recommended to be 100% </mat-label>
-                            <input type="number" matInput formControlName="V1" required>
-                        </mat-form-field>
-
-                        <mat-form-field class="form-field" appearance="fill">
-                            <mat-label> Vol% at V2, choose whatever point is easy to measure. </mat-label>
-                            <input type="number" matInput formControlName="V2" required>
-                        </mat-form-field>
-
-                        <mat-form-field class="form-field" appearance="fill">
-                            <mat-label> Length L1 [cm] </mat-label>
-                            <input type="number" matInput formControlName="L1" required>
-                        </mat-form-field>
-                        
-                        <mat-form-field class="form-field" appearance="fill">
-                            <mat-label> Length L2 [cm]. </mat-label>
-                            <input type="number" matInput formControlName="L2" required>
-                        </mat-form-field>
-
-                    
-                        
-                
-
-
-                        <div class="Datatable-div">
-                            <h1 class=Datatable-headers>Default Acceleration Table</h1>
+                    <br>
+                    <br>
+                    <p> If the Alfa Laval Hotspin was used, don't change the default values. If another swing out
+                        centrifuge
+                        was used, please input the appropriate parameters</p>
+                    <br>
+                    <div class="Datatable-div">
+                    <h1 class=Datatable-headers>Default Centrifuge Sizes</h1>
                         <table class="Datatable">
                             <thead>
-                                    <tr class=Datatable-rowsH>
-                                        <th>Time [s]</th>
-                                        <th>Rotational Speed [rpm]</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                                <tr class=Datatable-rows>
+                                    <th>Parameter</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="Datatable-rows" *ngFor='let data of centrifugeSizes'>
+                                    <td>{{data.param}}</td>
+                                    <td>{{data.value}}</td>
 
-                                    <tr class="Datatable-rows" *ngFor='let data of accTable'>
-                                        <td>{{data.time}}</td>
-                                        <td>{{data.speed}}</td>
+                                </tr>
 
-                                    </tr>
-
-                                </tbody>
+                            </tbody>
                         </table>
-                        </div>
-                        <div class="Datatable-div">
+                    </div>
+
+                    
+                    
+                    <div class="Datatable-div">
+                        <h1 class=Datatable-headers>Default Acceleration Table</h1>
+                        <table class="Datatable">
+                            <thead>
+                                <tr class=Datatable-rows>
+                                    <th>Time [s]</th>
+                                    <th>Rotational Speed [rpm]</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="Datatable-rows" *ngFor='let data of accTable'>
+                                    <td>{{data.time}}</td>
+                                    <td>{{data.speed}}</td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+
+                    </div>
+
+
+                    <div class="Datatable-div">
                         <h1 class=Datatable-headers> Default Retardation Table</h1>
 
                         <table class="Datatable">
                             <thead>
-                                <tr class=Datatable-rowsH>
+                                <tr class=Datatable-rows>
                                     <th>Time [s]</th>
                                     <th>Rotational Speed [rpm]</th>
                                 </tr>
@@ -226,236 +227,291 @@
                                 </tr>
 
                             </tbody>
-                            </table>
+                        </table>
+
+
+                    </div>
+
+                    
+                    <!--This is the radiobutton choice for centrifuge size parameters-->
+                    <br>
+                    <br>
+                    <br>
+                    <label class="Paragraph" id="radioButton1">Do you want to change the default values for the centrifuge size parameters?</label>
+                    <br>
+                    <mat-radio-group aria-labelledby="radioButton1" [(ngModel)]="change_centrifuge">
+                        <br>
+                        <mat-radio-button value="yes">Yes</mat-radio-button>
+                        <br>
+                        <mat-radio-button value="no">No</mat-radio-button>
+                    </mat-radio-group>
+
+                    
+
+                     <!--This is the radiobutton choice foracc and ret-->
+                     <br>
+                     <br>
+                     <br>
+                     <label class="Paragraph" id="radioButton2">Do you want to change the default values for the acceleration and retardation?</label>
+                     <div class="spacious_button">
+                         <mat-radio-group aria-labelledby="radioButton2" [(ngModel)]="options">
+                             <br>
+                             <mat-radio-button value="yes">Yes</mat-radio-button>
+                             <br>
+                             <mat-radio-button value="no">No</mat-radio-button>
+                         </mat-radio-group>
+                         <br>
+                          This is the value of options: {{options}}
+                     </div>
+                     <br>
+
+                <form [formGroup]="equipment_properties" (submit)="submit_Equipment_Properties()">
+                    <div *ngIf="isChange_centrifugeTrue()">
+                        <mat-form-field class="form-field" appearance="fill">
+                            <mat-label> Radius from center of centrifuge to end of the test tube when it is horizontal
+                                [cm]. </mat-label>
+                            <input type="number" matInput formControlName="Rcentrifuge">
+                        </mat-form-field>
+
+                        <mat-form-field class="form-field" appearance="fill">
+                            <mat-label> Vol% at V1, recommended to be 100% </mat-label>
+                            <input type="number" matInput formControlName="V1">
+                        </mat-form-field>
+
+                        <mat-form-field class="form-field" appearance="fill">
+                            <mat-label> Vol% at V2, choose whatever point is easy to measure. </mat-label>
+                            <input type="number" matInput formControlName="V2">
+                        </mat-form-field>
+
+                        <mat-form-field class="form-field" appearance="fill">
+                            <mat-label> Length L1 [cm] </mat-label>
+                            <input type="number" matInput formControlName="L1">
+                        </mat-form-field>
+
+                        <mat-form-field class="form-field" appearance="fill">
+                            <mat-label> Length L2 [cm]. </mat-label>
+                            <input type="number" matInput formControlName="L2">
+                        </mat-form-field>
+                    </div>
+
+                    <div *ngIf="isOptionsTrue()">
+                        <div class="input-table">
+
+
+                            <div class="input-table-column">
+                                <div class="form-label">
+
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Acc Time [s]</mat-label>
+                                        <input type="number" matInput formControlName="acc_t_1">
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-label">
+
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Acc Time [s] </mat-label>
+                                        <input type="number" matInput formControlName="acc_t_2">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="form-label">
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Acc Time [s]</mat-label>
+                                        <input type="number" matInput formControlName="acc_t_3">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="form-label">
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Acc Time [s]</mat-label>
+                                        <input type="number" matInput formControlName="acc_t_4">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="form-label">
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Acc Time [s]</mat-label>
+                                        <input type="number" matInput formControlName="acc_t_5">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="form-label">
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Acc Time [s]</mat-label>
+                                        <input type="number" matInput formControlName="acc_t_6">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+
+                            <div class="input-table-column">
+
+
+                                <div class="form-label">
+
+
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Acc Speed [rpm] </mat-label>
+                                        <input type="number" matInput formControlName="acc_rpm_1">
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-label">
+
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Acc Speed [rpm] </mat-label>
+                                        <input type="number" matInput formControlName="acc_rpm_2">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="form-label">
+
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Acc Speed [rpm]</mat-label>
+                                        <input type="number" matInput formControlName="acc_rpm_3">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="form-label">
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Acc Speed [rpm]</mat-label>
+                                        <input type="number" matInput formControlName="acc_rpm_4">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="form-label">
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Acc Speed [rpm]</mat-label>
+                                        <input type="number" matInput formControlName="acc_rpm_5">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="form-label">
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Acc Speed [rpm]</mat-label>
+                                        <input type="number" matInput formControlName="acc_rpm_6">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+
+                            <div class="input-table-column">
+
+
+                                <div class="form-label">
+
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Ret Time [s]</mat-label>
+                                        <input type="number" matInput formControlName="ret_t_1">
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-label">
+
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Ret Time [s] </mat-label>
+                                        <input type="number" matInput formControlName="ret_t_2">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="form-label">
+
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Ret Time [s]</mat-label>
+                                        <input type="number" matInput formControlName="ret_t_3">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="form-label">
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Ret Time [s]</mat-label>
+                                        <input type="number" matInput formControlName="ret_t_4">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="form-label">
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Ret Time [s]</mat-label>
+                                        <input type="number" matInput formControlName="ret_t_5">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="form-label">
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Ret Time [s]</mat-label>
+                                        <input type="number" matInput formControlName="ret_t_6">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+
+                            <div class="input-table-column">
+                                <div class="form-label">
+
+
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Ret Speed [rpm]</mat-label>
+                                        <input type="number" matInput formControlName="ret_rpm_1">
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-label">
+
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Ret Speed [rpm] </mat-label>
+                                        <input type="number" matInput formControlName="ret_rpm_2">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="form-label">
+
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Ret Speed [rpm]</mat-label>
+                                        <input type="number" matInput formControlName="ret_rpm_3">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="form-label">
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Ret Speed [rpm]</mat-label>
+                                        <input type="number" matInput formControlName="ret_rpm_4">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="form-label">
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Ret Speed [rpm]</mat-label>
+                                        <input type="number" matInput formControlName="ret_rpm_5">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="form-label">
+                                    <mat-form-field class="form-field" appearance="fill">
+                                        <mat-label> Ret Speed [rpm]</mat-label>
+                                        <input type="number" matInput formControlName="ret_rpm_6">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
 
 
                         </div>
-                        
+                    </div>
+
+                    <div class="spacious_button">
                         <button mat-raised-button color="primary" type="submit">
                             Submit equipment properties
-                        </button> 
-                    </form>                  
-                        <br>
+                        </button>
+                    </div>
 
-                        <label id="radioButton">Do you want to change these default values?</label>
-                        <mat-radio-group aria-labelledby="radioButton" [(ngModel)]="options">
-                           <br>
-                            <mat-radio-button (click)="printValue()" value="true">Yes</mat-radio-button>
-                            <br>
-                            <mat-radio-button (click)="printValue()" value="false">No</mat-radio-button>
-                          </mat-radio-group>
-                          <div>The value of "options": {{options}}</div>
-                        
-
-                    <form [formGroup]="equipment_properties">
-                        <div *ngIf="isOptionsTrue()" class="form-content">                            
-                            <div class="input-table">
+                </form>
 
 
-                                <div class="input-table-column">
-                                    <div class="form-label">
-                                                                        
-                                        <mat-form-field class="form-field" appearance="fill">
-                                            <mat-label> Acc Time [s]</mat-label>
-                                            <input type="number" matInput formControlName="acc_t_1" >
-                                        </mat-form-field>   
-                                    </div>   
-                                    <div class="form-label">
-                                        
-                                        <mat-form-field class="form-field" appearance="fill">
-                                            <mat-label> Acc Time [s] </mat-label>
-                                            <input type="number" matInput formControlName="acc_t_2" >
-                                        </mat-form-field> 
-                                    </div>
 
-                                    <div class="form-label">
-                                        <mat-form-field class="form-field" appearance="fill">
-                                            <mat-label> Acc Time [s]</mat-label>
-                                            <input type="number" matInput formControlName="acc_t_3" >
-                                        </mat-form-field>
-                                    </div>
-
-                                    <div class="form-label">
-                                        <mat-form-field class="form-field" appearance="fill">
-                                            <mat-label> Acc Time [s]</mat-label>
-                                            <input type="number" matInput formControlName="acc_t_4" >
-                                    </mat-form-field>
-                                    </div>
-
-                                    <div class="form-label">
-                                        <mat-form-field class="form-field" appearance="fill">
-                                            <mat-label> Acc Time [s]</mat-label>
-                                            <input type="number" matInput formControlName="acc_t_5" >
-                                    </mat-form-field>
-                                    </div>
-
-                                    <div class="form-label">
-                                        <mat-form-field class="form-field" appearance="fill">
-                                            <mat-label> Acc Time [s]</mat-label>
-                                            <input type="number" matInput formControlName="acc_t_6" >
-                                    </mat-form-field>
-                                    </div>
-                                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
 
 
-                                <div class="input-table-column">
-
-                                    
-                                    <div class="form-label">
-                                        
-                                        
-                                        <mat-form-field class="form-field" appearance="fill">
-                                            <mat-label> Acc Speed [rpm] </mat-label>
-                                            <input type="number" matInput formControlName="acc_rpm_1" >
-                                        </mat-form-field>   
-                                    </div>   
-                                    <div class="form-label">
-                                        
-                                        <mat-form-field class="form-field" appearance="fill">
-                                            <mat-label> Acc Speed [rpm] </mat-label>
-                                            <input type="number" matInput formControlName="acc_rpm_2" >
-                                        </mat-form-field> 
-                                    </div>
-
-                                    <div class="form-label">
-                                    
-                                        <mat-form-field class="form-field" appearance="fill">
-                                            <mat-label> Acc Speed [rpm]</mat-label>
-                                            <input type="number" matInput formControlName="acc_rpm_3" >
-                                        </mat-form-field>
-                                    </div>
-
-                                    <div class="form-label">
-                                        <mat-form-field class="form-field" appearance="fill">
-                                            <mat-label> Acc Speed [rpm]</mat-label>
-                                            <input type="number" matInput formControlName="acc_rpm_4" >
-                                    </mat-form-field>
-                                    </div>
-                                    
-                                    <div class="form-label">
-                                        <mat-form-field class="form-field" appearance="fill">
-                                            <mat-label> Acc Speed [rpm]</mat-label>
-                                            <input type="number" matInput formControlName="acc_rpm_5" >
-                                    </mat-form-field>
-                                    </div>
-
-                                    <div class="form-label">
-                                        <mat-form-field class="form-field" appearance="fill">
-                                            <mat-label> Acc Speed [rpm]</mat-label>
-                                            <input type="number" matInput formControlName="acc_rpm_6" >
-                                    </mat-form-field>
-                                    </div>
-                                </div>
 
 
-                                <div class="input-table-column">
 
-
-                                    <div class="form-label">
-                                                                    
-                                        <mat-form-field class="form-field" appearance="fill">
-                                            <mat-label> Ret Time [s]</mat-label>
-                                            <input type="number" matInput formControlName="ret_t_1" >
-                                        </mat-form-field>   
-                                    </div>   
-                                    <div class="form-label">
-                                        
-                                        <mat-form-field class="form-field" appearance="fill">
-                                            <mat-label> Ret Time [s] </mat-label>
-                                            <input type="number" matInput formControlName="ret_t_2" >
-                                        </mat-form-field> 
-                                    </div>
-
-                                    <div class="form-label">
-                                    
-                                        <mat-form-field class="form-field" appearance="fill">
-                                            <mat-label> Ret Time [s]</mat-label>
-                                            <input type="number" matInput formControlName="ret_t_3" >
-                                        </mat-form-field>
-                                    </div>
-
-                                    <div class="form-label">
-                                        <mat-form-field class="form-field" appearance="fill">
-                                            <mat-label> Ret Time [s]</mat-label>
-                                            <input type="number" matInput formControlName="ret_t_4" >
-                                    </mat-form-field>
-                                    </div>
-                                    
-                                    <div class="form-label">
-                                        <mat-form-field class="form-field" appearance="fill">
-                                            <mat-label> Ret Time [s]</mat-label>
-                                            <input type="number" matInput formControlName="ret_t_5" >
-                                    </mat-form-field>
-                                    </div>
-
-                                    <div class="form-label">
-                                        <mat-form-field class="form-field" appearance="fill">
-                                            <mat-label> Ret Time [s]</mat-label>
-                                            <input type="number" matInput formControlName="ret_t_6" >
-                                    </mat-form-field>
-                                    </div>
-                                </div>
-
-                                
-                                <div class="input-table-column">
-                                    <div class="form-label">
-                                        
-                                        
-                                        <mat-form-field class="form-field" appearance="fill">
-                                            <mat-label> Ret Speed [rpm]</mat-label>
-                                            <input type="number" matInput formControlName="ret_rpm_1" >
-                                        </mat-form-field>   
-                                    </div>   
-                                    <div class="form-label">
-                                        
-                                        <mat-form-field class="form-field" appearance="fill">
-                                            <mat-label> Ret Speed [rpm] </mat-label>
-                                            <input type="number" matInput formControlName="ret_rpm_2" >
-                                        </mat-form-field> 
-                                    </div>
-
-                                    <div class="form-label">
-                                    
-                                        <mat-form-field class="form-field" appearance="fill">
-                                            <mat-label> Ret Speed [rpm]</mat-label>
-                                            <input type="number" matInput formControlName="ret_rpm_3" >
-                                        </mat-form-field>
-                                    </div>
-
-                                    <div class="form-label">
-                                        <mat-form-field class="form-field" appearance="fill">
-                                            <mat-label> Ret Speed [rpm]</mat-label>
-                                            <input type="number" matInput formControlName="ret_rpm_4" >
-                                    </mat-form-field>
-                                    </div>
-                                    
-                                    <div class="form-label">
-                                        <mat-form-field class="form-field" appearance="fill">
-                                            <mat-label> Ret Speed [rpm]</mat-label>
-                                            <input type="number" matInput formControlName="ret_rpm_5" >
-                                    </mat-form-field>
-                                    </div>
-
-                                    <div class="form-label">
-                                        <mat-form-field class="form-field" appearance="fill">
-                                            <mat-label> Ret Speed [rpm]</mat-label>
-                                            <input type="number" matInput formControlName="ret_rpm_6" >
-                                    </mat-form-field>
-                                    </div>
-                                </div>
-
-
-                                
-                            </div>  
-                        </div>
-                    </form>
-                </div>
-            </mat-card-content>
-        </mat-card>
-
-    
-    
-    
-    
 
 </div>
