@@ -22,7 +22,8 @@
                 <form [formGroup]="the_input" (submit)="submit_your_data()">  
                     
                     <mat-form-field class="form-field" appearance="fill">
-                        <mat-label> Criteria in {{this._results.separation_result}}</mat-label>
+                        <mat-label> Criteria in {{this._results.separation_result}}. 
+                            Below {{this._results.results_spintest[0]}} and above {{this._results.results_spintest[this._results.results_spintest.length-1]}} </mat-label>
                         <input type="number" matInput formControlName="criteria" >
                     </mat-form-field>
                     
