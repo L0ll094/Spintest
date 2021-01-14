@@ -15,5 +15,23 @@
     font-size: large;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
+.mainToolbar{
+    position:sticky;
+    top: 0; /* Sets the sticky toolbar to be on top */
+    z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+    display: flex;
+    justify-content:space-around;
 
+}
+.mainRow{
    
+   
+    display: flex;
+    justify-content:space-around;
+
+}
+   
+.Small_note{
+    font-size:x-small;
+    padding:0px;
+}
