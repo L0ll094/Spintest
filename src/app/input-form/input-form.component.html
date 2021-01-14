@@ -21,7 +21,7 @@
 
                     <div class="input-table">
 
-
+                        <!--Column with number of starts-->
                         <div class="input-table-column">
                             <div class="form-label">
                                 <mat-label class="label"> Sample Tube 1</mat-label>
@@ -55,29 +55,29 @@
                             </div>
                         </div>
 
-
+                         <!--Column with spintime-->
                         <div class="input-table-column">
                             <mat-form-field class="form-field" appearance="fill">
-                                <mat-label> Spin time 1 </mat-label>
-                                <input type="time" matInput formControlName="spintime1" required>
+                                <mat-label> Spin time 1 [min] </mat-label>
+                                <input type="number" matInput formControlName="spintime1" required>
                             </mat-form-field>
 
                             <mat-form-field class="form-field" appearance="fill">
-                                <mat-label> Spin time 2 </mat-label>
-                                <input type="time" matInput formControlName="spintime2" required>
+                                <mat-label> Spin time 2 [min] </mat-label>
+                                <input type="number" matInput formControlName="spintime2" required>
                             </mat-form-field>
 
                             <mat-form-field class="form-field" appearance="fill">
-                                <mat-label> Spin time 3 </mat-label>
-                                <input type="time" matInput formControlName="spintime3" required>
+                                <mat-label> Spin time 3 [min]</mat-label>
+                                <input type="number" matInput formControlName="spintime3" required>
                             </mat-form-field>
 
                             <mat-form-field class="form-field" appearance="fill">
-                                <mat-label> Spin time 4 </mat-label>
-                                <input type="time" matInput formControlName="spintime4" required>
+                                <mat-label> Spin time 4 [min]</mat-label>
+                                <input type="number" matInput formControlName="spintime4" required>
                             </mat-form-field>
                         </div>
-
+                         <!--Column with spinning speed-->
                         <div class="input-table-column">
                             <mat-form-field class="form-field" appearance="fill">
                                 <mat-label> Speed [rpm] 1 </mat-label>
@@ -99,7 +99,7 @@
                                 <input type="number" matInput formControlName="speed4" required>
                             </mat-form-field>
                         </div>
-
+                         <!--Column with resulting heavy phase in the "product flow"-->
                         <div class="input-table-column">
                             <mat-form-field class="form-field" appearance="fill">
                                 <mat-label> {{this._results.separation_result}} 1 </mat-label>

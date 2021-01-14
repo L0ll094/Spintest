@@ -36,10 +36,10 @@ export class InputFormComponent implements OnInit {
   ];
   retTable=[
     {time:0, speed: 3000},
-    {time:6, speed: 2400},
-    {time:9, speed: 1800},
-    {time:12, speed: 1200},
-    {time:15, speed: 600},
+    {time:3, speed: 2400},
+    {time:6, speed: 1800},
+    {time:9, speed: 1200},
+    {time:12, speed: 600},
     {time:18,speed: 0},
   ];
 
