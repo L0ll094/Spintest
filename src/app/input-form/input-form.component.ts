@@ -195,7 +195,7 @@ centrifugeSizes=[
      this.equipment_properties.controls['ret_rpm_6'].setValue(this.retTable[5].speed);    
    }
 
-   if (this.change_centrifuge='yes'){
+   if (this.change_centrifuge=='yes'){
      //if new values for the centrifuge were given, do nothing.
    }
 
