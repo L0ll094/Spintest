@@ -77,7 +77,8 @@ ChartOptions={
   },
   
   scales:{
-    yAxes:[{
+    xAxes:[{
+      type:'linear',
       scaleLabel: {
         display: true, 
         labelString:'Flow Q [L per h]',
@@ -91,8 +92,8 @@ ChartOptions={
       
     
     }],
-    xAxes:[{
-      type:'linear',
+    yAxes:[{
+      
       scaleLabel: {
         display: true, 
         labelString:this._results.separation_result,
@@ -117,22 +118,26 @@ ChartColors: Color[]=[
     //in case you want to try different parameter one after another
 
     let Qs=this._results.resulting_flows;
+    console.log("These are the Q-vector:");
+    console.log(this._results.resulting_flows);
     
 
-    let x1=this.efficiencies[0];
-    let x2=this.efficiencies[1];
-    let x3=this.efficiencies[2];
-    let x4=this.efficiencies[3];
+    let y1=this.efficiencies[0];
+    let y2=this.efficiencies[1];
+    let y3=this.efficiencies[2];
+    let y4=this.efficiencies[3];
+    console.log("These are the Efficiencies:");
+    console.log(this.efficiencies)
    
   
   
 
-    let y1=Qs[0];
-    let y2=Qs[1];
-    let y3=Qs[2];
-    let y4=Qs[3];
+    let x1=Qs[0];
+    let x2=Qs[1];
+    let x3=Qs[2];
+    let x4=Qs[3];
 
-    this.stepsize_y=(y2-y1)/3;
+    
     //this.ChartOptions.scales.yAxes[3].ticks.stepSize=this.stepsize_y;
 
     this.ChartData = [

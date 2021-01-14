@@ -15,7 +15,11 @@
 
         <mat-card-content>
             <div >
-                <button mat-button [matMenuTriggerFor]="menu">Ae or KQ?</button>
+                <button mat-button [matMenuTriggerFor]="menu">
+                    <mat-icon>menu</mat-icon>
+                    Ae or KQ? 
+                    
+                </button>
                 <mat-menu #menu="matMenu">
                     <button mat-menu-item (click)="changeUnitChoice('KQ')">KQ</button>
                     <button mat-menu-item (click)="changeUnitChoice('Ae')">Ae</button>
