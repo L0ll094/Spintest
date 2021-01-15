@@ -49,6 +49,8 @@ export class InputFormComponent implements OnInit {
 
   default_V1=100;
   default_V2=20;
+  default_Va=100;
+  default_Vb=50;
 
 centrifugeSizes=[
   {param:"Rcentrifuge [cm]",value: this.default_Rcentrifuge},
@@ -56,6 +58,9 @@ centrifugeSizes=[
   {param:"L2 [cm]",value:this.default_L2},
   {param:"V1 [%]",value:this.default_V1},
   {param:"V2 [%]",value:this.default_V2},
+  {param:"Va [%]",value:this.default_Va},
+  {param:"Vb [%]",value:this.default_Vb},
+
   
 
 ]
@@ -112,6 +117,8 @@ centrifugeSizes=[
       ret_rpm_4: [null],
       ret_rpm_5: [null],
       ret_rpm_6: [null], 
+      Va: [null],
+      Vb: [null],
 
     
     
@@ -207,6 +214,9 @@ centrifugeSizes=[
   
     this.equipment_properties.controls['V1'].setValue(this.default_V1);
     this.equipment_properties.controls['V2'].setValue(this.default_V2);
+    this.equipment_properties.controls['Va'].setValue(this.default_Va);
+    this.equipment_properties.controls['Vb'].setValue(this.default_Vb);
+
 
    }
 

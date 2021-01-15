@@ -286,8 +286,19 @@
                             <mat-label> Length L2 [cm]. </mat-label>
                             <input type="number" matInput formControlName="L2">
                         </mat-form-field>
-                    </div>
+                    
 
+                    <mat-form-field class="form-field" appearance="fill">
+                        <mat-label> Va, initial Vol% when extracting top part ("Light phase"). </mat-label>
+                        <input type="number" matInput formControlName="Va">
+                    </mat-form-field>
+
+                    <mat-form-field class="form-field" appearance="fill">
+                        <mat-label> Vb, final Vol% left in tube when top part ("Light phase") has been extracted. </mat-label>
+                        <input type="number" matInput formControlName="Vb">
+                    </mat-form-field>
+
+                    </div>
                     <div *ngIf="isOptionsTrue()">
                         <div class="input-table">
 
