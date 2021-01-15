@@ -14,13 +14,13 @@ import { formatNumber} from '@angular/common';
   styleUrls: ['./find-spintimes.component.css']
 })
 export class FindSpintimesComponent implements OnInit {
-  Flow: number;
-  spintime: number;
+  Flowrate: number;
+  spintime: string;
   yourFlows;
 
   data;
   theInput: FormGroup;
-  show_results: Boolean=true//Change for debugging
+  show_results: Boolean=false//Change for debugging
   //Chart properties are saved as class properties so that they can be more easily passed to the chart element in the
   //html file. They are given fake initial values before they are updated by the "submit"-button
 
@@ -77,74 +77,13 @@ export class FindSpintimesComponent implements OnInit {
     
   }
 
+  changeTimeFormat(seconds: number){
+    var date = new Date(null);
+    date.setSeconds(seconds); // specify value for SECONDS here
+    var result = date.toISOString().substr(11, 8);
+    return result;
+  }
 
-
-  //Initial values so I know if something didn't update
-ChartData: ChartDataSets[]= [
-    {data: [1,2,3,4]},
-    ];
-  
-DataLabels=['First','Second','Third','Fourth'];
-
-ChartFontSize=16;
-//ChartLegend = true;
-ChartType = 'line';
-ChartOptions={
-  title:{
-    text:"Spintimes", //"+`${this._results.separation_result}`,
-    display: true,
-    fontSize: 30,
-  },
-  responsive: true, 
-  legend:{
-    display:false
-  },
-
-  tooltips: {
-    enabled:true,
-    mode: 'interpolate'},
-  
-  scales:{
-    xAxes:[{
-      type:'linear',
-      scaleLabel: {
-        display: true, 
-        labelString:"Flow"+`${this._results.separation_result}`,
-        fontSize:20,
-        
-      },    
-      gridlines: {
-        display:true,
-        
-      },
-      
-
-    }],
-    yAxes:[{
-      
-      scaleLabel: {
-        display: true, 
-        labelString: "Time [sec]",
-        fontSize:20,
-      }, 
-      gridlines: {
-        display:true,
-        
-      },  
-    }]
-  },
- 
-};
-
-ChartColors: Color[]=[
-  {
-    borderColor: 'black',
-    borderWidth: 1,
-    hoverBorderWidth:2,
-    hoverBorderColor:'red',
-
-  },
-];
 
   constructor(
     public _results: ResultsService,
@@ -159,34 +98,27 @@ ChartColors: Color[]=[
   updateChart(){
     //The updating of the chart is done in a function since we want it to update on the click of the submit  button
     //in case you want to try different parameter one after another
-    let spintimes=this._results.recommended_spintimes;
-    let Label1=`${this.yourFlows[0]}`;
-    let Label2=`${this.yourFlows[1]}`;
-    let Label3=`${this.yourFlows[2]}`;
-    let Label4=`${this.yourFlows[3]}`;
+    
 
-    this.ChartData = [
-      {data: spintimes,
-        label: 'Suggested spintime',
-        pointRadius:10,
-        pointHoverRadius:15,
-        fill: false,
-      },
-     ];
-     this.DataLabels=[Label1,Label2,Label3,Label4];
+    this.tableData[0]['Flowrate']=this.yourFlows[0];
+    this.tableData[1]['Flowrate']=this.yourFlows[1];
+    this.tableData[2]['Flowrate']=this.yourFlows[2];
+    this.tableData[3]['Flowrate']=this.yourFlows[3];
 
-
-
+    this.tableData[0]['spintime']=this.changeTimeFormat(this._results.recommended_spintimes[0]);
+    this.tableData[1]['spintime']=this.changeTimeFormat(this._results.recommended_spintimes[1]);
+    this.tableData[2]['spintime']=this.changeTimeFormat(this._results.recommended_spintimes[2]);
+    this.tableData[3]['spintime']=this.changeTimeFormat(this._results.recommended_spintimes[3]);
 
   }
 
   tableData=[
-    {Flow: 1, spintime: 10},
-    {Flow: 2, spintime: 20},
-    {Flow: 3, spintime: 30},
-    {Flow: 4, spintime: 40},
+    {Flowrate: 1, spintime: "10"},
+    {Flowrate: 2, spintime: "20"},
+    {Flowrate: 3, spintime: "30"},
+    {Flowrate: 4, spintime: "40"},
   ];
-  displayedColumns: string[] = ['Flow','spintime'];
+  displayedColumns: string[] = ['Flowrate','spintime'];
   
     
   ngOnInit() {
@@ -240,6 +172,9 @@ ChartColors: Color[]=[
         console.log("The flows");
         console.log(temp.Flows);
         this.updateChart();
+        
+
+        
         
       },
       err => console.log(err)

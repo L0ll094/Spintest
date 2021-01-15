@@ -118,11 +118,13 @@
     <div *ngIf="show_results" class="centered-object" >
         <mat-card class="table-card">
             <mat-card-title>
-            Result
+            Resulting Spintimes
             </mat-card-title>
 
             <mat-card-subtitle>
-            Result subtitle    
+            The following spintimes will correspond to spinning your samples for the time specified in the "spintimes" column.
+            <br>
+            The separation result achieved with these spintimes is the expected result of your process at the specified Flowraterate. 
             </mat-card-subtitle>
        
 
@@ -134,15 +136,15 @@
                     <!-- Note that these columns can be defined in any order.
                             The actual rendered columns are set as a property on the row definition" -->
                     
-                    <!-- Flow Column -->
-                    <ng-container matColumnDef="Flow">
-                        <th mat-header-cell class="mycell" *matHeaderCellDef> The Flow </th>
-                        <td mat-cell *matCellDef="let datapoint"> {{datapoint.Flow}} </td>
+                    <!-- Flowrate Column -->
+                    <ng-container matColumnDef="Flowrate">
+                        <th mat-header-cell class="mycell" *matHeaderCellDef> The Flowrate <br>[{{this._results.separation_result}}] </th>
+                        <td mat-cell *matCellDef="let datapoint"> {{datapoint.Flowrate}} </td>
                     </ng-container>
                     
                     <!-- Spintime Column -->
                     <ng-container matColumnDef="spintime">
-                        <th mat-header-cell class="mycell"*matHeaderCellDef>The Spintime</th>
+                        <th mat-header-cell class="mycell"*matHeaderCellDef>The Corresponding Spintime <br> [HH:MM:SS]</th>
                         <td mat-cell *matCellDef="let datapoint"> {{datapoint.spintime}} </td>
                     </ng-container>
                     
