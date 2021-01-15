@@ -17,10 +17,10 @@ import {MatMenuModule} from '@angular/material/menu';
 export class FindQComponent implements OnInit {
   data;
   your_KQ: FormGroup;
+
   //Uncomment below when exciting debugger mode. Remove hardcoded efficiencies
-  //efficiencies=this._results.results_spintest;
-  efficiencies=[38,22,10,4];
-  stepsize_y=5;
+  efficiencies=this._results.results_spintest;
+
   show_results: Boolean=false;//Change for debugging
   chosen_unit="KQ"; //The user can choose to use KQ or use Ae for their plot
   //KQ is set as default. The choice is put underneath the picture on the mat-card
@@ -188,7 +188,10 @@ ChartColors: Color[]=[
     this.show_results=true;
 
     if(this.chosen_unit=="Ae"){
-        this.your_KQ.value["KQ"]=this.your_KQ.value["KQ"]/38.2;
+        
+   
+        this.your_KQ.controls["KQ"].setValue(this.your_KQ.value["KQ"]/38.2);
+
       }
 
  

@@ -14,64 +14,127 @@ import { formatNumber} from '@angular/common';
   styleUrls: ['./find-spintimes.component.css']
 })
 export class FindSpintimesComponent implements OnInit {
+  Flow: number;
+  spintime: number;
   yourFlows;
 
   data;
   theInput: FormGroup;
-  show_results: Boolean=false//Change for debugging
+  show_results: Boolean=true//Change for debugging
   //Chart properties are saved as class properties so that they can be more easily passed to the chart element in the
   //html file. They are given fake initial values before they are updated by the "submit"-button
+
+  chosen_size_unit="KQ"; //The user can choose to use KQ or use Ae for their plot
+  chosen_flowrate_unit="m3/h";
+  conversion_factor=1;//To convert chosen display unit into m3/h which the backend expects
   
+
+  changeFlowrateUnitChoice(unit){
+    if (unit=="L/h"){
+      this.conversion_factor=0.001;
+      this.chosen_flowrate_unit="L/h"
+    }
+    else if (unit=="m3/h") {
+      this.conversion_factor=1;
+      this.chosen_flowrate_unit="m3/h"
+    }
+    else if (unit=="barrels/h") {
+      //1 barrel is 118 L
+      this.conversion_factor=118*0.001;
+      this.chosen_flowrate_unit="barrels/h";
+    }
+    else if (unit=="gpm") {
+      //Gallons per minute, 1 gallon = 3.78541178 liter
+      this.conversion_factor=3.78541178*60*0.001;
+      this.chosen_flowrate_unit="gpm"
+    }
+    else if (unit=="hL/h") {
+      this.conversion_factor=0.1;
+      this.chosen_flowrate_unit="hL/h"
+    }
+    else{
+      this.conversion_factor=1;
+      this.chosen_flowrate_unit="m3/h"
+
+    }
+
+
+
+}
+
+  changeSizeUnitChoice(unitChoice: string){
+    if (unitChoice=="KQ"){
+      console.log("KQ chosen");
+      this.chosen_size_unit=unitChoice;
+
+    }
+    if (unitChoice=="Ae"){
+      console.log("Ae chosen");
+
+      this.chosen_size_unit=unitChoice;
+
+    }
+    
+  }
+
+
+
   //Initial values so I know if something didn't update
-  ChartData: ChartDataSets[]= [
+ChartData: ChartDataSets[]= [
     {data: [1,2,3,4]},
     ];
-    
+  
 DataLabels=['First','Second','Third','Fourth'];
 
 ChartFontSize=16;
 //ChartLegend = true;
-ChartType = 'bar';
-
-
-barChartOptions: ChartOptions={
+ChartType = 'line';
+ChartOptions={
   title:{
-    text:"Times to spin your samples to corr. to your flows",
+    text:"Spintimes", //"+`${this._results.separation_result}`,
     display: true,
     fontSize: 30,
   },
   responsive: true, 
-  tooltips: {
-    enabled:true},
   legend:{
-    display:false,
-  },  
-  plugins:{
-    crosshair:false,
+    display:false
   },
+
+  tooltips: {
+    enabled:true,
+    mode: 'interpolate'},
+  
   scales:{
-    yAxes:[{
-        ticks: {
-          beginAtZero: true,
-         
-        },
+    xAxes:[{
+      type:'linear',
       scaleLabel: {
         display: true, 
-        labelString:'Time to spin sample for [min]',
+        labelString:"Flow"+`${this._results.separation_result}`,
         fontSize:20,
+        
       },    
+      gridlines: {
+        display:true,
+        
+      },
+      
 
     }],
-    xAxes:[{
+    yAxes:[{
+      
       scaleLabel: {
         display: true, 
-        labelString:'Corresponding flow through separator [L/h]',
+        labelString: "Time [sec]",
         fontSize:20,
-      },   
-    }] 
+      }, 
+      gridlines: {
+        display:true,
+        
+      },  
+    }]
   },
+ 
 };
-
 
 ChartColors: Color[]=[
   {
@@ -84,7 +147,7 @@ ChartColors: Color[]=[
 ];
 
   constructor(
-    private _results: ResultsService,
+    public _results: ResultsService,
     private _PassToPythonServiceHolder: PassToPythonService,
     private formBuilder: FormBuilder,
 
@@ -101,8 +164,7 @@ ChartColors: Color[]=[
     let Label2=`${this.yourFlows[1]}`;
     let Label3=`${this.yourFlows[2]}`;
     let Label4=`${this.yourFlows[3]}`;
-    console.log("Data in Updatechart")
-       
+
     this.ChartData = [
       {data: spintimes,
         label: 'Suggested spintime',
@@ -117,6 +179,15 @@ ChartColors: Color[]=[
 
 
   }
+
+  tableData=[
+    {Flow: 1, spintime: 10},
+    {Flow: 2, spintime: 20},
+    {Flow: 3, spintime: 30},
+    {Flow: 4, spintime: 40},
+  ];
+  displayedColumns: string[] = ['Flow','spintime'];
+  
     
   ngOnInit() {
 
@@ -134,8 +205,26 @@ ChartColors: Color[]=[
 
   getSpinTimes(){
     /*Sends the desired Q along to the backend and decides what to do with the response*/
+
+    //Backend expects a KQ, not an Ae. It is simply converted by the factor 38.2 before being passed to the backend.
+    if(this.chosen_size_unit=="Ae"){
+      this.theInput.controls["KQ"].setValue(this.theInput.value["KQ"]/38.2);
+    }
+
+
+    //If a different flowrate was chosen, the value must be converted to the unit expected  by the backend [m3/h]
+
+    let Qmin_m3perh=this.theInput.controls['Qmin'].value*this.conversion_factor;
+    this.theInput.controls['Qmin'].setValue(Qmin_m3perh)
+
+    
+    let Qmax_m3perh=this.theInput.controls['Qmax'].value*this.conversion_factor;
+    this.theInput.controls['Qmax'].setValue(Qmax_m3perh)
+
     this.show_results=true;
     let data=JSON.stringify(this.theInput.value);
+    console.log("The data passed to backend:")
+    console.log(data);
 
 
     this._PassToPythonServiceHolder.sendForSpintimes(data).subscribe(
@@ -145,6 +234,11 @@ ChartColors: Color[]=[
         let temp=JSON.parse(res)
         this._results.recommended_spintimes=temp.Recommended_spintimes//The 4 resulting spintimes in minutes in decimal form 
         this.yourFlows=temp.Flows
+
+        console.log("The recommended spintimes:");
+        console.log(temp.Recommended_spintimes);
+        console.log("The flows");
+        console.log(temp.Flows);
         this.updateChart();
         
       },

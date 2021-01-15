@@ -4,3 +4,23 @@
     flex-direction:column;
 
 }
+.nav-link{
+    background: transparent;
+    padding: 3%;
+}
+.pretty_table{
+
+     width: 50%;
+ 
+}
+.headers{
+    display:flex;
+    justify-content:flex-end;
+   }
+.centered-object{
+    
+    display:flex;
+    justify-content: center;
+
+ 
+}
