@@ -34,7 +34,10 @@ export class FindCapacityComponent implements OnInit {
   //html file. They are given fake initial values before they are updated by the "submit"-button
   
   //Initial values so I know if something didn't update
-  ChartData: ChartDataSets[]= [
+  ChartData1: ChartDataSets[]= [
+    {data: [1,2,3], label: 'Initial_Data' },
+   ];
+   ChartData2: ChartDataSets[]= [
     {data: [1,2,3], label: 'Initial_Data' },
    ];
   ChartLabels: Label[]= ["First","Second","Third"];
@@ -47,7 +50,7 @@ export class FindCapacityComponent implements OnInit {
   //Tool to read data off graph more easily
   ChartPlugins=[crosshair];
   
-  ChartOptions={
+  ChartOptions1={
     title:{
       text:"Separator size req. for different "+`${this._results.separation_result}`,
       display: true,
@@ -93,6 +96,52 @@ export class FindCapacityComponent implements OnInit {
     },
    
   };
+
+  ChartOptions2={
+    title:{
+      text:"Separator size req. for different "+`${this._results.separation_result}`,
+      display: true,
+      fontSize: 30,
+    },
+    responsive: true, 
+    legend:{
+      display:false
+    },
+
+    tooltips: {
+      enabled:true,
+      mode: 'interpolate'},
+    
+    scales:{
+      xAxes:[{
+        type:'linear',
+        scaleLabel: {
+          display: true, 
+          labelString:'Size Ae',
+          fontSize:20,
+          
+        },    
+        gridlines: {
+          display:true,
+          
+        },
+        
+
+      }],
+      yAxes:[{
+        
+        scaleLabel: {
+          display: true, 
+          labelString: this._results.separation_result,
+          fontSize:20,
+        }, 
+        gridlines: {
+          display:true,
+          
+        },  
+      }]
+    },
+  };
   ChartColors: Color[]=[
     {
       borderColor: 'black',
@@ -103,12 +152,17 @@ export class FindCapacityComponent implements OnInit {
     },
   ];
   
+  
   updateChart(){
     //The updating of the chart is done in a function since we want it to update on the click of the submit  button
     //in case you want to try different parameter one after another
     let x1=this._results.size_low_sep;
     let x2=this._results.size_mid_sep;
     let x3=this._results.size_high_sep;
+
+    let z1=Math.round( (x1*38.2) * 100 + Number.EPSILON ) / 100;
+    let z2=Math.round( (x2*38.2) * 100 + Number.EPSILON ) / 100;
+    let z3=Math.round( (x3*38.2) * 100 + Number.EPSILON ) / 100;
 
     let y1=this.theInput.value['Effluent_conc_low'];
     let y3=this.theInput.value['Effluent_conc_high'];
@@ -121,16 +175,29 @@ export class FindCapacityComponent implements OnInit {
     this.conc2=y2;
     this.conc3=y3;
 
-    this.ChartData = [
+    this.ChartData1 = [
       {data: [
         {x:x1,y:y1},
         {x:x2,y:y2},
         {x:x3,y:y3}
       ],
-        label: 'Suggested size',
+        label: this._results.separation_result,
         pointRadius:10,
         pointHoverRadius:15,
         fill: false,
+      },
+     ];
+     this.ChartData2 = [
+      {data: [
+        {x:z1,y:y1},
+        {x:z2,y:y2},
+        {x:z3,y:y3}
+      ],
+        label: this._results.separation_result,
+        pointRadius:10,
+        pointHoverRadius:15,
+        fill: false,
+        
       },
      ];
 
