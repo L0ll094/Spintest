@@ -49,7 +49,7 @@ export class FindCapacityComponent implements OnInit {
   
   ChartOptions={
     title:{
-      text:"Separator size req. for different"+`${this._results.separation_result}`,
+      text:"Separator size req. for different "+`${this._results.separation_result}`,
       display: true,
       fontSize: 30,
     },
@@ -63,10 +63,11 @@ export class FindCapacityComponent implements OnInit {
       mode: 'interpolate'},
     
     scales:{
-      yAxes:[{
+      xAxes:[{
+        type:'linear',
         scaleLabel: {
           display: true, 
-          labelString:'Capacity KQ',
+          labelString:'Size KQ',
           fontSize:20,
           
         },    
@@ -75,17 +76,19 @@ export class FindCapacityComponent implements OnInit {
           
         },
         
-        ticks: {
-          stepSize:25,
-        }
+
       }],
-      xAxes:[{
-        type:'linear',
+      yAxes:[{
+        
         scaleLabel: {
           display: true, 
-          labelString:'Separation Efficiency',
+          labelString: this._results.separation_result,
           fontSize:20,
-        },   
+        }, 
+        gridlines: {
+          display:true,
+          
+        },  
       }]
     },
    
@@ -103,20 +106,20 @@ export class FindCapacityComponent implements OnInit {
   updateChart(){
     //The updating of the chart is done in a function since we want it to update on the click of the submit  button
     //in case you want to try different parameter one after another
-    let y1=this._results.capacity_low_sep;
-    let y2=this._results.capacity_mid_sep;
-    let y3=this._results.capacity_high_sep;
+    let x1=this._results.size_low_sep;
+    let x2=this._results.size_mid_sep;
+    let x3=this._results.size_high_sep;
 
-    let x1=this.theInput.value['Effluent_conc_low'];
-    let x3=this.theInput.value['Effluent_conc_high'];
-    let x2=(x1+x3)/2;
+    let y1=this.theInput.value['Effluent_conc_low'];
+    let y3=this.theInput.value['Effluent_conc_high'];
+    let y2=(y1+y3)/2;
 
     this.Loadfactor1=this._results.LF_low_sep;
     this.Loadfactor2=this._results.LF_mid_sep;
     this.Loadfactor3=this._results.LF_high_sep;
-    this.conc1=x1;
-    this.conc2=x2;
-    this.conc3=x3;
+    this.conc1=y1;
+    this.conc2=y2;
+    this.conc3=y3;
 
     this.ChartData = [
       {data: [
@@ -124,7 +127,7 @@ export class FindCapacityComponent implements OnInit {
         {x:x2,y:y2},
         {x:x3,y:y3}
       ],
-        label: 'Suggested capacity',
+        label: 'Suggested size',
         pointRadius:10,
         pointHoverRadius:15,
         fill: false,
@@ -204,14 +207,14 @@ export class FindCapacityComponent implements OnInit {
     this._PassToPythonServiceHolder.sendYourQ(data).subscribe(
       res => {
 
-        console.log("The constants High, medium and Low capacity as well as High, M and Low LF has been added to the database:");
+        console.log("The constants High, medium and Low size as well as High, M and Low LF has been added to the database:");
         console.log(res);
        
 
         let temp=JSON.parse(res);
-        this._results.capacity_low_sep=temp.KQ_1;
-        this._results.capacity_mid_sep=temp.KQ;
-        this._results.capacity_high_sep=temp.KQ_2;
+        this._results.size_low_sep=temp.KQ_1;
+        this._results.size_mid_sep=temp.KQ;
+        this._results.size_high_sep=temp.KQ_2;
 
 
         this._results.LF_low_sep=temp.LF_1;
