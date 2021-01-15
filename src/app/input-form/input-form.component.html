@@ -16,8 +16,15 @@
 
         <mat-card-content>
 
+
             <div class="form-content">
                 <form [formGroup]="spin_test_data" (submit)="submit_Spin_Test_Data()">
+                  
+                        <mat-form-field class="form-field" appearance="fill" class="spacious_field"class="spacious_field">
+                            <mat-label> Preferred Separation Unit. Default: {{this._results.separation_result}} </mat-label>
+                            <input type="text" matInput formControlName="PreferredUnit">
+                        </mat-form-field>
+                   
 
                     <div class="input-table">
 

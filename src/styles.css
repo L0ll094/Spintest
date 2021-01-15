@@ -23,6 +23,16 @@ mat-card.table-card{
   font-size: 50px;
   
 }
+mat-form-field.spacious_field{
+  padding-top: 12px;
+  padding-bottom: 12px;
+  width:100;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+
+}
 
 mat-card-header.welcomeheader{
     justify-content: center;

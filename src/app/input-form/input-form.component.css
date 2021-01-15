@@ -73,5 +73,10 @@
 .spacious_field{
     padding-top: 12px;
     padding-bottom: 12px;
+    width:25%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
 
 }

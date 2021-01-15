@@ -119,6 +119,7 @@ centrifugeSizes=[
       ret_rpm_6: [null], 
       Va: [null],
       Vb: [null],
+      
 
     
     
@@ -145,6 +146,7 @@ centrifugeSizes=[
       residualSolids2:[null,[Validators.required,]],
       residualSolids3:[null,[Validators.required,]],
       residualSolids4:[null,[Validators.required,]],
+      PreferredUnit: [null],
       
     });
 
@@ -243,6 +245,8 @@ centrifugeSizes=[
     this._results.results_spintest=[this.spin_test_data.value['residualSolids1'],this.spin_test_data.value['residualSolids2'],this.spin_test_data.value['residualSolids3'],this.spin_test_data.value['residualSolids4']];
     //console.log("This is the property that was saved to global results")
     //console.log(this._results.results_spintest)
+    this._results.separation_result=this.spin_test_data.controls['PreferredUnit'].value;
+    //PAUSED HERE
 
     let data=JSON.stringify(this.spin_test_data.value);
 

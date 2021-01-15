@@ -95,7 +95,7 @@ export class FindSpintimesComponent implements OnInit {
 
   
   
-  updateChart(){
+  updateTable(){
     //The updating of the chart is done in a function since we want it to update on the click of the submit  button
     //in case you want to try different parameter one after another
     
@@ -171,7 +171,7 @@ export class FindSpintimesComponent implements OnInit {
         console.log(temp.Recommended_spintimes);
         console.log("The flows");
         console.log(temp.Flows);
-        this.updateChart();
+        this.updateTable();
         
 
         
