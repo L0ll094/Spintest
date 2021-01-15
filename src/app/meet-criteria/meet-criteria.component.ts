@@ -237,8 +237,7 @@ export class MeetCriteriaComponent implements OnInit {
 
 
   ngOnInit() {
-      //For debugging
-    this._results.results_spintest=[10,20,30,40];
+  
 
     
     let lowest = this._results.results_spintest[0];

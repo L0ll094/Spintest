@@ -25,6 +25,8 @@
     font-size: x-large;
     padding-top: 25px;
     font-weight:normal;
+    border:gray;
+    border-radius: 30;
     
 }
 

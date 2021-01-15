@@ -27,7 +27,7 @@ export class ResultsService {
   LF_low_sep;
 
   //Saving the input form spintest so that it can be used for plots.
-  results_spintest; //in percentages
+  results_spintest=[39,23,11,5]; //in percentages. Setting defaults.
 
   /*
 
