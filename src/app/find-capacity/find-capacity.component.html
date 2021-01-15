@@ -13,23 +13,41 @@
         <img mat-card-image src="assets/images/fluid-image.jpg" alt="Photo of spintest">
 
         <mat-card-content>
+            <div >
+                <button mat-button [matMenuTriggerFor]="menu">
+                    <mat-icon>menu</mat-icon>
+                    Choose flow unit
+                    
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="changeChosenUnit('L/h')">Liters per hour</button>
+                    <button mat-menu-item (click)="changeChosenUnit('m3/h')">Cubic meters per hour</button>
+                    <button mat-menu-item (click)="changeChosenUnit('barrels/h')">Barrels per hour</button>
+                    <button mat-menu-item (click)="changeChosenUnit('hL/h')">Hectoliters per hour</button>
+                    <button mat-menu-item (click)="changeChosenUnit('gpm')">Gallons per minute</button>
+                </mat-menu>
+
+            </div>
+                      
  
             <div>
                 <form [formGroup]="theInput" (submit)="create_graph()" class="form-content">  
                     
                     
                     <mat-form-field class="form-field" appearance="fill">
-                        <mat-label> Volumetric flowrate Q [m3/h] </mat-label>
+                        <mat-label> Volumetric flowrate Q [{{this.chosen_unit}}] </mat-label>
                         <input type="number" matInput formControlName="desiredQ" required>
                     </mat-form-field>
                     
                     <mat-form-field class="form-field" appearance="fill">
-                        <mat-label> Acceptable lowest conc. in %, must be in the span of effluent concentrations from spintest</mat-label>
+                        <mat-label> Acceptable lowest {{this._results.separation_result}}. 
+                            Below {{this._results.results_spintest[0]}} and above {{this._results.results_spintest[this._results.results_spintest.length-1]}}</mat-label>
                         <input type="number" matInput formControlName="Effluent_conc_low" required>
                     </mat-form-field>
 
                     <mat-form-field class="form-field" appearance="fill">
-                        <mat-label> Acceptable highest conc. in %, must be in the span of effluent concentrations from spintest </mat-label>
+                        <mat-label> Acceptable highest {{this._results.separation_result}}. 
+                            Below {{this._results.results_spintest[0]}} and above {{this._results.results_spintest[this._results.results_spintest.length-1]}} </mat-label>
                         <input type="number" matInput formControlName="Effluent_conc_high" required>
                     </mat-form-field>
 

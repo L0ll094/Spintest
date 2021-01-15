@@ -21,6 +21,8 @@ export class FindCapacityComponent implements OnInit {
   theInput: FormGroup;
   //Property to keep track of showing or not showing the chart
   show_results: Boolean=false;
+  chosen_unit="m3/h";
+  conversion_factor=1;//To convert chosen display unit into m3/h which the backend expects
 
   Loadfactor1;
   Loadfactor2;
@@ -132,11 +134,42 @@ export class FindCapacityComponent implements OnInit {
 
 
   }
+  changeChosenUnit(unit){
+    if (unit=="L/h"){
+      this.conversion_factor=0.001;
+      this.chosen_unit="L/h"
+    }
+    else if (unit=="m3/h") {
+      this.conversion_factor=1;
+      this.chosen_unit="m3/h"
+    }
+    else if (unit=="barrels/h") {
+      //1 barrel is 118 L
+      this.conversion_factor=118*0.001;
+      this.chosen_unit="barrels/h";
+    }
+    else if (unit=="gpm") {
+      //Gallons per minute, 1 gallon = 3.78541178 liter
+      this.conversion_factor=3.78541178*60*0.001;
+      this.chosen_unit="gpm"
+    }
+    else if (unit=="hL/h") {
+      this.conversion_factor=0.1;
+      this.chosen_unit="hL/h"
+    }
+    else{
+      this.conversion_factor=1;
+      this.chosen_unit="m3/h"
 
+    }
+
+
+
+}
 
 
   constructor(
-    private _results: ResultsService,
+    public _results: ResultsService,
     private _PassToPythonServiceHolder: PassToPythonService,
     private formBuilder: FormBuilder,
 
@@ -158,11 +191,15 @@ export class FindCapacityComponent implements OnInit {
     /*Sends the desired Q along to the backend and decides what to do with the response*/
      //Plot:
     this.show_results=true;
+
+    let desiredQ_m3perH=this.theInput.controls['desiredQ'].value*this.conversion_factor;
+    console.log("The q converted:");
+    console.log(desiredQ_m3perH);
+    console.log("m3 per h");
+    this.theInput.controls['desiredQ'].setValue(desiredQ_m3perH)
+    
+
     let data=JSON.stringify(this.theInput.value);
-    console.log("This is 'Data'");
-    console.log(data);
-    console.log("This is the first value of Data:");
-    console.log(this.theInput.value['desiredQ'])
 
     this._PassToPythonServiceHolder.sendYourQ(data).subscribe(
       res => {
