@@ -21,18 +21,10 @@ mat-card.table-card{
   text-align:center;
   width: 100%;
   font-size: 50px;
+  align-items: center;
   
 }
-mat-form-field.spacious_field{
-  padding-top: 12px;
-  padding-bottom: 12px;
-  width:100;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
 
-}
 
 mat-card-header.welcomeheader{
     justify-content: center;
@@ -78,19 +70,4 @@ mat-card-subtitle.infotext{
   font-size:large;
 
 }
-th.mat-header-cell.mycell {
-  flex-direction: row;
-  justify-content: center;
-  text-align: center;
-  padding:0px;
 
-}
-
-.mat-cell {
-  text-align: center;
-  justify-content:center;
-  padding:10%;
-}
-table{
-  width:100%;
-}

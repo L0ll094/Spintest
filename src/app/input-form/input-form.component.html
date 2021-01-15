@@ -16,14 +16,17 @@
 
         <mat-card-content>
 
-
+            To edit the displayed separation result unit, please enter a unit of your choice below.
             <div class="form-content">
                 <form [formGroup]="spin_test_data" (submit)="submit_Spin_Test_Data()">
-                  
-                        <mat-form-field class="form-field" appearance="fill" class="spacious_field"class="spacious_field">
-                            <mat-label> Preferred Separation Unit. Default: {{this._results.separation_result}} </mat-label>
-                            <input type="text" matInput formControlName="PreferredUnit">
+                    
+                    <div class="centered">
+                        
+                        <mat-form-field  class="form-field" appearance="fill" >
+                                <mat-label> Default: {{this._results.separation_result}} </mat-label>
+                                <input type="text" matInput formControlName="PreferredUnit">
                         </mat-form-field>
+                    </div>
                    
 
                     <div class="input-table">
