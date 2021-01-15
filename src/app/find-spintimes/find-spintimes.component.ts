@@ -99,11 +99,11 @@ export class FindSpintimesComponent implements OnInit {
     //The updating of the chart is done in a function since we want it to update on the click of the submit  button
     //in case you want to try different parameter one after another
     
-
-    this.tableData[0]['Flowrate']=this.yourFlows[0];
-    this.tableData[1]['Flowrate']=this.yourFlows[1];
-    this.tableData[2]['Flowrate']=this.yourFlows[2];
-    this.tableData[3]['Flowrate']=this.yourFlows[3];
+    let diff=this.theInput.controls['Qmax'].value-this.theInput.controls['Qmin'].value;
+    this.tableData[0]['Flowrate']=this.theInput.controls['Qmin'].value;
+    this.tableData[1]['Flowrate']=this.theInput.controls['Qmin'].value+(diff/3)
+    this.tableData[2]['Flowrate']=this.theInput.controls['Qmin'].value+(2*diff/3)
+    this.tableData[3]['Flowrate']=this.theInput.controls['Qmax'].value;
 
     this.tableData[0]['spintime']=this.changeTimeFormat(this._results.recommended_spintimes[0]);
     this.tableData[1]['spintime']=this.changeTimeFormat(this._results.recommended_spintimes[1]);
@@ -165,12 +165,12 @@ export class FindSpintimesComponent implements OnInit {
         console.log(res)
         let temp=JSON.parse(res)
         this._results.recommended_spintimes=temp.Recommended_spintimes//The 4 resulting spintimes in minutes in decimal form 
-        this.yourFlows=temp.Flows
+
 
         console.log("The recommended spintimes:");
         console.log(temp.Recommended_spintimes);
-        console.log("The flows");
-        console.log(temp.Flows);
+
+
         this.updateTable();
         
 
