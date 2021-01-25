@@ -246,13 +246,11 @@ centrifugeSizes=[
     //console.log("This is the property that was saved to global results")
     //console.log(this._results.results_spintest)
     if(this.spin_test_data.controls['PreferredUnit'].value==null){
-      console.log("It is null:");
-      console.log(this.spin_test_data.controls['PreferredUnit'].value);
+
     }
     else{
       this._results.separation_result=this.spin_test_data.controls['PreferredUnit'].value;
-      console.log("It isn't null, it is:");
-      console.log(this.spin_test_data.controls['PreferredUnit'].value);
+
     }    
     //PAUSED HERE
 
@@ -267,7 +265,10 @@ centrifugeSizes=[
                 console.log("Setup of spintest was completed successfully:");
 
       },
-      err =>    console.log("An error occurred in input-form-components.ts, submit_Spin_Test_Data()")
+      err =>{
+        alert("Unfortunately, an error occured when communicating with the calculation tool.")
+        console.log("An error occurred in input-form.component.ts, submit_Spin_Test_Data()")
+      }    
     );
 
  

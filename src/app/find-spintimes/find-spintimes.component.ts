@@ -161,6 +161,9 @@ export class FindSpintimesComponent implements OnInit {
 
     this._PassToPythonServiceHolder.sendForSpintimes(data).subscribe(
       res => {
+        this.theInput.controls['Qmin'].reset();
+        this.theInput.controls['Qmax'].reset()
+
         console.log("The constant 'recommended spintimes' has been added to the database:")
         console.log(res)
         let temp=JSON.parse(res)
@@ -177,7 +180,10 @@ export class FindSpintimesComponent implements OnInit {
         
         
       },
-      err => console.log(err)
+      err => {
+        alert("Unfortunately, an error occured when communicating with the calculation tool."); 
+        console.log("An error occurred in find-spintimes.component.ts, getSpinTimes()");
+      }
 
     )};
 }

@@ -274,10 +274,11 @@ export class FindCapacityComponent implements OnInit {
     this._PassToPythonServiceHolder.sendYourQ(data).subscribe(
       res => {
 
+
         console.log("The constants High, medium and Low size as well as High, M and Low LF has been added to the database:");
         console.log(res);
        
-
+        this.theInput.controls['desiredQ'].reset();
         let temp=JSON.parse(res);
         this._results.size_low_sep=temp.KQ_1;
         this._results.size_mid_sep=temp.KQ;
@@ -290,7 +291,11 @@ export class FindCapacityComponent implements OnInit {
         //As button is clicked and parameters saved to the service, draw the chart
         this.updateChart()
       },
-      err => console.log(err)
+      err => {
+      
+        alert("Unfortunately, an error occured when communicating with the calculation tool."); 
+        console.log("An error occurred in find-capacity.component.ts, create_graph()");
+      }
     );
       
 

@@ -276,7 +276,11 @@ export class MeetCriteriaComponent implements OnInit {
         this._results.Qmax_array=temp.Qmax
         this.updateChart();//Updating must happen after results have been recieved
       },
-      err => console.log(err)
+      err => {
+        alert("Unfortunately, an error occured when communicating with the calculation tool."); 
+        console.log("An error occurred in meet-criteria.component.ts, submit_your_data()"); 
+        
+      }
 
     )
     

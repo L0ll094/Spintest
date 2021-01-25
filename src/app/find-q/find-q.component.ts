@@ -198,7 +198,7 @@ ChartColors: Color[]=[
     console.log("This is sent to the backend:");
     console.log(this.your_KQ.value);
     let data=JSON.stringify(this.your_KQ.value);
-    this.your_KQ.reset()
+  
 
     this._PassToPythonServiceHolder.sendYourKQ(data).subscribe(
       res => {
@@ -211,7 +211,10 @@ ChartColors: Color[]=[
         
         this.updateChart();
       },
-      err=> console.log(err)
+      err=> {
+       alert("Unfortunately, an error occured when communicating with the calculation tool."); 
+       console.log("An error occurred in find-q.component.ts, submit_your_KQ()");
+      }
 
     )};
 };
