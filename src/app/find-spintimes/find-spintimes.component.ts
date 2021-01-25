@@ -111,7 +111,7 @@ export class FindSpintimesComponent implements OnInit {
     this.tableData[3]['spintime']=this.changeTimeFormat(this._results.recommended_spintimes[3]);
 
   }
-
+//Default table data
   tableData=[
     {Flowrate: 1, spintime: "10"},
     {Flowrate: 2, spintime: "20"},

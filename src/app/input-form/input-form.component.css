@@ -53,6 +53,13 @@
     width: 100%;
     font-size: large;
     border: collapse;
+    table-layout: fixed;
+    
+}
+th,td{
+    border: 0px;
+    width: 100px;
+    overflow:hidden;
 }
 .Datatable-rows{
     font-size: medium;

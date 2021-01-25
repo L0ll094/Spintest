@@ -173,8 +173,11 @@
                         centrifuge
                         was used, please input the appropriate parameters</p>
                     <br>
+
+                    
                     <div class="Datatable-div">
-                        <h1 class=Datatable-headers>Default Centrifuge Sizes</h1>
+                        <h1 class=Datatable-headers> Default Centrifuge Sizes</h1>
+
                         <table class="Datatable">
                             <thead>
                                 <tr class=Datatable-rows>
@@ -183,6 +186,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+
                                 <tr class="Datatable-rows" *ngFor='let data of centrifugeSizes'>
                                     <td>{{data.param}}</td>
                                     <td>{{data.value}}</td>
@@ -191,7 +195,8 @@
 
                             </tbody>
                         </table>
-                    </div>  
+                    </div>
+
                     
                     <div class="Datatable-div">
                         <h1 class=Datatable-headers>Default Acceleration Table</h1>
