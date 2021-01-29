@@ -182,7 +182,9 @@ ChartColors: Color[]=[
   submit_your_KQ(){
     /*Sends the desired Q along to the backend and decides what to do with the response*/
     
-
+    if(this._results.spintest_setup_successfully==false){
+      alert("Since you have not set up a spintest yet, the graph won't be accurate to your spintest.")
+    };
   
 
     this.show_results=true;

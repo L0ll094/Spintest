@@ -259,6 +259,9 @@ export class MeetCriteriaComponent implements OnInit {
 
 
   submit_your_data(){
+    if(this._results.spintest_setup_successfully==false){
+      alert("Since you have not set up a spintest yet, the graph won't be accurate to your spintest.")
+    };
     /*Sends the input along to the backend and decides what to do with the response*/
     
     let data=JSON.stringify(this.the_input.value);

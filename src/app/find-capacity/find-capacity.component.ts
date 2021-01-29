@@ -259,8 +259,12 @@ export class FindCapacityComponent implements OnInit {
 
   create_graph(){
     /*Sends the desired Q along to the backend and decides what to do with the response*/
-     //Plot:
+
+    if(this._results.spintest_setup_successfully==false){
+      alert("Since you have not set up a spintest yet, the graph won't be accurate to your spintest.")
+    };
     this.show_results=true;
+
 
     let desiredQ_m3perH=this.theInput.controls['desiredQ'].value*this.conversion_factor;
     console.log("The q converted:");
