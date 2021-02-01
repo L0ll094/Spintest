@@ -10,6 +10,9 @@ import {ResultsService} from './common/services/results.service';
 })
 export class AppComponent {
   title: string = "Explore Extended";
+ 
+
+  
 
 
   constructor(
@@ -24,6 +27,9 @@ export class AppComponent {
   isSpintestdataSetup(){
    
     return this._results.spintest_setup_successfully==true;
+
+  }
+  changeColorOfText(){
 
   }
   

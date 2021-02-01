@@ -16,11 +16,13 @@ import { formatNumber} from '@angular/common';
 export class FindSpintimesComponent implements OnInit {
   Flowrate: number;
   spintime: string;
-  yourFlows;
+  given_flowrates=[1,2,3,4];
+  
+  
 
   data;
   theInput: FormGroup;
-  show_results: Boolean=false//Change for debugging
+  show_results: Boolean=true//Change for debugging
   //Chart properties are saved as class properties so that they can be more easily passed to the chart element in the
   //html file. They are given fake initial values before they are updated by the "submit"-button
 
@@ -99,11 +101,24 @@ export class FindSpintimesComponent implements OnInit {
     //The updating of the chart is done in a function since we want it to update on the click of the submit  button
     //in case you want to try different parameter one after another
     
-    let diff=this.theInput.controls['Qmax'].value-this.theInput.controls['Qmin'].value;
-    this.tableData[0]['Flowrate']=this.theInput.controls['Qmin'].value;
-    this.tableData[1]['Flowrate']=this.theInput.controls['Qmin'].value+(diff/3)
-    this.tableData[2]['Flowrate']=this.theInput.controls['Qmin'].value+(2*diff/3)
-    this.tableData[3]['Flowrate']=this.theInput.controls['Qmax'].value;
+    console.log("This is the tabulated flowrate before")
+    console.log(this.tableData[0].Flowrate);
+    console.log(this.tableData[1].Flowrate);
+    console.log(this.tableData[2].Flowrate);
+    console.log(this.tableData[3].Flowrate);
+    
+    this.tableData[0].Flowrate=this.given_flowrates[0];
+    this.tableData[1].Flowrate=this.given_flowrates[1];
+    this.tableData[2].Flowrate=this.given_flowrates[2];
+    this.tableData[3].Flowrate=this.given_flowrates[3];
+    
+    console.log("This is the tabulated flowrate after")
+    console.log(this.tableData[0].Flowrate);
+    console.log(this.tableData[1].Flowrate);
+    console.log(this.tableData[2].Flowrate);
+    console.log(this.tableData[3].Flowrate);
+
+   
 
     this.tableData[0]['spintime']=this.changeTimeFormat(this._results.recommended_spintimes[0]);
     this.tableData[1]['spintime']=this.changeTimeFormat(this._results.recommended_spintimes[1]);
@@ -144,6 +159,14 @@ export class FindSpintimesComponent implements OnInit {
     }
 
 
+    //Saving the entered data to be tabulated
+    let diff=this.theInput.controls['Qmax'].value-this.theInput.controls['Qmin'].value;
+    this.given_flowrates[0]=this.theInput.controls['Qmin'].value;
+    this.given_flowrates[1]=Math.round(((this.theInput.controls['Qmin'].value+(diff/3))+Number.EPSILON)*100)/100;
+    this.given_flowrates[2]=Math.round(((this.theInput.controls['Qmin'].value+(2*diff/3))+Number.EPSILON)*100)/100;
+    this.given_flowrates[3]=this.theInput.controls['Qmax'].value;
+    console.log("These are the flowrates saved in given_flowrates:");
+    console.log(this.given_flowrates);
     //If a different flowrate was chosen, the value must be converted to the unit expected  by the backend [m3/h]
 
     let Qmin_m3perh=this.theInput.controls['Qmin'].value*this.conversion_factor;
@@ -161,8 +184,8 @@ export class FindSpintimesComponent implements OnInit {
 
     this._PassToPythonServiceHolder.sendForSpintimes(data).subscribe(
       res => {
-        this.theInput.controls['Qmin'].reset();
-        this.theInput.controls['Qmax'].reset()
+        this.theInput.controls['Qmin'].setValue(this.theInput.controls['Qmin'].value*(1/this.conversion_factor));
+        this.theInput.controls['Qmax'].setValue(this.theInput.controls['Qmax'].value*(1/this.conversion_factor));
 
         console.log("The constant 'recommended spintimes' has been added to the database:")
         console.log(res)

@@ -24,3 +24,13 @@
 
  
 }
+.mycell{
+    text-align: center;
+
+}
+.mycell1{
+    text-align: center;
+    border-right-color:lightgray;
+    border-right-style:ridge;
+    border-right-width: 1px;
+}

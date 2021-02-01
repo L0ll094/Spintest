@@ -9,10 +9,10 @@
         <mat-toolbar-row class="mainRow">
             <div class="Small_note">
                 
-                <div *ngIf="isSpintestdataSetup()">Spintest data has been succesfully submitted</div>
-                <div *ngIf="isEquipmentDataSetup()">Equipment data has been succesfully submitted</div>
-                <div *ngIf="isSpintestdataSetup()==false">Spintest data has not yet been setup</div>
-                <div *ngIf="isEquipmentDataSetup()==false">Equipment data has not yet been setup</div>
+                <div *ngIf="isSpintestdataSetup()" class="done">Spintest data has been succesfully submitted</div>
+                <div *ngIf="isEquipmentDataSetup()" class="done">Equipment data has been succesfully submitted</div>
+                <div *ngIf="isSpintestdataSetup()==false" class="not_done">Spintest data has not yet been setup</div>
+                <div *ngIf="isEquipmentDataSetup()==false" class="not_done">Equipment data has not yet been setup</div>
  
             </div>
         </mat-toolbar-row>
