@@ -168,7 +168,7 @@ centrifugeSizes=[
   }
 
   checkUserInput(){
-      //Check that person put their spintest in order:
+      //Check that person put their spintest in order and let them know if something is suspicious
       let usrSepRes=[this.spin_test_data.value['residualSolids1'],this.spin_test_data.value['residualSolids2'],this.spin_test_data.value['residualSolids3'],this.spin_test_data.value['residualSolids4']];
 
       let usrSpintimes=[this.spin_test_data.value['spintime1'],this.spin_test_data.value['spintime2'],this.spin_test_data.value['spintime3'],this.spin_test_data.value['spintime4']];
@@ -178,18 +178,28 @@ centrifugeSizes=[
       let anError: string;
       anError='';
 
-      for (let i = 1; i < usrSepRes.length-1 ; i++) {
+      for (let i = 1; i < usrSepRes.length ; i++) {
+        console.log(`Index ${i}`)
+        console.log(`Is ${usrSepRes[i]} bigger than ${usrSepRes[i-1]}?`)
+        console.log(`Is ${usrNstarts[i]} lower than ${usrNstarts[i-1]}?`)
+        console.log(`Is ${usrSpintimes[i]} lower than ${usrSpintimes[i-1]}?`)
           if(usrSepRes[i]>=usrSepRes[i-1]){
-          anError=anError+` It seems the separation result for sample tube ${i+1} is higher than (or the same as) for sample tube ${i}. Are you sure you entered them in the correct order? If not, simply re-do.\n`;
+          anError=anError+`\n Warning: It seems the separation result for sample tube ${i+1} is higher than (or the same as) for sample tube ${i}. Are you sure you entered them in the correct order? If not, simply re-do.\n`;
           }
           if(usrNstarts[i-1]>=usrNstarts[i]){
-            anError=anError+` It seems sample tube ${i} experienced more starts than (or the same as) sample tube ${i+1}. Please put them in order lowest to highest and re-submit.\n`;
+            anError=anError+`\n Warning: It seems sample tube ${i} experienced more starts than (or the same as) sample tube ${i+1}. Please put them in order lowest to highest and re-submit.\n`;
           }
           if(usrSpintimes[i-1]>=usrSpintimes[i]){
-            anError=anError+` It seems sample tube ${i}'s spin time is longer than(or the same as) sample tube ${i+1}'s. Please put them in order lowest to highest and re-submit.\n`;
+            anError=anError+` \n Warning:  It seems sample tube ${i}'s spin time is longer than(or the same as) sample tube ${i+1}'s. Please put them in order lowest to highest and re-submit.\n`;
           }
 
-          this._snackBar.open( anError,"Check input and redo");
+          
+      }
+
+      if(anError==''){
+      }
+      else{
+        this._snackBar.open( anError,"Check input and redo",{panelClass: ['snackbarStyle']});
       }
 
 
