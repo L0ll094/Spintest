@@ -8,6 +8,7 @@ import {Color,Label} from 'ng2-charts';
 import { formatNumber} from '@angular/common';
 import * as crosshair from 'chartjs-plugin-crosshair';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-find-q',
@@ -31,6 +32,7 @@ export class FindQComponent implements OnInit {
     public _results: ResultsService,
     private _PassToPythonServiceHolder: PassToPythonService,
     private formBuilder: FormBuilder,
+    private _snackBar: MatSnackBar
 
 
     ) {  }
@@ -214,7 +216,7 @@ ChartColors: Color[]=[
         this.updateChart();
       },
       err=> {
-       alert("Unfortunately, an error occured when communicating with the calculation tool."); 
+       this._snackBar.open("Unfortunately, an error occured when communicating with the calculation tool.", "Ok"); 
        console.log("An error occurred in find-q.component.ts, submit_your_KQ()");
       }
 

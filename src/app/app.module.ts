@@ -47,9 +47,10 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import { PassToPythonService } from './common/services/pass-to-python.service';
-import { NavigatorPageComponent } from './navigator-page/navigator-page.component';
+import {PassToPythonService } from './common/services/pass-to-python.service';
+import {NavigatorPageComponent } from './navigator-page/navigator-page.component';
 import {ChartsModule} from 'ng2-charts';
+
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FindQComponent } from './find-q/find-q.component';
@@ -80,9 +81,7 @@ import {ResultsService} from './common/services/results.service'
     RouterModule,
     FormsModule,
     CommonModule,
-    ChartsModule,
-    
-   
+    ChartsModule,  
 
     BrowserAnimationsModule,
     MatCheckboxModule,
@@ -117,6 +116,7 @@ import {ResultsService} from './common/services/results.service'
     MatSortModule,
     MatPaginatorModule,
     HttpClientModule,
+    MatSnackBarModule,
 
   ],
   providers: [PassToPythonService, HttpClientModule,ResultsService],

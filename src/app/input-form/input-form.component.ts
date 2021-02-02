@@ -4,6 +4,7 @@ import { PassToPythonService } from '../common/services/pass-to-python.service';
 import {ResultsService} from '../common/services/results.service';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-input-form',
@@ -16,6 +17,7 @@ export class InputFormComponent implements OnInit {
   equipment_properties: FormGroup;
   spin_test_data: FormGroup;
   data;
+
 
 
 
@@ -76,6 +78,7 @@ centrifugeSizes=[
     private _PassToPythonServiceHolder: PassToPythonService,
     private formBuilder: FormBuilder,
     public _results: ResultsService,
+    private _snackBar: MatSnackBar,
 
 
     ) {  }
@@ -238,6 +241,19 @@ centrifugeSizes=[
     )};
 
   submit_Spin_Test_Data(){
+    //Check that person put their spintest in order:
+    if(this.spin_test_data.value['residualSolids1']<this.spin_test_data.value['residualSolids2']) {
+      this._snackBar.open("It seems the separation result for the 1st sample tube is lower than for the 2nd. Are you sure you entered them in the correct order? If not, simply re-do.","Will check!")
+    }
+    if(this.spin_test_data.value['Nstart1']>this.spin_test_data.value['Nstart2']) {
+      this._snackBar.open("It seems the first sample tube experienced more starts than the 2nd. Please put them in order lowest to highest and re-submit.","Will check!")
+    }
+    if(this.spin_test_data.value['Spintime1']>this.spin_test_data.value['Spintime2']) {
+      this._snackBar.open("It seems the first sample tube's spin time is longer than the second's. Please put them in order lowest to highest and re-submit.","Okay!")
+    }
+
+    
+    
 
     /*Saves the inputed spin test data and changes the global variable spintest_setup_successfully to true */
 
@@ -266,7 +282,8 @@ centrifugeSizes=[
 
       },
       err =>{
-        alert("Unfortunately, an error occured when communicating with the calculation tool.")
+        
+        this._snackBar.open("Unfortunately, an error occured when communicating with the calculation tool.", "Ok")
         console.log("An error occurred in input-form.component.ts, submit_Spin_Test_Data()")
       }    
     );

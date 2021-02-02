@@ -1,7 +1,7 @@
 
 <div class="flex-container" >
 
-<div *ngIf="this._results.equipment_setup_successfully">
+<div *ngIf="this._results.equipment_setup_successfully==false">
 
     <mat-card class="input-card">
         <mat-card-title>
@@ -24,7 +24,7 @@
     </mat-card>
 </div>
 
-<div *ngIf="this._results.equipment_setup_successfully==false">
+<div *ngIf="this._results.equipment_setup_successfully">
     <mat-card class="input-card" ><!--Card with input field for fluid properties-->
 
         <mat-card-header class="welcomeheader">

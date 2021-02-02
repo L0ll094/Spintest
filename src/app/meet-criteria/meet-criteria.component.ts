@@ -8,6 +8,7 @@ import {ChartDataSets,ChartOptions} from 'chart.js';
 import {Color,Label} from 'ng2-charts';
 import { formatNumber} from '@angular/common';
 import * as crosshair from 'chartjs-plugin-crosshair';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 @Component({
@@ -31,6 +32,7 @@ export class MeetCriteriaComponent implements OnInit {
     public _results: ResultsService,
     private _PassToPythonServiceHolder: PassToPythonService,
     private formBuilder: FormBuilder,
+    private _snackBar: MatSnackBar,
     ) {  }
   
   //Chart properties are saved as class properties so that they can be more easily passed to the chart element in the
@@ -280,7 +282,7 @@ export class MeetCriteriaComponent implements OnInit {
         this.updateChart();//Updating must happen after results have been recieved
       },
       err => {
-        alert("Unfortunately, an error occured when communicating with the calculation tool."); 
+        this._snackBar.open("Unfortunately, an error occured when communicating with the calculation tool.", "Ok"); 
         console.log("An error occurred in meet-criteria.component.ts, submit_your_data()"); 
         
       }

@@ -6,6 +6,7 @@ import {ResultsService} from '../common/services/results.service';
 import {ChartDataSets,ChartOptions} from 'chart.js';
 import {Color,Label} from 'ng2-charts';
 import { formatNumber} from '@angular/common';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class FindSpintimesComponent implements OnInit {
 
   data;
   theInput: FormGroup;
-  show_results: Boolean=true//Change for debugging
+  show_results: Boolean=false//Change for debugging
   //Chart properties are saved as class properties so that they can be more easily passed to the chart element in the
   //html file. They are given fake initial values before they are updated by the "submit"-button
 
@@ -91,7 +92,7 @@ export class FindSpintimesComponent implements OnInit {
     public _results: ResultsService,
     private _PassToPythonServiceHolder: PassToPythonService,
     private formBuilder: FormBuilder,
-
+    private _snackBar: MatSnackBar,
 
     ) {  }
 
@@ -184,8 +185,8 @@ export class FindSpintimesComponent implements OnInit {
 
     this._PassToPythonServiceHolder.sendForSpintimes(data).subscribe(
       res => {
-        this.theInput.controls['Qmin'].setValue(this.theInput.controls['Qmin'].value*(1/this.conversion_factor));
-        this.theInput.controls['Qmax'].setValue(this.theInput.controls['Qmax'].value*(1/this.conversion_factor));
+        this.theInput.controls['Qmin'].setValue(Math.round(((this.theInput.controls['Qmin'].value*(1/this.conversion_factor))+Number.EPSILON)*100)/100);
+        this.theInput.controls['Qmax'].setValue(Math.round(((this.theInput.controls['Qmax'].value*(1/this.conversion_factor))+Number.EPSILON)*100)/100);
 
         console.log("The constant 'recommended spintimes' has been added to the database:")
         console.log(res)
@@ -204,7 +205,7 @@ export class FindSpintimesComponent implements OnInit {
         
       },
       err => {
-        alert("Unfortunately, an error occured when communicating with the calculation tool."); 
+        this._snackBar.open("Unfortunately, an error occured when communicating with the calculation tool.", "Ok"); 
         console.log("An error occurred in find-spintimes.component.ts, getSpinTimes()");
       }
 

@@ -8,6 +8,7 @@ import {ChartDataSets,ChartOptions} from 'chart.js';
 import {Color,Label} from 'ng2-charts';
 import { formatNumber} from '@angular/common';
 import * as crosshair from 'chartjs-plugin-crosshair';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 @Component({
@@ -242,6 +243,7 @@ export class FindCapacityComponent implements OnInit {
     public _results: ResultsService,
     private _PassToPythonServiceHolder: PassToPythonService,
     private formBuilder: FormBuilder,
+    private _snackBar: MatSnackBar,
 
     ) {  }
 
@@ -297,7 +299,7 @@ export class FindCapacityComponent implements OnInit {
       },
       err => {
       
-        alert("Unfortunately, an error occured when communicating with the calculation tool."); 
+        this._snackBar.open("Unfortunately, an error occured when communicating with the calculation tool.", "Ok"); 
         console.log("An error occurred in find-capacity.component.ts, create_graph()");
       }
     );
