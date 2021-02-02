@@ -175,11 +175,11 @@ export class MeetCriteriaComponent implements OnInit {
       let Qs=this._results.Qmax_array;
       
 
-      let x1=KQs[0];
-      let x2=KQs[1];
-      let x3=KQs[2];
-      let x4=KQs[3];
-      let x5=KQs[4];
+      let x1=Math.round((KQs[0]+Number.EPSILON)*100)/100;
+      let x2=Math.round((KQs[1]+Number.EPSILON)*100)/100;
+      let x3=Math.round((KQs[2]+Number.EPSILON)*100)/100;
+      let x4=Math.round((KQs[3]+Number.EPSILON)*100)/100;
+      let x5=Math.round((KQs[4]+Number.EPSILON)*100)/100;
 
       //Bad coding here I know, but not familiar with ts syntax, will fix if have time
 
@@ -262,7 +262,7 @@ export class MeetCriteriaComponent implements OnInit {
 
   submit_your_data(){
     if(this._results.spintest_setup_successfully==false){
-      alert("Since you have not set up a spintest yet, the graph won't be accurate to your spintest.")
+      this._snackBar.open("Since you have not set up a spintest yet, the graph won't be accurate to your spintest.", "I understand!")
     };
     /*Sends the input along to the backend and decides what to do with the response*/
     
