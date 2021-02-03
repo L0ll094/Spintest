@@ -179,10 +179,7 @@ centrifugeSizes=[
       anError='';
 
       for (let i = 1; i < usrSepRes.length ; i++) {
-        console.log(`Index ${i}`)
-        console.log(`Is ${usrSepRes[i]} bigger than ${usrSepRes[i-1]}?`)
-        console.log(`Is ${usrNstarts[i]} lower than ${usrNstarts[i-1]}?`)
-        console.log(`Is ${usrSpintimes[i]} lower than ${usrSpintimes[i-1]}?`)
+        
           if(usrSepRes[i]>=usrSepRes[i-1]){
           anError=anError+`\n Warning: It seems the separation result for sample tube ${i+1} is higher than (or the same as) for sample tube ${i}. Are you sure you entered them in the correct order? If not, simply re-do.\n`;
           }

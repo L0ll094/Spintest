@@ -24,6 +24,7 @@ export class FindCapacityComponent implements OnInit {
   show_results: Boolean=false;
   chosen_unit="m3/h";
   conversion_factor=1;//To convert chosen display unit into m3/h which the backend expects
+  desiredQ_m3perH;
 
   Loadfactor1;
   Loadfactor2;
@@ -268,11 +269,11 @@ export class FindCapacityComponent implements OnInit {
     this.show_results=true;
 
 
-    let desiredQ_m3perH=this.theInput.controls['desiredQ'].value*this.conversion_factor;
+    this.desiredQ_m3perH=this.theInput.controls['desiredQ'].value*this.conversion_factor;
     console.log("The q converted:");
-    console.log(desiredQ_m3perH);
+    console.log(this.desiredQ_m3perH);
     console.log("m3 per h");
-    this.theInput.controls['desiredQ'].setValue(desiredQ_m3perH)
+    this.theInput.controls['desiredQ'].setValue(this.desiredQ_m3perH)
     
 
     let data=JSON.stringify(this.theInput.value);
@@ -284,7 +285,7 @@ export class FindCapacityComponent implements OnInit {
         console.log("The constants High, medium and Low size as well as High, M and Low LF has been added to the database:");
         console.log(res);
        
-        this.theInput.controls['desiredQ'].reset();
+        this.theInput.controls['desiredQ'].setValue(this.desiredQ_m3perH/this.conversion_factor);
         let temp=JSON.parse(res);
         this._results.size_low_sep=temp.KQ_1;
         this._results.size_mid_sep=temp.KQ;

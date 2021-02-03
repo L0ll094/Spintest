@@ -149,7 +149,7 @@ ChartColors: Color[]=[
         {x:x3,y:y3},
         {x:x4,y:y4}
       ],
-        label: 'Maximum flow: ',
+        label: `${this._results.separation_result}`,
         pointRadius:10,
         pointHoverRadius:15,
         fill: false,
