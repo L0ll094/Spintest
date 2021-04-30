@@ -207,6 +207,7 @@ export class FindCapacityComponent implements OnInit {
 
   }
   changeChosenUnit(unit){
+    //Default at the backend is to get the Q as m3/h, so unit conversion must happen if another unit is chosen. 
     if (unit=="L/h"){
       this.conversion_factor=0.001;
       this.chosen_unit="L/h"

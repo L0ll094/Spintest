@@ -276,7 +276,7 @@ export class MeetCriteriaComponent implements OnInit {
         console.log("The constants 'LF_crit', 'KQ' and 'Qmax' has been added to the database:")
         let temp=JSON.parse(res)
         console.log(temp)
-        this._results.LF_crit=temp.LF//Specify what LF units are!
+        this._results.LF_crit=temp.LF
         this._results.KQ_array=temp.KQ
         this._results.Qmax_array=temp.Qmax
         this.updateChart();//Updating must happen after results have been recieved
