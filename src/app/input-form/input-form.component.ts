@@ -180,8 +180,8 @@ centrifugeSizes=[
 
       for (let i = 1; i < usrSepRes.length ; i++) {
         
-          if(usrSepRes[i]>=usrSepRes[i-1]){
-          anError=anError+`\n Warning: It seems the separation result for sample tube ${i+1} is higher than (or the same as) for sample tube ${i}. Are you sure you entered them in the correct order? If not, simply re-do.\n`;
+          if(usrSepRes[i]>usrSepRes[i-1]){
+          anError=anError+`\n Warning: It seems the separation result for sample tube ${i+1} is higher than for sample tube ${i}. Are you sure you entered them in the correct order? If not, simply re-do.\n`;
           }
           if(usrNstarts[i-1]>=usrNstarts[i]){
             anError=anError+`\n Warning: It seems sample tube ${i} experienced more starts than (or the same as) sample tube ${i+1}. Please put them in order lowest to highest and re-submit.\n`;
