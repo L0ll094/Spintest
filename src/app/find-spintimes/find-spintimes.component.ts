@@ -108,10 +108,13 @@ export class FindSpintimesComponent implements OnInit {
     console.log(this.tableData[2].Flowrate);
     console.log(this.tableData[3].Flowrate);
     
-    this.tableData[0].Flowrate=this.given_flowrates[0];
-    this.tableData[1].Flowrate=this.given_flowrates[1];
-    this.tableData[2].Flowrate=this.given_flowrates[2];
-    this.tableData[3].Flowrate=this.given_flowrates[3];
+    //In the backend, the Q array is sent to find spintimes in the order from Max to Min.
+    //This will lead to the spintimes coming back in that order, and thus we must plot the
+    //Flowrates in the same manner. 
+    this.tableData[3].Flowrate=this.given_flowrates[0];
+    this.tableData[2].Flowrate=this.given_flowrates[1];
+    this.tableData[1].Flowrate=this.given_flowrates[2];
+    this.tableData[0].Flowrate=this.given_flowrates[3];
     
     console.log("This is the tabulated flowrate after")
     console.log(this.tableData[0].Flowrate);
